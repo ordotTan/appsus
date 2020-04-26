@@ -1,3 +1,15 @@
 .note-preview {
     background-color: lightgoldenrodyellow;
 }
+
+.keep .btn {
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid black
+
+}
+
+.keep .add-todo {
+    background-color: lightgreen;
+    width: 70px;
+}

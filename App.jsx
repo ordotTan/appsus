@@ -12,14 +12,14 @@ export class App extends React.Component {
 
     render() {
         return (
-            <Router>
+            <Router history ={history}> 
             <main>
-                <AppHeader history ={history} />
+                <AppHeader />
                 <Switch>
-                    <Route component={Home} path="/" />
                     <Route component={BookApp} path="/book" />
                     <Route component={KeepApp} path="/keep" />
                     <Route component={EmailApp} path="/email" />
+                    <Route component={Home} path="/" />
                 </Switch>
             </main>
             <footer>
