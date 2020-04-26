@@ -55,7 +55,7 @@ export default class NoteText extends React.Component {
             <form className="form" onSubmit={this.onAddNote}>
                 <label htmlFor="">Note Text: </label>
                 <input type="text" name="txt" value={txt} onChange={this.handleInput} ref={this.formNameInput}></input>
-                <button>Save Note</button>
+                <button className="btn">Save Note</button>
             </form>
         </div>
         )
