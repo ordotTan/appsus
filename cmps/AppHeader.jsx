@@ -4,9 +4,9 @@ import UserMsg from './UserMsg.jsx'
 
 export default function AppHeader(props) {
     return (
-        <section>
+        <main>
             <NavBar></NavBar>
             <UserMsg></UserMsg>
-        </section>
+        </main>
     )
 }

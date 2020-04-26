@@ -16,10 +16,10 @@ export class App extends React.Component {
             <main>
                 <AppHeader history ={history} />
                 <Switch>
-                    <Route component={Home} path="/" />
                     <Route component={BookApp} path="/book" />
                     <Route component={KeepApp} path="/keep" />
                     <Route component={EmailApp} path="/email" />
+                    <Route component={Home} path="/" />
                 </Switch>
             </main>
             <footer>

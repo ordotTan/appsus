@@ -1,4 +1,4 @@
-const { NavLink } = ReactRouterDOM
+const { NavLink } = ReactRouterDOM;
 
 export default function NavLinks() {
 
@@ -10,5 +10,4 @@ export default function NavLinks() {
             <NavLink to='/book'>Book</NavLink>
         </section>
     )
-
 }
