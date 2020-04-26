@@ -1,7 +1,7 @@
 
-import NoteText from '../../cmps/KeepCmps/NoteTxt.jsx'
-import NoteTodos from '../../cmps/KeepCmps/NoteTodos.jsx'
-import NoteImg from '../../cmps/KeepCmps/NoteImg.jsx'
+import NoteText from './NoteTxt.jsx'
+import NoteTodos from './NoteTodos.jsx'
+import NoteImg from './NoteImg.jsx'
 
 
 export default class NoteAdd extends React.Component {

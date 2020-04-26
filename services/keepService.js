@@ -8,7 +8,7 @@ var gDefaultNotes = [
     { id: 1, type: 'NoteTxt', info: { txt: 'aaaa' } },
     { id: 2, type: 'NoteTodos', info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] } },
     { id: 3, type: 'NoteTxt', info: { txt: 'cccc' } },
-    { id: 4, type: 'NoteImg', info: { url: 'cccc',title:"hello" } },
+    { id: 4, type: 'NoteImg', info: { url: 'cccc', title: "hello" } },
 ]
 
 var gNotes = null
@@ -38,8 +38,8 @@ function query(filterBy) {
         notes = gNotes.filter(note => {
             if (note.type === "NoteTxt") searchFor = note.info.txt
             else if (note.type === "NoteTodos") searchFor = note.info.label
-            return(searchFor.toLowerCase().includes(name.toLowerCase()))
-        }) 
+            return (searchFor.toLowerCase().includes(name.toLowerCase()))
+        })
     }
 
     return Promise.resolve(notes)
@@ -50,19 +50,25 @@ function getById(noteId) {
     return Promise.resolve(gBooks.find(note => note.id === noteId))
 }
 
-// {id: 3, type:'NoteText', info: {txt:'cccc'}},
 
 function addNote(info, type) {
-    const id = utilService.makeId(4)
-    const noteToAdd = { id, type, info }
-    // review.id = reviewId
-    // const book = gBooks.find(book => book.id === bookId)
-    // if (!book.reviews) {
-    //   book.reviews = []
-    // }
-    gNotes.push(noteToAdd)
+    let note
+    if (!info.id) {
+        const id = utilService.makeId(4)
+        note = { id, type, info }
+        gNotes.push(note)
+    } else {
+        note = gNotes.find(note => note.id === info.id)
+        switch (type) {
+            case 'NoteTxt':
+                note.info.txt = info.txt;
+            case 'NoteTodos':
+                note.info.label = info.label;
+        }
+    }
+
     save()
-    return Promise.resolve(noteToAdd)
+    return Promise.resolve(note)
 }
 
 function removeNote(noteId) {

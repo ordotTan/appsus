@@ -9,13 +9,15 @@ export default class NoteText extends React.Component {
     }
 
     state = {
-        info: { txt: '' } 
+        info: { txt: '', id: '' }
     }
 
     componentDidMount() {
         this.formNameInput.current.focus()
+        const txt = this.props.note ? this.props.note.info.txt : ''
+        const id = this.props.note ? this.props.note.id : ''
         this.setState({
-                info: { txt: 'My Note1' }
+            info: { txt, id }
         })
     }
 
@@ -34,10 +36,10 @@ export default class NoteText extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info,'NoteTxt')
+        keepService.addNote(this.state.info, 'NoteTxt')
             .then(note => {
                 this.setState({
-                        info: { txt: 'My Note' }
+                    info: { txt: 'My Note' }
                 })
                 this.props.onSaveNote(note)
             })
@@ -47,12 +49,13 @@ export default class NoteText extends React.Component {
     }
 
     render() {
+       // console.log(this.props.note)
         const { txt } = this.state.info
         return (<div>
             <form className="form" onSubmit={this.onAddNote}>
                 <label htmlFor="">Note Text: </label>
                 <input type="text" name="txt" value={txt} onChange={this.handleInput} ref={this.formNameInput}></input>
-                <button>Add Note</button>
+                <button>Save Note</button>
             </form>
         </div>
         )

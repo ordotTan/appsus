@@ -8,8 +8,10 @@
     margin:10px;
     border:1px solid black;
     cursor: pointer;
-
 }
+
+
+
 
 
 .keep .btn {
@@ -21,8 +23,54 @@
 
 .keep .add-todo {
     background-color: lightgreen;
-    width: 70px;
+    padding: 10px;
+    margin-left: 10px;
 }
 
 
+.keep .todo-done {
+    color: brown;
+    text-decoration: line-through;
+}
 
+.keep .edit-note {
+    border: 1px solid black;
+    width: 700px;
+    background-color: burlywood;
+}
+
+.keep .close-edit-note {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1px;
+    background-color: gray;
+}
+
+
+.keep .remove-todo {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1px;
+    background-color: red;
+
+}
+
+.keep .update-todo {
+    /* padding: 1px; */
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1px;
+    background-color: green;
+
+}
+
+.keep .todo-list li {
+    margin: 10px;
+}
+
+.keep .todo-list .todo-item {
+    cursor: pointer;
+}
