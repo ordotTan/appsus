@@ -13,13 +13,17 @@ export default class NoteTodos extends React.Component {
 
     state = {
         info:
-            { label: '', txt: '', todos: [] }
+            { label: '', txt: '', todos: [], id: '' }
     }
 
     componentDidMount() {
+        // console.log(this.props.note)
         this.formNameInput.current.focus()
+        const label = this.props.note ? this.props.note.info.label : ''
+        const todos = this.props.note ? this.props.note.info.todos : []
+        const id = this.props.note ? this.props.note.id : ''
         this.setState({
-            info: { label: 'My Todos', txt: '', todos: [] }
+            info: { label, txt: '', todos, id }
         })
     }
 
@@ -50,24 +54,55 @@ export default class NoteTodos extends React.Component {
             })
     }
 
-    addTodoItem = () => {
-        const todo = {
-            id: utilService.makeId(5),
-            txt: this.todoInput.current.value,
-            doneAt: null
+    addTodoItem = (todoId) => {
+        if (typeof todoId ==='string') { //updating existing todo
+            // console.log(typeof todoId)
+            const todos = this.state.info.todos
+            const todoIdxToUpdate = todos.findIndex(todo => todoId === todo.id)
+            //console.log(todoIdxToUpdate)
+            todos[todoIdxToUpdate].txt = this.todoInput.current.value,
+            this.setState(prevState => (
+                { todos: { ...prevState.info.todos } }))
+
         }
-        this.setState(prevState => (
-            prevState.info.todos.push(todo),
-            { todos: { ...prevState.info.todos, todo } }))
+
+        else {
+            const todo = {
+                id: utilService.makeId(5),
+                txt: this.todoInput.current.value,
+                doneAt: null
+            }
+            this.setState(prevState => (
+                prevState.info.todos.push(todo),
+                { todos: { ...prevState.info.todos, todo } }))
+        }
     }
 
     onRemoveTodo = (todoId) => {
         const todos = this.state.info.todos
-        const todoIdxToRemove = todos.find(todo => todoId === todo.id)
+        const todoIdxToRemove = todos.findIndex(todo => todoId === todo.id)
         this.setState(prevState => (
             prevState.info.todos.splice(todoIdxToRemove, 1),
             { todos: { ...prevState.info.todos } }))
     }
+
+    onMarkTodo = (todoId) => {
+        const todos = this.state.info.todos
+        const todoIdxToMark = todos.findIndex(todo => todoId === todo.id)
+        todos[todoIdxToMark].doneAt = todos[todoIdxToMark].doneAt ? '' : Date.now()
+        this.setState(prevState => (
+            { todos: { ...prevState.info.todos } }))
+
+    }
+
+    // onUpdateTodo = (todoId) => {
+    //     const todos = this.state.info.todos
+    //     const todoIdxToMark = todos.findIndex(todo => todoId === todo.id)
+    //     todos[todoIdxToMark].doneAt = todos[todoIdxToMark].doneAt ? '' :  Date.now()
+    //     this.setState(prevState => (
+    //         { todos: { ...prevState.info.todos } }))
+
+    // }
 
     render() {
         const { label, txt } = this.state.info
@@ -77,10 +112,10 @@ export default class NoteTodos extends React.Component {
                 <input type="text" name="label" value={label} onChange={this.handleInput} ref={this.formNameInput}></input>
                 <label htmlFor="">Todo txt: </label>
                 <input ref={this.todoInput} type="text" name="txt" value={txt} onChange={this.handleInput}></input>
-                <div className="btn add-todo" onClick={this.addTodoItem}>Add todo</div>
+                <span className="btn add-todo" onClick={this.addTodoItem}>Add todo</span>
                 {this.state.info.todos && this.state.info.todos.length > 0 &&
-                    <TodoItemList todos={this.state.info.todos} onRemoveTodo={this.onRemoveTodo} />}
-                <button>Add ToDo list</button>
+                    <TodoItemList todos={this.state.info.todos} onRemoveTodo={this.onRemoveTodo} onMarkTodo={this.onMarkTodo} addTodoItem={this.addTodoItem} />}
+                <button>Save Note</button>
             </form>
         </div>
         )
