@@ -40,7 +40,6 @@ export default class NoteAdd extends React.Component {
         ev.preventDefault()
         keepService.addNote(this.state.note)
             .then(note => {
-                console.log(note)
                 this.setState({ note: {  //clearing the form back to default
                     name: 'My Note', 
                     // comment:'',

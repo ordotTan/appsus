@@ -1,3 +1,17 @@
+@import url("keepApp.css");
+@import url("bookApp.css");
+@import url("emailApp.css");
+
+* {
+    box-sizing: border-box;
+}
+
+/* BASICS */
+
+html {
+    font-size: 1rem;
+}
+
 body {
     background-color: lightblue;
 }
