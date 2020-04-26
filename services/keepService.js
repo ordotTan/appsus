@@ -5,9 +5,9 @@ var gNotes = null
 const NOTES_KEY = 'notes'
 
 var gDefaultNotes = [
-    { id: 1, name: 'aaaa' },
-    { id: 2, name: 'bbbb' },
-    { id: 3, name: 'cccc' }
+    {id: 1, type:'NoteTxt', info: {txt:'aaaa'}},
+    {id: 2, type:'NoteTodos', info: {lable:'my todos',txt:'bbbb'}},
+    {id: 3, type:'NoteTxt', info: {txt:'cccc'}},
 ]
 
 var gNotes = null
@@ -27,10 +27,11 @@ function save() {
 function query(filterBy) {
     var notes = gNotes
     if (filterBy) {
+        // console.log(filterBy)
         var { name } = filterBy
         // maxPrice = maxPrice ? maxPrice : Infinity
         // minPrice = minPrice ? minPrice : 0
-        notes = gNotes.filter(note => note.name.toLowerCase().includes(name.toLowerCase()))
+        notes = gNotes.filter(note => note.info.txt.toLowerCase().includes(name.toLowerCase()))
         //   && (book.listPrice.amount < maxPrice)
         //   && book.listPrice.amount > minPrice)
     }
@@ -42,9 +43,11 @@ function getById(noteId) {
     return Promise.resolve(gBooks.find(note => note.id === noteId))
 }
 
-function addNote(note) {
-    const noteId = utilService.makeId(4)
-    const noteToAdd = { ...note, id: noteId }
+// {id: 3, type:'NoteText', info: {txt:'cccc'}},
+
+function addNote(info,type) {
+    const id = utilService.makeId(4)
+    const noteToAdd = {id,type,info}
     // review.id = reviewId
     // const book = gBooks.find(book => book.id === bookId)
     // if (!book.reviews) {
@@ -52,7 +55,7 @@ function addNote(note) {
     // }
     gNotes.push(noteToAdd)
     save()
-    return Promise.resolve(note)
+    return Promise.resolve(noteToAdd)
 }
 
 function removeNote(noteId) {

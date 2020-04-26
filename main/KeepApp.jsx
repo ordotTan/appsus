@@ -45,6 +45,7 @@ export default class KeepApp extends React.Component {
         return (
             <div> <h1>Keep</h1>
                  <NoteAdd onSaveNote = {this.onSaveNote}></NoteAdd>
+                   {/* <NoteAdd></NoteAdd> */}
                  <NoteFilter onSetFilter={this.onSetFilter} />
                 {notes && <NoteList onDeleteNote = {this.onDeleteNote} notes={notes}></NoteList>}
             </div>

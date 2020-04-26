@@ -1,69 +1,34 @@
 
-import keepService from '../services/keepService.js'
+import NoteText from '../../cmps/KeepCmps/NoteTxt.jsx'
+import NoteTodos from '../../cmps/KeepCmps/NoteTodos.jsx'
+import NoteImg from '../../cmps/KeepCmps/NoteImg.jsx'
+
 
 export default class NoteAdd extends React.Component {
-
-    constructor() {
-        super();
-        this.formNameInput = React.createRef();
-    }
-
     state = {
-        note: {
-            name: ''
-        }
+        inputType: 'NoteTxt',
     }
 
-    componentDidMount() {
-        this.formNameInput.current.focus()
-        this.setState({  note: {  //Default values to the form
-            name: 'My Note', 
-          //  comment:'',
-          //  readAt:new Date().toISOString().slice(0,10)
-        } }) 
+    handleInput = (ev) => {
+        console.log(ev.target.value)
+        const value = ev.target.value
+        this.setState({inputType:value})
     }
-
-    handleInput = ({ target }) => {
-        const field = target.name
-        const value = (target.type === 'number') ? +target.value : target.value
-        this.setState(prevState => {
-            return {
-                note: {
-                    ...prevState.note,
-                    [field]: value
-                }
-            }
-        })
-    }
-
-    onAddNote = (ev) => {
-        ev.preventDefault()
-        keepService.addNote(this.state.note)
-            .then(note => {
-                this.setState({ note: {  //clearing the form back to default
-                    name: 'My Note', 
-                    // comment:'',
-                    // rate:'',
-                    // readAt:new Date().toISOString().slice(0,10)
-                } }) 
-                   // this.props.loadNotes()
-                    this.props.onSaveNote(note)
-            })
-            .catch(err => {
-                console.log('OOPs', err);
-            })
-    }
-
     render() {
-        const { name } = this.state.note
-        return (<div>
-            <h2>Submit your review</h2>
-            <form className="form" onSubmit={this.onAddNote}>
-                <label htmlFor="">Name: </label>
-                <input type="text" name="name" value={name} onChange={this.handleInput} ref={this.formNameInput}></input>
-                <button>Add Note</button>
-            </form>
-        </div>
+        const inputType = this.state.inputType
+        return (
+            <div>
+                <select onChange={this.handleInput}>
+                    <option value='NoteTxt'>Text</option>
+                    <option value='NoteTodos'>Todos</option>
+                    <option value='NoteImg'>Image</option>
+                </select>
+                {(inputType === 'NoteTxt') && <NoteText onSaveNote={this.props.onSaveNote} />}
+                {(inputType === 'NoteTodos') && <NoteTodos onSaveNote={this.props.onSaveNote} />}
+                {(inputType === 'NoteImg') && <NoteImg onSaveNote={this.props.onSaveNote} />}
+            </div>
+
+            // else if (inputType === 'NoteTodos') return <NoteTodos/>
         )
     }
 }
