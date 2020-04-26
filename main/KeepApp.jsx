@@ -10,7 +10,7 @@ export default class KeepApp extends React.Component {
         notes: null,
         filterBy: null,
         selectedNote: null,
-        editMode:false,
+        editMode: false,
     }
 
     componentDidMount() {
@@ -29,13 +29,13 @@ export default class KeepApp extends React.Component {
 
     onDeleteNote = (noteId) => {
         keepService.removeNote(noteId)
-        .then(() => {
-            this.loadNotes()
-        })
+            .then(() => {
+                this.loadNotes()
+            })
     }
 
     onEditNote = (note) => {
-       this.setState({editMode:true,selectedNote:note})
+        this.setState({ editMode: true, selectedNote: note })
     }
 
     onSaveNote = () => {
@@ -47,10 +47,10 @@ export default class KeepApp extends React.Component {
 
         return (
             <div className="keep"> <h1>Keep</h1>
-                 <NoteAdd onSaveNote = {this.onSaveNote}></NoteAdd>
-                 <NoteFilter onSetFilter={this.onSetFilter} />
-                {notes && <NoteList  onDeleteNote = {this.onDeleteNote} onEditNote={this.onEditNote} notes={notes}></NoteList>}
-                {this.state.editMode && <NoteEdit note={this.state.selectedNote}/>}
+                <NoteFilter onSetFilter={this.onSetFilter} />
+                <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>
+                {notes && <NoteList onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes}></NoteList>}
+                {this.state.editMode && <NoteEdit note={this.state.selectedNote} />}
 
             </div>
 

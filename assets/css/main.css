@@ -1,7 +1,6 @@
 @import url("keepApp.css");
 @import url("bookApp.css");
 @import url("emailApp.css");
-
 * {
     box-sizing: border-box;
 }
@@ -17,6 +16,20 @@ body {
 }
 
 .nav-bar-container {
-   display: flex;
-   align-items: center;
+    display: flex;
+    align-items: center;
+}
+
+.emails-list-container table {
+    border-collapse: collapse;
+}
+
+.emails-list-container .email-preview {
+    cursor: pointer;
+    border-top: 1px solid black;
+    border-bottom: 1px solid rgb(165, 165, 165);
+}
+
+.emails-list-container .email-preview:hover {
+    box-shadow: 0px 2px 3px #000000e6;
 }

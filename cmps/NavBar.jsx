@@ -14,12 +14,12 @@ export default class NavBar extends React.Component {
     render() {
         return (
             <nav className="nav-bar-container">
+                
                 <img className="logo" src="assets/imgs/logo-appsus.png"/>
                 <SearchBar />
                 <button className = "back-btn" onClick={()=>{props.history.goBack();}}>Back</button>
                 <NavLinks />
             </nav>
-
         )
     }
 }

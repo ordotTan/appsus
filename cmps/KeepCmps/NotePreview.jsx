@@ -1,16 +1,9 @@
 const { Link } = ReactRouterDOM
 import NotePreivewTodos from './NotePreviewTodos.jsx'
 import TodoItemList from './TodoItemList.jsx'
-import eventBusService from "../../services/eventBusService.js";
 
 
 export default function NotePreview(props) {
-
-    // function openModal(note) {
-    //     eventBusService.emit('note-edit', {note})
-
-    // }
-
     
     const { note } = props
     return (
