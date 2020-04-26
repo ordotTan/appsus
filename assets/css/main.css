@@ -27,6 +27,7 @@ body {
 
 .nav-bar-container .logo {
     width: 300px;
+    margin-inline-end: 25px;
 }
 
 .nav-bar-container .search-bar-container {
@@ -59,15 +60,27 @@ body {
 .nav-bar-container .navlinks-toggle {
     cursor: pointer;
     height: 40px;
+    
+}
+
+.nav-bar-container .nav-links-toggle-wrapper {
     margin-inline-end: 10px;
+    width: 80px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
 }
 
-.nav-bar-container .navlinks-toggle:hover {
-
+.nav-active {
+    background-color: #0000002f;
+    border-radius: 999px;
 }
 
-.nav-bar-container .main-nav-area {
-    background-color: brown;
+.nav-bar-container .nav-links-toggle-wrapper:hover {
+    background-color: #00000046;
+    border-radius: 999px;
 }
 
 .nav-bar-container .nav-links {
@@ -75,7 +88,7 @@ position: absolute;
 padding: 5px;
 width: 320px;
 right: 5px;
-top: 80px;
+top: 85px;
 border: 1px solid grey;
 border-radius: 7px;
 box-shadow: 1px 2px 3px #00000066;
@@ -90,5 +103,5 @@ background-color: white;
 }
 
 .nav-bar-container .nav-links img:hover {
-    background-color: rgb(219, 219, 219);
+    background-color: rgb(207, 207, 207);
 }
