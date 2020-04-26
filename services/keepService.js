@@ -8,6 +8,7 @@ var gDefaultNotes = [
     { id: 1, type: 'NoteTxt', info: { txt: 'aaaa' } },
     { id: 2, type: 'NoteTodos', info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] } },
     { id: 3, type: 'NoteTxt', info: { txt: 'cccc' } },
+    { id: 4, type: 'NoteImg', info: { url: 'cccc',title:"hello" } },
 ]
 
 var gNotes = null

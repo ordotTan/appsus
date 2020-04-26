@@ -2,13 +2,15 @@ import NoteList from '../cmps/KeepCmps/NoteList.jsx'
 import NoteFilter from '../cmps/KeepCmps/NoteFilter.jsx'
 import keepService from '../services/keepService.js'
 import NoteAdd from '../pages/KeepPages/NoteAdd.jsx'
+import NoteEdit from '../cmps/KeepCmps/NoteEdit.jsx'
 
 export default class KeepApp extends React.Component {
 
     state = {
         notes: null,
         filterBy: null,
-        selectedNote: null
+        selectedNote: null,
+        editMode:false,
     }
 
     componentDidMount() {
@@ -25,15 +27,15 @@ export default class KeepApp extends React.Component {
         this.setState({ filterBy }, () => this.loadNotes())
     }
 
-    onSelectedNote = () => {
-
-    }
-
     onDeleteNote = (noteId) => {
         keepService.removeNote(noteId)
         .then(() => {
             this.loadNotes()
         })
+    }
+
+    onEditNote = (note) => {
+       this.setState({editMode:true,selectedNote:note})
     }
 
     onSaveNote = () => {
@@ -42,12 +44,14 @@ export default class KeepApp extends React.Component {
 
     render() {
         const { notes } = this.state
+
         return (
             <div className="keep"> <h1>Keep</h1>
                  <NoteAdd onSaveNote = {this.onSaveNote}></NoteAdd>
-                   {/* <NoteAdd></NoteAdd> */}
                  <NoteFilter onSetFilter={this.onSetFilter} />
-                {notes && <NoteList onDeleteNote = {this.onDeleteNote} notes={notes}></NoteList>}
+                {notes && <NoteList  onDeleteNote = {this.onDeleteNote} onEditNote={this.onEditNote} notes={notes}></NoteList>}
+                {this.state.editMode && <NoteEdit note={this.state.selectedNote}/>}
+
             </div>
 
         )

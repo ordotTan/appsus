@@ -2,9 +2,9 @@ import NotePreview from './NotePreview.jsx'
 
 export default function NoteList(props) {
     return (
-        <div>
+        <div className="notes-list">
             {props.notes.map(note => 
-            <NotePreview onDeleteNote = {()=>props.onDeleteNote(note.id)} key={ note.id } note={ note } />) }
+            <NotePreview onDeleteNote = {()=>props.onDeleteNote(note.id)} onEditNote = {props.onEditNote} key={ note.id } note={ note } />) }
         </div>
     )
 }
