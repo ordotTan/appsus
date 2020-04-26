@@ -4,30 +4,41 @@ import SearchBar from './SearchBar.jsx'
 
 export default class NavBar extends React.Component {
 
+    constructor() {
+        super();
+        this.navToggleBtn = React.createRef();
+    }
 
     state = {
-        isNavLinksOpen: true,
+        isNavLinksOpen: false,
         currApp: 'home',
-        logoUrl: 'assets/imgs/logo-appsus.png'
     }
 
     toggleNavLinks = () => {
+        let elNabToggleBtn = this.navToggleBtn.current.classList.toggle('nav-active');
         this.setState(prevState => ({
-            isNavLinksOpen : !prevState.isNavLinksOpen
+            isNavLinksOpen: !prevState.isNavLinksOpen
         }))
     }
 
+    changePage = (page) => {
+        console.log(page)
+        this.setState({currApp : page, isNavLinksOpen : false})
+    }
+
     render() {
-        const {isNavLinksOpen, CurrApp, logoUrl} = this.state
+        const { isNavLinksOpen, currApp, logoUrl } = this.state
 
         return (
 
             <nav className="nav-bar-container">
 
-                <img className="logo" src={logoUrl}/>
+                <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
                 <SearchBar />
-                <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn-grey.png" alt=""/>
-                {isNavLinksOpen && <NavLinks />}
+                <div ref={this.navToggleBtn} className="nav-links-toggle-wrapper">
+                    <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn.png" alt="" />
+                </div>
+                {isNavLinksOpen && <NavLinks changePage={this.changePage} />}
             </nav>
         )
     }
