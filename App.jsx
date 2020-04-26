@@ -12,9 +12,9 @@ export class App extends React.Component {
 
     render() {
         return (
-            <Router>
+            <Router history ={history}> 
             <main>
-                <AppHeader history ={history} />
+                <AppHeader />
                 <Switch>
                     <Route component={BookApp} path="/book" />
                     <Route component={KeepApp} path="/keep" />

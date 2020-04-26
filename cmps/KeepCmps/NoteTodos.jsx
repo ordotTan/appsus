@@ -1,5 +1,7 @@
 
 import keepService from '../../services/keepService.js'
+import TodoItemList from './TodoItemList.jsx'
+import utilService from '../../utilService.js'
 
 export default class NoteTodos extends React.Component {
 
@@ -10,20 +12,20 @@ export default class NoteTodos extends React.Component {
     }
 
     state = {
-        info: { label: '', txt: '',todos:[] }
+        info:
+            { label: '', txt: '', todos: [] }
     }
 
     componentDidMount() {
         this.formNameInput.current.focus()
         this.setState({
-            info: { label: 'My Todos', txt: 'todo 1',todos:[]}
+            info: { label: 'My Todos', txt: '', todos: [] }
         })
     }
 
     handleInput = ({ target }) => {
         const field = target.name
         const value = (target.type === 'number') ? +target.value : target.value
-        // console.log(field,value)
         this.setState(prevState => {
             return {
                 info: {
@@ -39,7 +41,7 @@ export default class NoteTodos extends React.Component {
         keepService.addNote(this.state.info, 'NoteTodos')
             .then(note => {
                 this.setState({
-                    info: { label: 'My Todos', txt: 'todo 1',todos:[{text:'dddd'}] }
+                    info: { label: 'My Todos', txt: '', todos: [] }
                 })
                 this.props.onSaveNote(note)
             })
@@ -49,12 +51,22 @@ export default class NoteTodos extends React.Component {
     }
 
     addTodoItem = () => {
-        let todo = this.todoInput.current.value
-        this.todoInput.current.value=''
-        console.log('todo',todo)
-        //console.log ({...this.state.info.todos})
-        this.setState({...this.state.info.todos,todo})
-        console.log (this.state.info.todos)
+        const todo = {
+            id: utilService.makeId(5),
+            txt: this.todoInput.current.value,
+            doneAt: null
+        }
+        this.setState(prevState => (
+            prevState.info.todos.push(todo),
+            { todos: { ...prevState.info.todos, todo } }))
+    }
+
+    onRemoveTodo = (todoId) => {
+        const todos = this.state.info.todos
+        const todoIdxToRemove = todos.find(todo => todoId === todo.id)
+        this.setState(prevState => (
+            prevState.info.todos.splice(todoIdxToRemove, 1),
+            { todos: { ...prevState.info.todos } }))
     }
 
     render() {
@@ -64,11 +76,10 @@ export default class NoteTodos extends React.Component {
                 <label htmlFor="">Label Todo-List: </label>
                 <input type="text" name="label" value={label} onChange={this.handleInput} ref={this.formNameInput}></input>
                 <label htmlFor="">Todo txt: </label>
-                <div>
-                    <input ref={this.todoInput} type="text" name="txt" value={txt} onChange={this.handleInput}></input>
-                    <p onClick={this.addTodoItem}>+</p>
-                </div>
-
+                <input ref={this.todoInput} type="text" name="txt" value={txt} onChange={this.handleInput}></input>
+                <div className="btn add-todo" onClick={this.addTodoItem}>Add todo</div>
+                {this.state.info.todos && this.state.info.todos.length > 0 &&
+                    <TodoItemList todos={this.state.info.todos} onRemoveTodo={this.onRemoveTodo} />}
                 <button>Add ToDo list</button>
             </form>
         </div>

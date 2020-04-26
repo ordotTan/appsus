@@ -43,7 +43,7 @@ export default class KeepApp extends React.Component {
     render() {
         const { notes } = this.state
         return (
-            <div> <h1>Keep</h1>
+            <div className="keep"> <h1>Keep</h1>
                  <NoteAdd onSaveNote = {this.onSaveNote}></NoteAdd>
                    {/* <NoteAdd></NoteAdd> */}
                  <NoteFilter onSetFilter={this.onSetFilter} />

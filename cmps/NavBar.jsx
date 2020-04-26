@@ -1,6 +1,7 @@
 import NavLinks from './NavLinks.jsx'
 import SearchBar from './SearchBar.jsx'
 
+
 export default class NavBar extends React.Component {
 
 
