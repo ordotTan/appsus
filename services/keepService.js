@@ -17,7 +17,8 @@ export default {
     getById,
     addNote,
     removeNote,
-    getNotes
+    getNotes,
+    // addNote,
 }
 
 function save() {
