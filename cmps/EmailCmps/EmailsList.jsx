@@ -4,12 +4,17 @@ import utilService from '../../services/utilService.js'
 
 export default function EmailsList(props) {
 
-    console.log('email list got', props.emails)
-
     return (
         <section className="emails-list-container">
             <table>
-                {props.emails.map(email => <EmailPreview email={email} key={utilService.makeId(4)} />)}
+                <tbody>
+                    <tr>
+                        <th>From</th>
+                        <th>Subject</th>
+                        <th colSpan="2">Message</th>
+                    </tr>
+                    {props.emails.map(email => <EmailPreview email={email} key={utilService.makeId(4)} deleteMail={props.deleteMail}/>)}
+                </tbody>
             </table>
         </section>
 
