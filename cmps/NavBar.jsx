@@ -6,19 +6,28 @@ export default class NavBar extends React.Component {
 
 
     state = {
-        isNavOpen: false,
+        isNavLinksOpen: true,
         currApp: 'home',
-        logoUrl: './assets/imgs/logo-home.png'
+        logoUrl: 'assets/imgs/logo-appsus.png'
+    }
+
+    toggleNavLinks = () => {
+        this.setState(prevState => ({
+            isNavLinksOpen : !prevState.isNavLinksOpen
+        }))
     }
 
     render() {
+        const {isNavLinksOpen, CurrApp, logoUrl} = this.state
+
         return (
+
             <nav className="nav-bar-container">
-                
-                <img className="logo" src="assets/imgs/logo-appsus.png"/>
+
+                <img className="logo" src={logoUrl}/>
                 <SearchBar />
-                <button className = "back-btn" onClick={()=>{props.history.goBack();}}>Back</button>
-                <NavLinks />
+                <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn-grey.png" alt=""/>
+                {isNavLinksOpen && <NavLinks />}
             </nav>
         )
     }
