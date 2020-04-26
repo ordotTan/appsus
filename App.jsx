@@ -1,17 +1,31 @@
+const Router = ReactRouterDOM.HashRouter 
+const { Route, Switch } = ReactRouterDOM
+const history = History.createBrowserHistory()
+import AppHeader from './cmps/AppHeader.jsx'
+import BookApp from './main/BookApp.jsx'
+import KeepApp from './main/KeepApp.jsx'
+import EmailApp from './main/EmailApp.jsx'
+
+
 import Home from './pages/Home.jsx'
 export class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <header>
-                    <h1>Lets Play</h1>
-                </header>
-                <main>
-                    <Home />
-                </main>
-
-            </div>
+            <Router>
+            <main>
+                <AppHeader history ={history} />
+                <Switch>
+                    <Route component={BookApp} path="/book" />
+                    <Route component={KeepApp} path="/keep" />
+                    <Route component={EmailApp} path="/email" />
+                    <Route component={Home} path="/" />
+                </Switch>
+            </main>
+            <footer>
+                copyrights 2020 &copy;
+            </footer>
+        </Router>
         )
     }
 }
