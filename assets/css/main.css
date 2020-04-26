@@ -13,5 +13,10 @@ html {
 }
 
 body {
-    background-color: lightblue;
+    margin: 0;
+}
+
+.nav-bar-container {
+   display: flex;
+   align-items: center;
 }
