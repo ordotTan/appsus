@@ -7,18 +7,17 @@ import KeepApp from './main/KeepApp.jsx'
 import EmailApp from './main/EmailApp.jsx'
 import Home from './main/Home.jsx'
 
-
 export class App extends React.Component {
 
     render() {
         return (
             <Router history ={history}> 
             <main>
-                <AppHeader />
+                <AppHeader/>
                 <Switch>
                     <Route component={BookApp} path="/book" />
                     <Route component={KeepApp} path="/keep" />
-                    <Route component={EmailApp} path="/email" />
+                    <Route component={EmailApp} path="/email/" />
                     <Route component={Home} path="/" />
                 </Switch>
             </main>
