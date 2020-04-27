@@ -18,14 +18,12 @@ export default class NavBar extends React.Component {
     }
 
     componentDidMount() {
-        this.removeEventBus = eventBusService.on('set-nav-state', (page) => {
-            this.setState({ currApp: page })
+        eventBusService.on('set-nav-state', (page) => {
+            this.setState({ currApp: page }, () => {
+                console.log('homepage status', this.state.currApp)
+            })
         });
     };
-
-    componentWillUnmount() {
-        this.removeEventBus();
-    }
 
     toggleNavLinks = () => {
         this.navToggleBtn.current.classList.toggle('nav-active');
@@ -51,8 +49,8 @@ export default class NavBar extends React.Component {
                     {(currApp === 'email') && <EmailStatusFilter />}
                     {(currApp === 'home') && <HomePageTitle />}
                 </div>
-                <div ref={this.navToggleBtn} className="nav-links-toggle-wrapper">
-                    <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn-grey.png" alt="" />
+                <div ref={this.navToggleBtn} onClick={this.toggleNavLinks} className="nav-links-toggle-wrapper">
+                    <img className="navlinks-toggle" src="assets/imgs/nav-icn-grey.png" alt="" />
                 </div>
                 {isNavLinksOpen && <NavLinks changePage={this.changePage} />}
             </nav>

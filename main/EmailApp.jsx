@@ -17,6 +17,7 @@ export default class EmailApp extends React.Component {
     }
 
     componentDidMount() {
+        console.log('email mounted')
         eventBusService.emit('set-nav-state', 'email')
         this.removeFilterTextEB = eventBusService.on('filter-email-by-text', (txt) => {
             this.setFilterTxt(txt)
@@ -25,6 +26,10 @@ export default class EmailApp extends React.Component {
             this.setFilterStatus(status)
         });
         this.loadEmails();
+    };
+
+    initEventBus() {
+
     };
 
     componentWillUnmount() {
@@ -46,14 +51,14 @@ export default class EmailApp extends React.Component {
     setFilterStatus = (value) => {
         let status;
 
-        if(value === '0') status = 'unread';
-        if(value === '1') status = null;
-        if(value === '2') status = 'read';
+        if (value === '0') status = 'unread';
+        if (value === '1') status = null;
+        if (value === '2') status = 'read';
 
         this.setState(prevState => ({ filter: { ...prevState.filter, status }, }), () => {
             this.loadEmails()
         });
-        
+
     };
 
     toggleCompositor = () => {
@@ -73,6 +78,12 @@ export default class EmailApp extends React.Component {
         this.loadEmails();
     };
 
+    toggleEmailStatus = (emailId) => {
+        console.log('email app toggle status got', emailId);
+        emailService.toggleEmailStatus(emailId);
+        this.loadEmails();
+    };
+
     openMail = (mailId) => {
         console.log('open mail happend', mailId);
     };
@@ -84,7 +95,7 @@ export default class EmailApp extends React.Component {
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
-                {emails && <EmailsList emails={emails} deleteMail={this.deleteMail} openMail={this.openMail} />}
+                {emails && <EmailsList emails={emails} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.openMail} />}
                 {isComposing && <EmailCompose submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
             </main>
 

@@ -51,6 +51,7 @@ body {
 
 .nav-bar-container .home-page-title span {
     font-size: 3.5rem;
+    text-shadow: 1px 1px 2px #00000077;
 }
 
 .nav-bar-container .home-page-title .main-span1 {
@@ -102,12 +103,12 @@ body {
 }
 
 .nav-bar-container .navlinks-toggle {
-    cursor: pointer;
     height: 40px;
     
 }
 
 .nav-bar-container .nav-links-toggle-wrapper {
+    cursor: pointer;
     margin-inline-end: 10px;
     width: 70px;
     height: 70px;

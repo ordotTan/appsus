@@ -44,28 +44,30 @@
 .email .emails-list-container .td-body {
     width: 900px;
 }
-
 .email .emails-list-container .td-date {
     width: 130px;
 }
 
-.email .emails-list-container .td-delete, .td-status {
-    color: rgb(46, 46, 46);
+.email .emails-list-container .td-btn {
+color: rgb(46, 46, 46);
+}
+.email .emails-list-container .delete-btn svg:hover {
+color: red;
+}
+.email .emails-list-container .status-btn svg:hover {
+color: green;
 }
 
-.email .emails-list-container .td-delete:hover {
-    color: red;
-}
-
-.email .emails-list-container .td-delete, .td-status svg {
-    width: 17px;
-    margin-inline-end: 20px;
+.email .emails-list-container .td-btn svg {
+    height: 20px;
+    margin-inline-start: 10px;
+    margin-inline-end: 15px;
 }
 
 .email .mail-composing-container {
     background-color: white;
     position: fixed;
-    bottom: 40px;
+    bottom:40px;
     right: 10px;
     display: flex;
     flex-direction: column;
