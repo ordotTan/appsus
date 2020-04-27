@@ -10,7 +10,7 @@ export default class NoteText extends React.Component {
 
     state = {
         info: { txt: '', id: '' },
-        style: {backgroundColor:''}
+        style: {backgroundColor:'',color:''}
     }
 
     componentDidMount() {
@@ -18,9 +18,10 @@ export default class NoteText extends React.Component {
         const txt = this.props.note ? this.props.note.info.txt : ''
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
+        const color = this.props.note ? this.props.note.style.color : ''
         this.setState({
             info: { txt, id },
-            style:{backgroudColor}
+            style:{backgroudColor,color}
         })
     }
 
@@ -52,7 +53,6 @@ export default class NoteText extends React.Component {
     }
 
     render() {
-       // console.log(this.props.note)
         const { txt } = this.state.info
         return (<div>
             <form className="form" onSubmit={this.onAddNote}>

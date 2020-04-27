@@ -8,7 +8,7 @@ var gDefaultNotes = [
     { id: 1, type: 'NoteTxt', isPinned: true, info: { txt: 'aaaa' },style: { backgroundColor: "#FFFFFF",color:'blue'}},
     { id: 2, type: 'NoteTodos', isPinned: false, info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] },style: { backgroundColor: "#FFFFFF",color:'black'}},
     { id: 3, type: 'NoteTxt', isPinned: false, info: { txt: 'cccc' },style: { backgroundColor: "#845EC2",color:'red'} },
-    // { id: 4, type: 'NoteImg', isPinned: false, info: { url: 'https://www.liberaldictionary.com/wp-content/uploads/2019/02/icon-0326.jpg', title: "hello" },style: { backgroundColor: "#FFFFFF"} },
+    { id: 4, type: 'NoteImg', isPinned: false, info: { url: 'https://www.liberaldictionary.com/wp-content/uploads/2019/02/icon-0326.jpg', title: "hello" },style: { backgroundColor: "#FFFFFF"} },
 ]
 
 var gNotes = null

@@ -1,15 +1,11 @@
-export default class NoteImg extends React.Component {
-
-    addImgNote = (img) => {
-        console.log(img.src)
-    }
-
-    render() {
-        return (<div>
+export default function NoteImg(props) {
+    return (
+            <div>
             <h1>Input img</h1>
-            <img src={this.props.note.info.src}></img>
-        </div>
+            Title:
+            <input type="text"></input>
+            URL:
+            <input type="text"></input>
+            </div>
         )
-
     }
-}

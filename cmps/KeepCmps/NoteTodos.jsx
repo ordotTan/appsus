@@ -13,7 +13,8 @@ export default class NoteTodos extends React.Component {
 
     state = {
         info:
-            { label: '', txt: '', todos: [], id: '' }
+            { label: '', txt: '', todos: [], id: '' },
+            style: {backgroundColor:'',color:''}
     }
 
     componentDidMount() {
@@ -22,8 +23,11 @@ export default class NoteTodos extends React.Component {
         const label = this.props.note ? this.props.note.info.label : ''
         const todos = this.props.note ? this.props.note.info.todos : []
         const id = this.props.note ? this.props.note.id : ''
+        const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
+        const color = this.props.note ? this.props.note.style.color : ''
         this.setState({
-            info: { label, txt: '', todos, id }
+            info: { label, txt: '', todos, id },
+            style:{backgroudColor,color}
         })
     }
 
@@ -42,7 +46,7 @@ export default class NoteTodos extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info, 'NoteTodos')
+        keepService.addNote(this.state.info,this.state.style, 'NoteTodos')
             .then(note => {
                 this.setState({
                     info: { label: 'My Todos', txt: '', todos: [] }
