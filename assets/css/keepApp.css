@@ -82,3 +82,8 @@
 .keep .todo-list .todo-item {
     cursor: pointer;
 }
+
+
+.keep .note-pin {
+    width:30px
+}

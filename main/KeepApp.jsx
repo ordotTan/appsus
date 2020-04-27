@@ -1,4 +1,5 @@
 import NoteList from '../cmps/KeepCmps/NoteList.jsx'
+import NoteListPinned from '../cmps/KeepCmps/NoteListPinned.jsx'
 import NoteFilter from '../cmps/KeepCmps/NoteFilter.jsx'
 import NoteAdd from '../cmps/KeepCmps/NoteAdd.jsx'
 import NoteEdit from '../cmps/KeepCmps/NoteEdit.jsx'
@@ -51,6 +52,28 @@ export default class KeepApp extends React.Component {
         this.setState({selectedNote:null,editMode:false})
     }
 
+    onTogglePin =(ev,noteId) => {
+        ev.stopPropagation()
+        keepService.updatePinStatus(noteId)
+        .then(() => {
+            this.loadNotes()
+        })
+    }
+
+    onSetBackgroundColor =(noteId,value) => {
+        keepService.updateBackgroundColor(noteId,value)
+        .then(() => {
+            this.loadNotes()
+        })
+    }
+
+    onSetFontColor =(noteId,value) => {
+        keepService.updateFontColor(noteId,value)
+        .then(() => {
+            this.loadNotes()
+        })
+    }
+
     render() {
         const { notes } = this.state
 
@@ -58,8 +81,11 @@ export default class KeepApp extends React.Component {
             <div className="keep"> <h1>Keep</h1>
                 <NoteFilter onSetFilter={this.onSetFilter} />
                 <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>
-                {notes && <NoteList onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes}></NoteList>}
-                {this.state.editMode && <NoteEdit note={this.state.selectedNote} onSaveNote={this.onSaveNote} onCloseEditMode={this.onCloseEditMode} />}
+                <h2>Pinned Items</h2>
+                {notes && <NoteListPinned onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}></NoteListPinned>}
+                <h2>Other Items</h2>
+                {notes && <NoteList onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}></NoteList>}
+                {this.state.editMode && <NoteEdit note={this.state.selectedNote} onSaveNote={this.onSaveNote} onCloseEditMode={this.onCloseEditMode} onSetBackgroundColor={this.onSetBackgroundColor} onSetFontColor={this.onSetFontColor} />}
 
             </div>
 
