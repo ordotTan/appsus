@@ -1,5 +1,6 @@
 import NavLinks from './NavLinks.jsx'
 import SearchBar from './SearchBar.jsx'
+import eventBusService from '../services/eventBusService.js';
 
 
 export default class NavBar extends React.Component {
@@ -14,6 +15,16 @@ export default class NavBar extends React.Component {
         currApp: 'home',
     }
 
+    componentDidMount() {
+        this.removeEventBus = eventBusService.on('set-nav-state', (page) => {
+            this.setState({ currApp : page })
+        });
+    };
+
+    componentWillUnmount() {
+        this.removeEventBus();
+    }
+
     toggleNavLinks = () => {
         this.navToggleBtn.current.classList.toggle('nav-active');
         this.setState(prevState => ({
@@ -23,18 +34,18 @@ export default class NavBar extends React.Component {
 
     changePage = (page) => {
         this.navToggleBtn.current.classList.remove('nav-active');
-        this.setState({currApp : page, isNavLinksOpen : false})
+        this.setState({ currApp: page, isNavLinksOpen: false })
     }
 
     render() {
-        const { isNavLinksOpen, currApp, } = this.state
+        const { isNavLinksOpen, currApp, searchBar} = this.state
 
         return (
 
             <nav className="nav-bar-container">
 
                 <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
-                <SearchBar currApp={currApp} />
+                <SearchBar />
                 <div ref={this.navToggleBtn} className="nav-links-toggle-wrapper">
                     <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn-grey.png" alt="" />
                 </div>

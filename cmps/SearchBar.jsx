@@ -3,13 +3,18 @@ import eventBusService from "../services/eventBusService.js";
 export default class SearchBar extends React.Component {
 
     state = {
-        currApp: 'email',
+        currApp: 'home',
         placeHolderVal: ''
-    }
+    };
 
     componentDidMount() {
-        this.setPlaceHolder();
-    }
+        this.removeEventBus = eventBusService.on('set-nav-state', (page) => {
+            this.setState({ currApp : page }, () => {
+                this.setPlaceHolder();
+            })
+            
+        });
+    };
 
     setPlaceHolder() {
 
@@ -36,8 +41,16 @@ export default class SearchBar extends React.Component {
     };
 
     handleChange = ({target}) => {
+
         const { currApp } = this.state;
-        if (currApp === 'email') eventBusService.emit('filter-email-by-text', target.value);
+        if (currApp === 'email') {
+            eventBusService.emit('filter-email-by-text', target.value)
+            return
+        };
+        if (currApp === 'keep') {
+            eventBusService.emit('filter-keep-by-text', target.value)
+            return
+        };
     }
 
     render() {

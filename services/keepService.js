@@ -27,6 +27,8 @@ function save() {
 }
 
 function query(filterBy) {
+    // debugger
+    console.log('keep query got', filterBy)
     var notes = gNotes
     if (filterBy) {
         // console.log(filterBy)
