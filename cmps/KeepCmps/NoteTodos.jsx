@@ -95,15 +95,6 @@ export default class NoteTodos extends React.Component {
 
     }
 
-    // onUpdateTodo = (todoId) => {
-    //     const todos = this.state.info.todos
-    //     const todoIdxToMark = todos.findIndex(todo => todoId === todo.id)
-    //     todos[todoIdxToMark].doneAt = todos[todoIdxToMark].doneAt ? '' :  Date.now()
-    //     this.setState(prevState => (
-    //         { todos: { ...prevState.info.todos } }))
-
-    // }
-
     render() {
         const { label, txt } = this.state.info
         return (<div>
@@ -115,7 +106,7 @@ export default class NoteTodos extends React.Component {
                 <span className="btn add-todo" onClick={this.addTodoItem}>Add todo</span>
                 {this.state.info.todos && this.state.info.todos.length > 0 &&
                     <TodoItemList todos={this.state.info.todos} onRemoveTodo={this.onRemoveTodo} onMarkTodo={this.onMarkTodo} addTodoItem={this.addTodoItem} />}
-                <button>Save Note</button>
+                <button className="btn">Save Note</button>
             </form>
         </div>
         )

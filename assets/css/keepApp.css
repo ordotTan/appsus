@@ -14,16 +14,24 @@
 
 
 
+
+
 .keep .btn {
     cursor: pointer;
     border-radius: 10px;
-    border: 1px solid black
+    border: 1px solid black;
+    background-color: goldenrod;
 
 }
 
+/* 
+.keep .save-note-btn {
+    cursor: pointer;
+} */
+
 .keep .add-todo {
     background-color: lightgreen;
-    padding: 10px;
+    padding: 3px;
     margin-left: 10px;
 }
 
