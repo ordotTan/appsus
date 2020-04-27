@@ -21,6 +21,7 @@ export default class KeepApp extends React.Component {
         this.loadNotes()
     }
 
+
     loadNotes() {
         keepService.query(this.state.filterBy)
             .then(notes => {
@@ -78,8 +79,9 @@ export default class KeepApp extends React.Component {
         const { notes } = this.state
 
         return (
-            <div className="keep"> <h1>Keep</h1>
-                <NoteFilter onSetFilter={this.onSetFilter} />
+            <div className="keep">
+                {/* <NoteFilter onSetFilter={this.onSetFilter} /> */}
+                <h1>What do you want to <span>keep</span> today?</h1>
                 <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>
                 <h2>Pinned Items</h2>
                 {notes && <NoteListPinned onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}></NoteListPinned>}

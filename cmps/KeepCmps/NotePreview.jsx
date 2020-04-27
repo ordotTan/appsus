@@ -1,7 +1,4 @@
-const { Link } = ReactRouterDOM
 import NotePreivewTodos from './NotePreviewTodos.jsx'
-import TodoItemList from './TodoItemList.jsx'
-
 
 export default function NotePreview(props) {
 
@@ -23,8 +20,15 @@ export default function NotePreview(props) {
                 </div>}
             {note.type === 'NoteImg' &&
                 <div className="note-img">
-                    <h2>Img : {note.info.title}</h2>
+                    <h2>Image : {note.info.title}</h2>
                     <img src={note.info.url}></img>
+                </div>}
+            {note.type === 'NoteVideo' &&
+                <div className="note-img">
+                    <h2>Video : {note.info.title}</h2>
+                    <div className="note-movie">
+                        <iframe src={`https://www.youtube.com/embed/${note.info.url.substring(note.info.url.indexOf('=')+1)}`}></iframe>
+                    </div>
                 </div>}
             <button onClick={() => { props.onDeleteNote(note.id) }}>Delete </button>
             <img onClick={(ev) => props.onTogglePin(ev, note.id)} className="note-pin" src={`../../assets/imgs/${pin_src}`}></img>

@@ -1,7 +1,7 @@
 
-import keepService from '../../services/keepService.js' 
+import keepService from '../../services/keepService.js'
 
-export default class NoteText extends React.Component {
+export default class NoteVideo extends React.Component {
 
     constructor() {
         super();
@@ -9,19 +9,20 @@ export default class NoteText extends React.Component {
     }
 
     state = {
-        info: { txt: '', id: '' },
-        style: {backgroundColor:'',color:''}
+        info: { title: '', url: '', id: '' },
+        style: { backgroundColor: '', color: '' }
     }
 
     componentDidMount() {
         this.formNameInput.current.focus()
-        const txt = this.props.note ? this.props.note.info.txt : 'Go to bed!'
+        const title = this.props.note ? this.props.note.info.title : 'Cool Movie'
+        const url = this.props.note ? this.props.note.info.url : 'https://www.youtube.com/watch?v=P834QexYsQo'
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
         const color = this.props.note ? this.props.note.style.color : ''
         this.setState({
-            info: { txt, id },
-            style:{backgroudColor,color}
+            info: { title, url, id },
+            style: { backgroudColor, color }
         })
     }
 
@@ -40,10 +41,10 @@ export default class NoteText extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info,this.state.style, 'NoteTxt')
+        keepService.addNote(this.state.info, this.state.style, 'NoteVideo')
             .then(note => {
                 this.setState({
-                    info: { txt: 'My Note' }
+                    info: { title: 'Video title', url: '' }
                 })
                 this.props.onSaveNote(note)
             })
@@ -53,11 +54,13 @@ export default class NoteText extends React.Component {
     }
 
     render() {
-        const { txt } = this.state.info
+        const { title, url } = this.state.info
         return (<div>
             <form className="form" onSubmit={this.onAddNote}>
-                <label htmlFor="">Note Text: </label>
-                <input type="text" name="txt" value={txt} onChange={this.handleInput} ref={this.formNameInput}></input>
+                <label htmlFor="">Title: </label>
+                <input type="text" name="title" value={title} onChange={this.handleInput} ref={this.formNameInput}></input>
+                <label htmlFor="">Link: </label>
+                <input type="text" name="url" value={url} onChange={this.handleInput}></input>
                 <button className="btn">Save Note</button>
             </form>
         </div>

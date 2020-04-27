@@ -1,13 +1,53 @@
+.keep .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: unset;
+    
+}
+
 .keep .notes-list {
     display: flex;
+    /* padding-top: 10px;
+    column-count: 4;
+    text-align: center;
+    width: 95%;
+    margin-bottom: 15px; */
 }
 
 .keep .note-preview {
     background-color: lightgoldenrodyellow;
-    width: 200px;
     margin:10px;
+    padding:10px;
     border:1px solid black;
     cursor: pointer;
+    border-radius: 15px;
+    /* //width: 100%; */
+}
+
+/* Header */
+
+.keep h1 span {
+    color:#e6e155;
+}
+
+/* Add note */
+
+
+.keep .add-note img {
+    width: 30px;
+    cursor: pointer;
+    margin: 20px;
+
+}
+
+.keep .add-note img.active{
+    width: 50px;
+    cursor: pointer;
+    background-color: goldenrod;
+    opacity: 0.2;
+}
+.keep .add-note img:hover {
+    opacity: 0.7;
 }
 
 
@@ -23,11 +63,6 @@
     background-color: goldenrod;
 
 }
-
-/* 
-.keep .save-note-btn {
-    cursor: pointer;
-} */
 
 .keep .add-todo {
     background-color: lightgreen;
@@ -90,4 +125,21 @@
 
 .keep .note-img img {
     width:100px
+}
+
+
+.keep .note-movie {
+    position: relative;
+    overflow: hidden;
+    padding-top: 50%;
+}
+
+.keep .note-movie iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
 }
