@@ -18,22 +18,43 @@ export default class EmailApp extends React.Component {
 
     componentDidMount() {
         eventBusService.emit('set-nav-state', 'email')
-       this.removeEventBus = eventBusService.on('filter-email-by-text', (txt) => {
-            this.filterTxt(txt)
+        this.removeFilterTextEB = eventBusService.on('filter-email-by-text', (txt) => {
+            this.setFilterTxt(txt)
+        });
+        this.removeFilterStatusEB = eventBusService.on('filter-email-by-status', (status) => {
+            this.setFilterStatus(status)
         });
         this.loadEmails();
+    };
+
+    componentWillUnmount() {
+        this.removeFilterTextEB();
+        this.removeFilterStatusEB();
     };
 
     loadEmails() {
         emailService.query(this.state.filter)
             .then(emails => this.setState({ emails }));
-    }
+    };
 
-    filterTxt = (val) => {
+    setFilterTxt = (val) => {
         this.setState(prevState => ({ filter: { ...prevState.filter, txt: val }, }), () => {
             this.loadEmails()
         });
-    }
+    };
+
+    setFilterStatus = (value) => {
+        let status;
+
+        if(value === '0') status = 'unread';
+        if(value === '1') status = null;
+        if(value === '2') status = 'read';
+
+        this.setState(prevState => ({ filter: { ...prevState.filter, status }, }), () => {
+            this.loadEmails()
+        });
+        
+    };
 
     toggleCompositor = () => {
         this.setState(prevState => ({

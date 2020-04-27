@@ -1,6 +1,8 @@
 import NavLinks from './NavLinks.jsx'
+import HomePageTitle from './HomePageTitle.jsx'
 import SearchBar from './SearchBar.jsx'
 import eventBusService from '../services/eventBusService.js';
+import EmailStatusFilter from './EmailCmps/EmailStatusFilter.jsx'
 
 
 export default class NavBar extends React.Component {
@@ -17,7 +19,7 @@ export default class NavBar extends React.Component {
 
     componentDidMount() {
         this.removeEventBus = eventBusService.on('set-nav-state', (page) => {
-            this.setState({ currApp : page })
+            this.setState({ currApp: page })
         });
     };
 
@@ -38,14 +40,17 @@ export default class NavBar extends React.Component {
     }
 
     render() {
-        const { isNavLinksOpen, currApp, searchBar} = this.state
+        const { isNavLinksOpen, currApp, searchBar } = this.state
 
         return (
 
             <nav className="nav-bar-container">
-
-                <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
-                <SearchBar />
+                <div class="nav-bar-dynamic">
+                    <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
+                    {(currApp != 'home') && <SearchBar />}
+                    {(currApp === 'email') && <EmailStatusFilter />}
+                    {(currApp === 'home') && <HomePageTitle />}
+                </div>
                 <div ref={this.navToggleBtn} className="nav-links-toggle-wrapper">
                     <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn-grey.png" alt="" />
                 </div>

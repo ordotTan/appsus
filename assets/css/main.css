@@ -1,6 +1,12 @@
 @import url("keepApp.css");
 @import url("bookApp.css");
 @import url("emailApp.css");
+
+@font-face {
+    font-family: anton;
+    src: url(../assets/fonts/Anton-Regular.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -20,14 +26,51 @@ body {
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: end;
-    /* border: 2px solid black; */
+    justify-content: space-between;
     border-bottom: 1px solid rgb(187, 187, 187);
+}
+
+.nav-bar-container .nav-bar-dynamic {
+    display: flex;
+    align-items: center;
 }
 
 .nav-bar-container .logo {
     width: 300px;
     margin-inline-end: 25px;
+    /* border-right: 1px solid black; */
+}
+
+.nav-bar-container .home-page-title h1 {
+    font-family: anton;
+    margin: 0px 0px;
+    font-size: 2rem;
+    font-weight: bolder;
+    word-spacing: 15px;
+}
+
+.nav-bar-container .home-page-title span {
+    font-size: 3.5rem;
+}
+
+.nav-bar-container .home-page-title .main-span1 {
+    color: #56E674;
+}
+
+.nav-bar-container .home-page-title .main-span2 {
+    color: #E65656;
+}
+.nav-bar-container .home-page-title .main-span3 {
+    color: #E6E156;
+}
+.nav-bar-container .home-page-title .main-span4 {
+    color: #56CDE6;
+}
+.nav-bar-container .home-page-title .main-span5 {
+    color: #56E674;
+}
+.nav-bar-container .home-page-title .main-span6 {
+    color: #E65656;
 }
 
 .nav-bar-container .search-bar-container {
@@ -41,6 +84,7 @@ body {
     font-size: 1rem;
     font-weight: normal;
     padding-inline-start: 40px;
+    margin-inline-end: 40px;
     width: 600px;
     min-width: 300px;
     height: 45px;
@@ -54,7 +98,7 @@ body {
     height: 20px;
     position: relative;
     left: 30px;
-    margin-inline-start: -40px;
+    margin-inline-start: -15px;
 }
 
 .nav-bar-container .navlinks-toggle {
@@ -65,8 +109,8 @@ body {
 
 .nav-bar-container .nav-links-toggle-wrapper {
     margin-inline-end: 10px;
-    width: 80px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +132,7 @@ position: absolute;
 padding: 5px;
 width: 320px;
 right: 5px;
-top: 85px;
+top: 90px;
 border: 1px solid grey;
 border-radius: 7px;
 box-shadow: 1px 2px 3px #00000066;
