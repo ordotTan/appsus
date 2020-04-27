@@ -50,20 +50,15 @@ function save() {
 }
 
 function query(filterBy) {
-    // debugger
-    console.log('keep query got', filterBy)
     var notes = gNotes
     if (filterBy) {
-        // console.log(filterBy)
-        var { name } = filterBy
-
-        // maxPrice = maxPrice ? maxPrice : Infinity
-        // minPrice = minPrice ? minPrice : 0
+        var { txt } = filterBy
         let searchFor
         notes = gNotes.filter(note => {
             if (note.type === "NoteTxt") searchFor = note.info.txt
             else if (note.type === "NoteTodos") searchFor = note.info.label
-            return (searchFor.toLowerCase().includes(name.toLowerCase()))
+            else if (note.type === "NoteImg") searchFor = note.info.title
+            return (searchFor.toLowerCase().includes(txt.toLowerCase()))
         })
     }
 

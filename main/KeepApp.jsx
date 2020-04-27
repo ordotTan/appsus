@@ -21,6 +21,7 @@ export default class KeepApp extends React.Component {
         this.loadNotes()
     }
 
+
     loadNotes() {
         keepService.query(this.state.filterBy)
             .then(notes => {

@@ -1,16 +1,15 @@
 
 import NoteText from './NoteTxt.jsx'
-import NoteTodos from './NoteTodos.jsx'
+import NoteTodos from './NoteTodos.jsx' 
 import NoteImg from './NoteImg.jsx'
 
 
 export default class NoteAdd extends React.Component {
     state = {
-        inputType: 'NoteTxt',
+        inputType: 'NoteImg',
     }
 
     handleInput = (ev) => {
-        console.log(ev.target.value)
         const value = ev.target.value
         this.setState({inputType:value})
     }
@@ -21,7 +20,7 @@ export default class NoteAdd extends React.Component {
                 <select onChange={this.handleInput}> 
                     <option value='NoteTxt'>Text</option>
                     <option value='NoteTodos'>Todos</option>
-                    <option value='NoteImg'>Image</option>
+                    <option value='NoteImg' defaultValue>Image</option>
                 </select>
                 {(inputType === 'NoteTxt') && <NoteText onSaveNote={this.props.onSaveNote} />}
                 {(inputType === 'NoteTodos') && <NoteTodos onSaveNote={this.props.onSaveNote} />}

@@ -1,5 +1,5 @@
 
-import keepService from '../../services/keepService.js'
+import keepService from '../../services/keepService.js' 
 
 export default class NoteText extends React.Component {
 
@@ -15,7 +15,7 @@ export default class NoteText extends React.Component {
 
     componentDidMount() {
         this.formNameInput.current.focus()
-        const txt = this.props.note ? this.props.note.info.txt : ''
+        const txt = this.props.note ? this.props.note.info.txt : 'Go to bed!'
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
         const color = this.props.note ? this.props.note.style.color : ''

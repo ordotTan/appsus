@@ -12,22 +12,21 @@ export default class NoteTodos extends React.Component {
     }
 
     state = {
-        info:
-            { label: '', txt: '', todos: [], id: '' },
-            style: {backgroundColor:'',color:''}
+        info: { label: '', txt: '', todos: [], id: '' },
+        style: { backgroundColor: '', color: '' }
     }
 
     componentDidMount() {
         // console.log(this.props.note)
         this.formNameInput.current.focus()
-        const label = this.props.note ? this.props.note.info.label : ''
-        const todos = this.props.note ? this.props.note.info.todos : []
+        const label = this.props.note ? this.props.note.info.label : 'Things to buy'
+        const todos = this.props.note ? this.props.note.info.todos : [{ txt: 'milk' }]
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
         const color = this.props.note ? this.props.note.style.color : ''
         this.setState({
             info: { label, txt: '', todos, id },
-            style:{backgroudColor,color}
+            style: { backgroudColor, color }
         })
     }
 
@@ -46,7 +45,7 @@ export default class NoteTodos extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info,this.state.style, 'NoteTodos')
+        keepService.addNote(this.state.info, this.state.style, 'NoteTodos')
             .then(note => {
                 this.setState({
                     info: { label: 'My Todos', txt: '', todos: [] }
@@ -59,14 +58,14 @@ export default class NoteTodos extends React.Component {
     }
 
     addTodoItem = (todoId) => {
-        if (typeof todoId ==='string') { //updating existing todo
+        if (typeof todoId === 'string') { //updating existing todo
             // console.log(typeof todoId)
             const todos = this.state.info.todos
             const todoIdxToUpdate = todos.findIndex(todo => todoId === todo.id)
             //console.log(todoIdxToUpdate)
             todos[todoIdxToUpdate].txt = this.todoInput.current.value,
-            this.setState(prevState => (
-                { todos: { ...prevState.info.todos } }))
+                this.setState(prevState => (
+                    { todos: { ...prevState.info.todos } }))
 
         }
 
@@ -108,9 +107,9 @@ export default class NoteTodos extends React.Component {
                 <label htmlFor="">Todo txt: </label>
                 <input ref={this.todoInput} type="text" name="txt" value={txt} onChange={this.handleInput}></input>
                 <span className="btn add-todo" onClick={this.addTodoItem}>Add todo</span>
+                <button className="btn">Save Note</button>
                 {this.state.info.todos && this.state.info.todos.length > 0 &&
                     <TodoItemList todos={this.state.info.todos} onRemoveTodo={this.onRemoveTodo} onMarkTodo={this.onMarkTodo} addTodoItem={this.addTodoItem} />}
-                <button className="btn">Save Note</button>
             </form>
         </div>
         )

@@ -1,7 +1,4 @@
-const { Link } = ReactRouterDOM
 import NotePreivewTodos from './NotePreviewTodos.jsx'
-import TodoItemList from './TodoItemList.jsx'
-
 
 export default function NotePreview(props) {
 

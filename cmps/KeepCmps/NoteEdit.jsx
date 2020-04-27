@@ -14,6 +14,8 @@ export default class NoteEdit extends React.Component {
                     <NoteText note={this.props.note} onSaveNote={this.props.onSaveNote} />}
                 {(this.props.note.type === 'NoteTodos') &&
                     <NoteTodos note={this.props.note} onSaveNote={this.props.onSaveNote} />}
+                {(this.props.note.type === 'NoteImg') &&
+                     <NoteImg note={this.props.note} onSaveNote={this.props.onSaveNote} />}
                     <NoteStyle note={this.props.note} onSetBackgroundColor={this.props.onSetBackgroundColor} onSetFontColor={this.props.onSetFontColor}></NoteStyle>
             </div>
         )
