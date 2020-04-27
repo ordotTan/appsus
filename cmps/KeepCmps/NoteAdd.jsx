@@ -18,7 +18,7 @@ export default class NoteAdd extends React.Component {
         const inputType = this.state.inputType
         return (
             <div>
-                <select onChange={this.handleInput}>
+                <select onChange={this.handleInput}> 
                     <option value='NoteTxt'>Text</option>
                     <option value='NoteTodos'>Todos</option>
                     <option value='NoteImg'>Image</option>

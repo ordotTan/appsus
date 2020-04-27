@@ -5,10 +5,10 @@ var gNotes = null
 const NOTES_KEY = 'notes'
 
 var gDefaultNotes = [
-    { id: 1, type: 'NoteTxt', info: { txt: 'aaaa' } },
-    { id: 2, type: 'NoteTodos', info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] } },
-    { id: 3, type: 'NoteTxt', info: { txt: 'cccc' } },
-    { id: 4, type: 'NoteImg', info: { url: 'cccc', title: "hello" } },
+    { id: 1, type: 'NoteTxt', isPinned: true, info: { txt: 'aaaa' },style: { backgroundColor: "#FFFFFF",color:'blue'}},
+    { id: 2, type: 'NoteTodos', isPinned: false, info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] },style: { backgroundColor: "#FFFFFF",color:'black'}},
+    { id: 3, type: 'NoteTxt', isPinned: false, info: { txt: 'cccc' },style: { backgroundColor: "#845EC2",color:'red'} },
+    // { id: 4, type: 'NoteImg', isPinned: false, info: { url: 'https://www.liberaldictionary.com/wp-content/uploads/2019/02/icon-0326.jpg', title: "hello" },style: { backgroundColor: "#FFFFFF"} },
 ]
 
 var gNotes = null
@@ -19,7 +19,30 @@ export default {
     addNote,
     removeNote,
     getNotes,
-    // addNote,
+    updatePinStatus,
+    updateBackgroundColor,
+    updateFontColor,
+}
+
+function updateFontColor(noteId,value) {
+    const noteIdxToUpdtae= gNotes.findIndex(note => note.id == noteId)
+    gNotes[noteIdxToUpdtae].style.color = value 
+    save()
+    return Promise.resolve();
+}
+
+function updateBackgroundColor(noteId,value) {
+    const noteIdxToUpdtae= gNotes.findIndex(note => note.id == noteId)
+    gNotes[noteIdxToUpdtae].style.backgroundColor = value 
+    save()
+    return Promise.resolve();
+}
+
+function updatePinStatus(noteId) {
+    const noteIdxToUpdtae= gNotes.findIndex(note => note.id == noteId)
+    gNotes[noteIdxToUpdtae].isPinned = !gNotes[noteIdxToUpdtae].isPinned 
+    save()
+    return Promise.resolve();
 }
 
 function save() {
@@ -51,11 +74,11 @@ function getById(noteId) {
 }
 
 
-function addNote(info, type) {
+function addNote(info,style, type) {
     let note
     if (!info.id) {
         const id = utilService.makeId(4)
-        note = { id, type, info }
+        note = { id, type, info,style }
         gNotes.push(note)
     } else {
         note = gNotes.find(note => note.id === info.id)

@@ -9,15 +9,18 @@ export default class NoteText extends React.Component {
     }
 
     state = {
-        info: { txt: '', id: '' }
+        info: { txt: '', id: '' },
+        style: {backgroundColor:''}
     }
 
     componentDidMount() {
         this.formNameInput.current.focus()
         const txt = this.props.note ? this.props.note.info.txt : ''
         const id = this.props.note ? this.props.note.id : ''
+        const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
         this.setState({
-            info: { txt, id }
+            info: { txt, id },
+            style:{backgroudColor}
         })
     }
 
@@ -36,7 +39,7 @@ export default class NoteText extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info, 'NoteTxt')
+        keepService.addNote(this.state.info,this.state.style, 'NoteTxt')
             .then(note => {
                 this.setState({
                     info: { txt: 'My Note' }
