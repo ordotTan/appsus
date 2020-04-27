@@ -15,28 +15,28 @@ export default class NavBar extends React.Component {
     }
 
     toggleNavLinks = () => {
-        let elNabToggleBtn = this.navToggleBtn.current.classList.toggle('nav-active');
+        this.navToggleBtn.current.classList.toggle('nav-active');
         this.setState(prevState => ({
             isNavLinksOpen: !prevState.isNavLinksOpen
         }))
     }
 
     changePage = (page) => {
-        console.log(page)
+        this.navToggleBtn.current.classList.remove('nav-active');
         this.setState({currApp : page, isNavLinksOpen : false})
     }
 
     render() {
-        const { isNavLinksOpen, currApp, logoUrl } = this.state
+        const { isNavLinksOpen, currApp, } = this.state
 
         return (
 
             <nav className="nav-bar-container">
 
                 <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
-                <SearchBar />
+                <SearchBar currApp={currApp} />
                 <div ref={this.navToggleBtn} className="nav-links-toggle-wrapper">
-                    <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn.png" alt="" />
+                    <img className="navlinks-toggle" onClick={this.toggleNavLinks} src="assets/imgs/nav-icn-grey.png" alt="" />
                 </div>
                 {isNavLinksOpen && <NavLinks changePage={this.changePage} />}
             </nav>

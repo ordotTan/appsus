@@ -1,15 +1,32 @@
+.email {
+    display: flex;
+}
+
+.email .side-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 335px;
+}
+
 .email .emails-list-container table {
     border-collapse: collapse;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 25px;
+    min-width: 365px;
 }
 
 .email .emails-list-container .email-preview {
     cursor: pointer;
     border-top: 1px solid black;
     border-bottom: 1px solid rgb(165, 165, 165);
-    height: 35px;
+    height: 50px;
+}
+
+.email .emails-list-container .email-preview .unread {
+    font-weight: bolder;
+    font-size: 1.1rem;
 }
 
 .email .emails-list-container .email-preview:hover {
@@ -21,13 +38,69 @@
 }
 
 .email .emails-list-container .td-subject {
-    width: 250px;
+    width: 300px;
 }
 
 .email .emails-list-container .td-body {
-    width: 600px;
+    width: 900px;
+}
+.email .emails-list-container .td-date {
+    width: 130px;
 }
 
+.email .emails-list-container .td-delete {
+color: rgb(46, 46, 46);
+}
 .email .emails-list-container .td-delete:hover {
 color: red;
+}
+
+.email .emails-list-container .td-delete svg {
+    width: 17px;
+    margin-inline-end: 20px;
+}
+
+.email .mail-composing-container {
+    background-color: white;
+    position: fixed;
+    bottom:40px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 900px;
+    height: 600px;
+    border: 1px solid rgb(173, 173, 173);
+}
+
+.email .mail-composing-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.email .mail-composing-container .mail-composer-header {
+    background-color: rgb(53, 53, 53);
+    padding-inline-start: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.email .mail-composing-container .mail-composer-header .close-composer {
+    cursor: pointer;
+    padding-inline-end: 20px;
+}
+
+.email .mail-composing-container form input {
+    height: 30px;
+    padding-inline-start: 20px;
+}
+
+.email .mail-composing-container .body-input {
+    height: 450px;
+}
+
+.email .mail-composing-container .submit {
+    cursor: pointer;
 }

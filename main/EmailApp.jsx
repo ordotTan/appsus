@@ -2,18 +2,36 @@ import EmailHeader from '../cmps/EmailCmps/EmailHeader.jsx'
 import EmailSidebar from '../cmps/EmailCmps/EmailSidebar.jsx'
 import EmailsList from '../cmps/EmailCmps/EmailsList.jsx'
 import EmailCompose from '../cmps/EmailCmps/EmailCompose.jsx'
+import eventBusService from "./services/eventBusService.js";
 import emailService from '../services/emailService.js'
 
 export default class EmailApp extends React.Component {
 
     state = {
         emails: null,
-        isComposing: false
+        isComposing: false,
+        filter: {
+            txt: null,
+            status: null
+        }
     }
 
     componentDidMount() {
-        emailService.query()
+        eventBusService.on('filter-email-by-text', (txt) => {
+            this.filterTxt(txt)
+        });
+        this.loadEmails();
+    };
+
+    loadEmails() {
+        emailService.query(this.state.filter)
             .then(emails => this.setState({ emails }));
+    }
+
+    filterTxt = (val) => {
+        this.setState(prevState => ({ filter: { ...prevState.filter, txt: val }, }), () => {
+            this.loadEmails()
+        });
     }
 
     toggleCompositor = () => {
@@ -24,15 +42,18 @@ export default class EmailApp extends React.Component {
 
     submitMail = (from, to, subject, body) => {
         emailService.sendemail(from, to, subject, body);
-        emailService.query()
-            .then(emails => this.setState({ emails }));
-    }
+        this.loadEmails();
+    };
 
     deleteMail = (mailId) => {
+        event.stopPropagation();
         emailService.deleteMail(mailId);
-        emailService.query()
-        .then(emails => this.setState({ emails }));
-    }
+        this.loadEmails();
+    };
+
+    openMail = (mailId) => {
+        console.log('open mail happend', mailId);
+    };
 
     render() {
 
@@ -41,7 +62,7 @@ export default class EmailApp extends React.Component {
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
-                {emails && <EmailsList emails={emails} deleteMail={this.deleteMail} />}
+                {emails && <EmailsList emails={emails} deleteMail={this.deleteMail} openMail={this.openMail} />}
                 {isComposing && <EmailCompose submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
             </main>
 
