@@ -17,7 +17,8 @@ export default class EmailApp extends React.Component {
     }
 
     componentDidMount() {
-        eventBusService.on('filter-email-by-text', (txt) => {
+        eventBusService.emit('set-nav-state', 'email')
+       this.removeEventBus = eventBusService.on('filter-email-by-text', (txt) => {
             this.filterTxt(txt)
         });
         this.loadEmails();
