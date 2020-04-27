@@ -19,9 +19,7 @@ export default class NavBar extends React.Component {
 
     componentDidMount() {
         eventBusService.on('set-nav-state', (page) => {
-            this.setState({ currApp: page }, () => {
-                console.log('homepage status', this.state.currApp)
-            })
+            this.setState({ currApp: page })
         });
     };
 
@@ -34,18 +32,18 @@ export default class NavBar extends React.Component {
 
     changePage = (page) => {
         this.navToggleBtn.current.classList.remove('nav-active');
-        this.setState({ currApp: page, isNavLinksOpen: false })
+        this.setState({ isNavLinksOpen: false })
     }
 
     render() {
-        const { isNavLinksOpen, currApp, searchBar } = this.state
+        const { isNavLinksOpen, currApp, } = this.state
 
         return (
 
             <nav className="nav-bar-container">
-                <div class="nav-bar-dynamic">
+                <div className="nav-bar-dynamic">
                     <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
-                    {(currApp != 'home') && <SearchBar />}
+                    {(currApp != 'home') && <SearchBar currApp={this.state.currApp} />}
                     {(currApp === 'email') && <EmailStatusFilter />}
                     {(currApp === 'home') && <HomePageTitle />}
                 </div>

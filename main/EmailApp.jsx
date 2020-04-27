@@ -17,8 +17,7 @@ export default class EmailApp extends React.Component {
     }
 
     componentDidMount() {
-        console.log('email mounted')
-        eventBusService.emit('set-nav-state', 'email')
+        eventBusService.emit('set-nav-state', 'email');
         this.removeFilterTextEB = eventBusService.on('filter-email-by-text', (txt) => {
             this.setFilterTxt(txt)
         });
@@ -26,10 +25,6 @@ export default class EmailApp extends React.Component {
             this.setFilterStatus(status)
         });
         this.loadEmails();
-    };
-
-    initEventBus() {
-
     };
 
     componentWillUnmount() {
