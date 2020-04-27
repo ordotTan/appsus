@@ -1,3 +1,7 @@
+.display-none {
+   display: none; 
+}
+
 .email {
     display: flex;
     flex-direction: column;
@@ -44,19 +48,28 @@
     margin: 35px 20px;
     min-width: 365px;
 }
+
+.email .emails-list-container .th-unread {
+    padding-left: 10px;
+}
+
+.email .emails-list-container .sort {
+    cursor: pointer;
+}
+
 .email .emails-list-container .td-from-to {
     width: 200px;
 }
 
 .email .emails-list-container .td-subject {
-    width: 310px;
+    width: 520px;
 }
 
 .email .emails-list-container .td-body {
-    width: 1200px;
+    width: 900px;
 }
 .email .emails-list-container .td-date {
-    width: 130px;
+    width: 160px;
 }
 
 .email .emails-list-container .td-btn {
@@ -134,6 +147,7 @@ color: green;
 .email-status-filter {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
+    margin-inline-end: 35px;
 }
 
 .email-status-filter input {

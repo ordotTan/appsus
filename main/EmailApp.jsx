@@ -9,10 +9,15 @@ export default class EmailApp extends React.Component {
 
     state = {
         emails: null,
+        unreadCount: null,
         isComposing: false,
         filter: {
             txt: null,
             status: null
+        },
+        sort: {
+            sortBy: 'date',
+            order: true
         }
     }
 
@@ -24,6 +29,7 @@ export default class EmailApp extends React.Component {
         this.removeFilterStatusEB = eventBusService.on('filter-email-by-status', (status) => {
             this.setFilterStatus(status)
         });
+        this.setUnreadCount();
         this.loadEmails();
     };
 
@@ -33,13 +39,37 @@ export default class EmailApp extends React.Component {
     };
 
     loadEmails() {
-        emailService.query(this.state.filter)
+        
+        const {filter, sort} = this.state
+
+        emailService.query(filter, sort)
             .then(emails => this.setState({ emails }));
     };
+
+    setUnreadCount() {
+        emailService.getUnreadCount()
+            .then(unreadCount => this.setState({ unreadCount }));
+    }
 
     setFilterTxt = (val) => {
         this.setState(prevState => ({ filter: { ...prevState.filter, txt: val }, }), () => {
             this.loadEmails()
+        });
+    };
+
+    setSort = (sortBy) => {
+
+        const { sort } = this.state;
+        let order;
+
+        if (sortBy === sort.sortBy) {
+            order = !sort.order;
+        } else {
+            order = true;
+        };
+
+        this.setState(prevState => ({ sort: { ...prevState.sort, sortBy, order }, }), () => {
+            this.loadEmails();
         });
     };
 
@@ -69,15 +99,19 @@ export default class EmailApp extends React.Component {
 
     deleteMail = (mailId) => {
         event.stopPropagation();
-        emailService.deleteMail(mailId);
-        this.loadEmails();
+        emailService.deleteMail(mailId)
+            .then(res => this.loadEmails());
     };
 
     toggleEmailStatus = (emailId) => {
-        console.log('email app toggle status got', emailId);
-        emailService.toggleEmailStatus(emailId);
-        this.loadEmails();
+        event.stopPropagation();
+        emailService.toggleEmailStatus(emailId)
+            .then(res => {
+                this.setUnreadCount();
+                this.loadEmails();
+            });
     };
+
 
     openMail = (mailId) => {
         console.log('open mail happend', mailId);
@@ -85,12 +119,12 @@ export default class EmailApp extends React.Component {
 
     render() {
 
-        const { emails, isComposing } = this.state;
+        const { emails, isComposing, unreadCount } = this.state;
 
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
-                {emails && <EmailsList emails={emails} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.openMail} />}
+                {emails && <EmailsList emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.openMail} />}
                 {isComposing && <EmailCompose submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
             </main>
 

@@ -95,6 +95,36 @@ var gInitialEmails = [
         isRead: true,
         sentAt: 1589112856359
     },
+    {
+        id: utilService.makeId(4),
+        location: 'inbox',
+        from: 'Dropbox',
+        to: G_USER,
+        subject: 'Nevo and 41 others made changes in your shared folders',
+        body: 'Here’s what happened in your shared folders last week.',
+        isRead: false,
+        sentAt: 1588022122810
+    },
+    {
+        id: utilService.makeId(4),
+        location: 'inbox',
+        from: 'Wolt',
+        to: G_USER,
+        subject: 'Purchase receipt: Gueta 22.03.2020',
+        body: 'Order confirmation #8675',
+        isRead: true,
+        sentAt: 1584872112810
+    },
+    {
+        id: utilService.makeId(4),
+        location: 'inbox',
+        from: 'service@paypal.co.il',
+        to: G_USER,
+        subject: 'Receipt for Your Payment to Spotify Finance Limited',
+        body: 'You sent a payment of ₪19.90 ILS to Spotify Finance Limited. It may take a few moments for this transaction to appear in your account.',
+        isRead: false,
+        sentAt: 1583874112210
+    },
 ];
 
 let gEmails = _InitEmails()
@@ -104,7 +134,8 @@ export default {
     getById,
     sendemail,
     deleteMail,
-    toggleEmailStatus
+    toggleEmailStatus,
+    getUnreadCount
 };
 
 function _InitEmails() {
@@ -119,13 +150,14 @@ function _InitEmails() {
 }
 
 
-function query(filter) {
+function query(filter, sort) {
 
     let emails = gEmails;
 
     if (filter.txt) {
         const filteredByTxt = emails.filter(email => email.subject.toLowerCase().includes(filter.txt.toLowerCase())
-            || email.from.toLowerCase().includes(filter.txt.toLowerCase()));
+            || email.from.toLowerCase().includes(filter.txt.toLowerCase()) || email.body.toLowerCase().includes(filter.txt.toLowerCase())
+        );
         emails = filteredByTxt;
     };
     if (filter.status) {
@@ -133,7 +165,30 @@ function query(filter) {
         const filteredByStatus = emails.filter(email => email.isRead === isRead)
         emails = filteredByStatus;
     };
+
+    emails = _sortEmails(emails, sort);
+
     return Promise.resolve(emails);
+};
+
+function _sortEmails(emails, sort) {
+    if (sort.sortBy === 'date') {
+        emails.sort((email1, email2) => {
+            if (email1.sentAt > email2.sentAt) return 1;
+            else if (email1.sentAt < email2.sentAt) return -1;
+            else return 0;
+        });
+        if (sort.order) emails.reverse();
+        return emails;
+    } else {
+        emails.sort((email1, email2) => {
+            if (email1[sort.sortBy].toLowerCase() > email2[sort.sortBy].toLowerCase()) return 1;
+            else if (email1[sort.sortBy].toLowerCase() < email2[sort.sortBy].toLowerCase()) return -1;
+            else return 0;
+        });
+        if (!sort.order) emails.reverse();
+        return emails;
+    };
 };
 
 function getById(emailId) {
@@ -166,6 +221,7 @@ function deleteMail(mailId) {
     const mailIndex = _findEmailIndex(mailId);
     gEmails.splice(mailIndex, 1);
     storageService.store(STORAGE_KEY, gEmails);
+    return Promise.resolve();
 };
 
 function toggleEmailStatus(emailId) {
@@ -174,6 +230,17 @@ function toggleEmailStatus(emailId) {
     const prevStatus = gEmails[emailIdx].isRead;
     gEmails[emailIdx].isRead = !prevStatus;
     storageService.store(STORAGE_KEY, gEmails);
+    return Promise.resolve();
+};
+
+function getUnreadCount() {
+
+    let unreadCount = 0;
+
+    gEmails.forEach(email => {
+        if (!email.isRead) unreadCount++;
+    })
+    return Promise.resolve(unreadCount);
 };
 
 // function getemail(incomingemail) {
