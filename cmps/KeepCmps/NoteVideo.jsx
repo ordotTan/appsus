@@ -1,7 +1,7 @@
 
 import keepService from '../../services/keepService.js'
 
-export default class NoteImg extends React.Component {
+export default class NoteVideo extends React.Component {
 
     constructor() {
         super();
@@ -15,8 +15,8 @@ export default class NoteImg extends React.Component {
 
     componentDidMount() {
         this.formNameInput.current.focus()
-        const title = this.props.note ? this.props.note.info.title : 'Cute Dog'
-        const url = this.props.note ? this.props.note.info.url : 'https://www.dogster.com/wp-content/uploads/2015/05/google-dog-search-2014-01.jpg'
+        const title = this.props.note ? this.props.note.info.title : 'Cool Movie'
+        const url = this.props.note ? this.props.note.info.url : 'https://www.youtube.com/watch?v=P834QexYsQo'
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
         const color = this.props.note ? this.props.note.style.color : ''
@@ -41,10 +41,10 @@ export default class NoteImg extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info, this.state.style, 'NoteImg')
+        keepService.addNote(this.state.info, this.state.style, 'NoteVideo')
             .then(note => {
                 this.setState({
-                    info: { title: 'Image title', url: '' }
+                    info: { title: 'Video title', url: '' }
                 })
                 this.props.onSaveNote(note)
             })

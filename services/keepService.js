@@ -5,10 +5,12 @@ var gNotes = null
 const NOTES_KEY = 'notes'
 
 var gDefaultNotes = [
-    { id: 1, type: 'NoteTxt', isPinned: true, info: { txt: 'aaaa' },style: { backgroundColor: "#FFFFFF",color:'blue'}},
-    { id: 2, type: 'NoteTodos', isPinned: false, info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] },style: { backgroundColor: "#FFFFFF",color:'black'}},
-    { id: 3, type: 'NoteTxt', isPinned: false, info: { txt: 'cccc' },style: { backgroundColor: "#845EC2",color:'red'} },
-    { id: 4, type: 'NoteImg', isPinned: false, info: { url: 'https://www.liberaldictionary.com/wp-content/uploads/2019/02/icon-0326.jpg', title: "hello" },style: { backgroundColor: "#FFFFFF"} },
+    { id: 1, type: 'NoteTxt', isPinned: true, info: { txt: 'aaaa' }, style: { backgroundColor: "#FFFFFF", color: 'blue' } },
+    { id: 2, type: 'NoteTodos', isPinned: false, info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] }, style: { backgroundColor: "#FFFFFF", color: 'black' } },
+    { id: 3, type: 'NoteTxt', isPinned: false, info: { txt: 'cccc' }, style: { backgroundColor: "#845EC2", color: 'red' } },
+    { id: 4, type: 'NoteImg', isPinned: false, info: { url: 'https://www.liberaldictionary.com/wp-content/uploads/2019/02/icon-0326.jpg', title: "hello" }, style: { backgroundColor: "#FFFFFF",color: 'green'  } },
+    { id: 5, type: 'NoteVideo', isPinned: false, info: { url: 'https://www.youtube.com/watch?v=9QiE-M1LrZk', title: "My Video" }, style: { backgroundColor: "#FFFFFF",color: 'purple'  } },
+
 ]
 
 var gNotes = null
@@ -18,91 +20,85 @@ export default {
     getById,
     addNote,
     removeNote,
-    getNotes,
     updatePinStatus,
     updateBackgroundColor,
     updateFontColor,
 }
 
-function updateFontColor(noteId,value) {
-    const noteIdxToUpdtae= gNotes.findIndex(note => note.id == noteId)
-    gNotes[noteIdxToUpdtae].style.color = value 
-    save()
+function updateFontColor(noteId, value) {
+    const noteIdxToUpdtae = gNotes.findIndex(note => note.id == noteId)
+    gNotes[noteIdxToUpdtae].style.color = value
+    _save()
     return Promise.resolve();
 }
 
-function updateBackgroundColor(noteId,value) {
-    const noteIdxToUpdtae= gNotes.findIndex(note => note.id == noteId)
-    gNotes[noteIdxToUpdtae].style.backgroundColor = value 
-    save()
+function updateBackgroundColor(noteId, value) {
+    const noteIdxToUpdtae = gNotes.findIndex(note => note.id == noteId)
+    gNotes[noteIdxToUpdtae].style.backgroundColor = value
+    _save()
     return Promise.resolve();
 }
 
 function updatePinStatus(noteId) {
-    const noteIdxToUpdtae= gNotes.findIndex(note => note.id == noteId)
-    gNotes[noteIdxToUpdtae].isPinned = !gNotes[noteIdxToUpdtae].isPinned 
-    save()
+    const noteIdxToUpdtae = gNotes.findIndex(note => note.id == noteId)
+    gNotes[noteIdxToUpdtae].isPinned = !gNotes[noteIdxToUpdtae].isPinned
+    _save()
     return Promise.resolve();
 }
 
-function save() {
+function _save() {
     storageService.store(NOTES_KEY, gNotes)
 }
 
 function query(filterBy) {
-    var notes = gNotes
-    if (filterBy) {
-        var { txt } = filterBy
+    if (!filterBy) return Promise.resolve(gNotes);
+
+    var { txt } = filterBy
+    let notes = gNotes.filter(note => {
         let searchFor
-        notes = gNotes.filter(note => {
-            if (note.type === "NoteTxt") searchFor = note.info.txt
-            else if (note.type === "NoteTodos") searchFor = note.info.label
-            else if (note.type === "NoteImg") searchFor = note.info.title
-            return (searchFor.toLowerCase().includes(txt.toLowerCase()))
-        })
-    }
+        if (note.type === "NoteTxt") searchFor = note.info.txt
+        else if (note.type === "NoteTodos") searchFor = note.info.label
+        else if (note.type === "NoteImg" || note.type === "NoteVideo" ) searchFor = note.info.title
+        return (searchFor.toLowerCase().includes(txt.toLowerCase()))
+    });
 
     return Promise.resolve(notes)
-
 }
 
 function getById(noteId) {
     return Promise.resolve(gBooks.find(note => note.id === noteId))
 }
 
-
-function addNote(info,style, type) {
+function addNote(info, style, type) {
     let note
-    if (!info.id) {
-        const id = utilService.makeId(4)
-        note = { id, type, info,style }
-        gNotes.push(note)
-    } else {
+    if (info.id) {
         note = gNotes.find(note => note.id === info.id)
         switch (type) {
             case 'NoteTxt':
                 note.info.txt = info.txt;
             case 'NoteTodos':
                 note.info.label = info.label;
+            case 'NoteImg':
+                note.info.title = info.title;
+            case 'NoteVideo':
+                note.info.title = info.title;
         }
     }
-
-    save()
+    else {
+        const id = utilService.makeId(4)
+        note = { id, type, info, style }
+        gNotes.push(note)
+    }
+    _save()
     return Promise.resolve(note)
 }
 
 function removeNote(noteId) {
     const noteIdxToRemove = gNotes.findIndex(note => note.id == noteId)
     gNotes.splice(noteIdxToRemove, 1)
-    save()
+    _save()
     return Promise.resolve();
 }
-
-
-function getNotes() {
-    return Promise.resolve(gNotes)
-}
-
 
 //Creating some default notes:
 _createNotes()
