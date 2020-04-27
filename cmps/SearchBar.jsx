@@ -3,28 +3,23 @@ import eventBusService from "../services/eventBusService.js";
 export default class SearchBar extends React.Component {
 
     state = {
-        currApp: 'home',
         placeHolderVal: ''
     };
 
     componentDidMount() {
-        this.removeEventBus = eventBusService.on('set-nav-state', (page) => {
-            this.setState({ currApp : page }, () => {
-                this.setPlaceHolder();
-            })
-            
+        eventBusService.on('set-nav-state', (page) => {
+            this.setState({ currApp: page }, () => {
+                this.setPlaceHolder(page);
+            });
         });
+        this.setPlaceHolder(this.props.currApp);
     };
 
-    setPlaceHolder() {
+    setPlaceHolder(page) {
 
-        const { currApp } = this.state;
         let placeHolderVal;
 
-        switch (currApp) {
-            case 'home':
-                placeHolderVal = ''
-                break;
+        switch (page) {
             case 'books':
                 placeHolderVal = 'Book'
                 break;
@@ -40,18 +35,19 @@ export default class SearchBar extends React.Component {
         this.setState({ placeHolderVal });
     };
 
-    handleChange = ({target}) => {
+    handleChange = ({ target }) => {
 
-        const { currApp } = this.state;
-        if (currApp === 'email') {
+        const page = this.props.currApp;
+
+        if (page === 'email') {
             eventBusService.emit('filter-email-by-text', target.value)
             return
         };
-        if (currApp === 'keep') {
+        if (page === 'keep') {
             eventBusService.emit('filter-keep-by-text', target.value)
             return
         };
-    }
+    };
 
     render() {
         const { placeHolderVal } = this.state

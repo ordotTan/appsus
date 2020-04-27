@@ -37,7 +37,7 @@ export default class EmailCompose extends React.Component {
                     <input ref={this.fromInput} type="text" placeholder="From" />
                     <input ref={this.toInput} type="text" placeholder="To" />
                     <input ref={this.subjectInput} type="text" placeholder="Subject" />
-                    <input className="body-input" ref={this.bodyInput} type="text" placeholder="Your Message" />
+                    <textarea className="body-input" ref={this.bodyInput} type="text" placeholder="Your Message"></textarea>
                     <input className="submit" type="submit" value="Send"/>
                 </form>
             </section>

@@ -13,7 +13,7 @@ export default function EmailsList(props) {
                         <th>Subject</th>
                         <th colSpan="3">Message</th>
                     </tr>
-                    {props.emails.map(email => <EmailPreview openMail={props.openMail} email={email} key={utilService.makeId(4)} deleteMail={props.deleteMail}/>)}
+                    {props.emails.map(email => <EmailPreview openMail={props.openMail} email={email} key={utilService.makeId(4)} toggleEmailStatus={props.toggleEmailStatus} deleteMail={props.deleteMail}/>)}
                 </tbody>
             </table>
         </section>
