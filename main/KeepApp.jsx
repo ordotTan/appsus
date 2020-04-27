@@ -36,7 +36,7 @@ export default class KeepApp extends React.Component {
         keepService.removeNote(noteId)
             .then(() => {
                 this.loadNotes()
-                this.setState({selectedNote:null,editMode:false})
+                this.setState({ selectedNote: null, editMode: false })
             })
     }
 
@@ -45,34 +45,34 @@ export default class KeepApp extends React.Component {
     }
 
     onCloseEditMode = () => {
-        this.setState({ editMode: false, selectedNote:'' })
+        this.setState({ editMode: false, selectedNote: '' })
     }
 
     onSaveNote = () => {
         this.loadNotes()
-        this.setState({selectedNote:null,editMode:false})
+        this.setState({ selectedNote: null, editMode: false })
     }
 
-    onTogglePin =(ev,noteId) => {
+    onTogglePin = (ev, noteId) => {
         ev.stopPropagation()
         keepService.updatePinStatus(noteId)
-        .then(() => {
-            this.loadNotes()
-        })
+            .then(() => {
+                this.loadNotes()
+            })
     }
 
-    onSetBackgroundColor =(noteId,value) => {
-        keepService.updateBackgroundColor(noteId,value)
-        .then(() => {
-            this.loadNotes()
-        })
+    onSetBackgroundColor = (noteId, value) => {
+        keepService.updateBackgroundColor(noteId, value)
+            .then(() => {
+                this.loadNotes()
+            })
     }
 
-    onSetFontColor =(noteId,value) => {
-        keepService.updateFontColor(noteId,value)
-        .then(() => {
-            this.loadNotes()
-        })
+    onSetFontColor = (noteId, value) => {
+        keepService.updateFontColor(noteId, value)
+            .then(() => {
+                this.loadNotes()
+            })
     }
 
     render() {

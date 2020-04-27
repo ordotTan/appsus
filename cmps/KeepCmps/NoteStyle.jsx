@@ -1,23 +1,13 @@
-export default class NoteStyle extends React.Component {
-    state = {
-        backgroundColor: ''
-    }
+import ColorPicker from './ColorPicker.jsx'
 
-    handleInput = (ev) => {
-        console.log(ev.target.value)
-        const value = ev.target.value
-        this.setState({backgroundColor:value})
-      //  this.props.onSetBackgroundColor((this.props.note,value))
-    }
+
+export default class NoteStyle extends React.Component {
 
     render() {
         return (
         <div>
-            <h2>Style Controls:</h2>
-            Background color:
-            <input type="color" onChange={(ev)=>this.props.onSetBackgroundColor(this.props.note.id,ev.target.value)}></input>
-            Font color:
-            <input type="color" onChange={(ev)=>this.props.onSetFontColor(this.props.note.id,ev.target.value)}></input>
+            <h4>Background color</h4> <ColorPicker noteId={this.props.note.id} handleColorSelection={this.props.onSetBackgroundColor}/>
+            <h4>Font color</h4>  <ColorPicker noteId={this.props.note.id} handleColorSelection={this.props.onSetFontColor}/>
         </div>
 
         )

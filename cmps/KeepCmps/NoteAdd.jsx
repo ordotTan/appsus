@@ -11,7 +11,7 @@ export default class NoteAdd extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({ inputType: 'NoteImg' })
+        this.setState({ inputType: 'NoteTxt' })
     }
 
 
@@ -20,35 +20,23 @@ export default class NoteAdd extends React.Component {
         this.setState({ inputType })
     }
     render() {
-        const {inputType} = this.state
-        let activeClass = ''
-        // if (inputType === 'NoteTxt')
-        //     activeClass = 'active'
-        // if (inputType === 'NoteTodos')
-        //     activeClass = 'active'
+        const { inputType } = this.state
         return (
             <div className="add-note">
-                {/* <select onChange={this.handleInput}>
-                    <option value='NoteTxt'>Text</option>
-                    <option value='NoteTodos'>Todos</option>
-                    <option value='NoteImg'>Image</option>
-                    <option value='NoteVideo'>Video</option>
-                </select> */}
                 <div className="add-note flex justify-center align-center">
-                    <img className={activeClass} src="../../assets/imgs/note_text.png" name="NoteTxt" onClick={this.handleInput}></img>
-                    <img className={activeClass} src="../../assets/imgs/note_list.png" name="NoteTodos" onClick={this.handleInput}></img>
-                    <img className={activeClass} src="../../assets/imgs/note_img.png" name="NoteImg" onClick={this.handleInput}></img>
-                    <img className={activeClass} src="../../assets/imgs/note_video.png" name="NoteVideo" onClick={this.handleInput}></img>
+                    <img className={(inputType ==='NoteTxt')?"active":''} src="../../assets/imgs/note_text.png" name="NoteTxt" onClick={this.handleInput}></img>
+                    <img className={(inputType ==='NoteTodos')?"active":''} src="../../assets/imgs/note_list.png" name="NoteTodos" onClick={this.handleInput}></img>
+                    <img className={(inputType ==='NoteImg')?"active":''} src="../../assets/imgs/note_img.png" name="NoteImg" onClick={this.handleInput}></img>
+                    <img className={(inputType ==='NoteVideo')?"active":''} src="../../assets/imgs/note_video.png" name="NoteVideo" onClick={this.handleInput}></img>
                 </div>
 
-
-                {(inputType === 'NoteTxt') && <NoteText onSaveNote={this.props.onSaveNote} />}
-                {(inputType === 'NoteTodos') && <NoteTodos onSaveNote={this.props.onSaveNote} />}
-                {(inputType === 'NoteImg') && <NoteImg onSaveNote={this.props.onSaveNote} />}
-                {(inputType === 'NoteVideo') && <NoteVideo onSaveNote={this.props.onSaveNote} />}
+                <div className="add-note-form">
+                    {(inputType === 'NoteTxt') && <NoteText onSaveNote={this.props.onSaveNote} />}
+                    {(inputType === 'NoteTodos') && <NoteTodos onSaveNote={this.props.onSaveNote} />}
+                    {(inputType === 'NoteImg') && <NoteImg onSaveNote={this.props.onSaveNote} />}
+                    {(inputType === 'NoteVideo') && <NoteVideo onSaveNote={this.props.onSaveNote} />}
+                </div>
             </div>
-
-            // else if (inputType === 'NoteTodos') return <NoteTodos/>
         )
     }
 }

@@ -19,7 +19,7 @@ export default class NoteTodos extends React.Component {
     componentDidMount() {
         // console.log(this.props.note)
         this.formNameInput.current.focus()
-        const label = this.props.note ? this.props.note.info.label : 'Things to buy'
+        const label = this.props.note ? this.props.note.info.label : ''
         const todos = this.props.note ? this.props.note.info.todos : [{ txt: 'milk',id:'fdwfwsf' }]
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
@@ -102,11 +102,9 @@ export default class NoteTodos extends React.Component {
         const { label, txt } = this.state.info
         return (<div>
             <form className="form" onSubmit={this.onAddNote}>
-                <label htmlFor="">Label Todo-List: </label>
-                <input type="text" name="label" value={label} onChange={this.handleInput} ref={this.formNameInput}></input>
-                <label htmlFor="">Todo txt: </label>
-                <input ref={this.todoInput} type="text" name="txt" value={txt} onChange={this.handleInput}></input>
-                <span className="btn add-todo" onClick={this.addTodoItem}>Add todo</span>
+                <input type="text" placeholder="Todo List Name" name="label" value={label} onChange={this.handleInput} ref={this.formNameInput}></input>
+                <input placeholder="Todo Text" ref={this.todoInput} type="text" name="txt" value={txt} onChange={this.handleInput}></input>
+                <span className="btn add-todo" onClick={this.addTodoItem}>Add Todo</span>
                 <button className="btn">Save Note</button>
                 {this.state.info.todos && this.state.info.todos.length > 0 &&
                     <TodoItemList todos={this.state.info.todos} onRemoveTodo={this.onRemoveTodo} onMarkTodo={this.onMarkTodo} addTodoItem={this.addTodoItem} />}

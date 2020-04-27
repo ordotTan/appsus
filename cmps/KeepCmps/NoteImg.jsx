@@ -15,7 +15,7 @@ export default class NoteImg extends React.Component {
 
     componentDidMount() {
         this.formNameInput.current.focus()
-        const title = this.props.note ? this.props.note.info.title : 'Cute Dog'
+        const title = this.props.note ? this.props.note.info.title : ''
         const url = this.props.note ? this.props.note.info.url : 'https://www.dogster.com/wp-content/uploads/2015/05/google-dog-search-2014-01.jpg'
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
@@ -57,10 +57,8 @@ export default class NoteImg extends React.Component {
         const { title, url } = this.state.info
         return (<div>
             <form className="form" onSubmit={this.onAddNote}>
-                <label htmlFor="">Title: </label>
-                <input type="text" name="title" value={title} onChange={this.handleInput} ref={this.formNameInput}></input>
-                <label htmlFor="">Link: </label>
-                <input type="text" name="url" value={url} onChange={this.handleInput}></input>
+                <input type="text" placeholder="Image Title" name="title" value={title} onChange={this.handleInput} ref={this.formNameInput}></input>
+                <input type="text" placeholder="Image URL" name="url" value={url} onChange={this.handleInput}></input>
                 <button className="btn">Save Note</button>
             </form>
         </div>

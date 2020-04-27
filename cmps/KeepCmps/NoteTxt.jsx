@@ -15,7 +15,7 @@ export default class NoteText extends React.Component {
 
     componentDidMount() {
         this.formNameInput.current.focus()
-        const txt = this.props.note ? this.props.note.info.txt : 'Go to bed!'
+        const txt = this.props.note ? this.props.note.info.txt : ''
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
         const color = this.props.note ? this.props.note.style.color : ''
@@ -56,8 +56,7 @@ export default class NoteText extends React.Component {
         const { txt } = this.state.info
         return (<div>
             <form className="form" onSubmit={this.onAddNote}>
-                <label htmlFor="">Note Text: </label>
-                <input type="text" name="txt" value={txt} onChange={this.handleInput} ref={this.formNameInput}></input>
+                <input type="text" placeholder="Your Text" name="txt" value={txt} onChange={this.handleInput} ref={this.formNameInput}></input>
                 <button className="btn">Save Note</button>
             </form>
         </div>

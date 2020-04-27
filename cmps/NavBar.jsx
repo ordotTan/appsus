@@ -45,7 +45,7 @@ export default class NavBar extends React.Component {
         return (
 
             <nav className="nav-bar-container">
-                <div class="nav-bar-dynamic">
+                <div className="nav-bar-dynamic">
                     <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
                     {(currApp != 'home') && <SearchBar />}
                     {(currApp === 'email') && <EmailStatusFilter />}

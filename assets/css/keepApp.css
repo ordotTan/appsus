@@ -1,3 +1,7 @@
+.keep h4 {
+    margin: 0;
+}
+
 .keep .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -5,6 +9,7 @@
     
 }
 
+/* todo */
 .keep .notes-list {
     display: flex;
     /* padding-top: 10px;
@@ -21,7 +26,14 @@
     border:1px solid black;
     cursor: pointer;
     border-radius: 15px;
+    transition: 0.3s;
     /* //width: 100%; */
+}
+
+.keep .note-preview:hover {
+    /* opacity: 0.7; */
+    box-shadow: 0px 0px 5px 10px rgba(70,71,45,1);
+
 }
 
 /* Header */
@@ -34,40 +46,58 @@
 
 
 .keep .add-note img {
-    width: 30px;
+    width: 50px;
     cursor: pointer;
     margin: 20px;
-
+     opacity: 0.2;
 }
 
 .keep .add-note img.active{
-    width: 50px;
     cursor: pointer;
-    background-color: goldenrod;
-    opacity: 0.2;
+    opacity: 1;
 }
 .keep .add-note img:hover {
     opacity: 0.7;
 }
 
+.keep .add-note-form{
+    text-align: center;
+}
 
+.keep .add-note-form input{
+   font-size: 1rem;
+   width: 200px;
+   margin: 10px;
+   border-radius: 5px;
+   padding: 4px;
+}
 
-
-
+.keep form label {
+    font-weight: 800;
+    font-size: 1.3rem;
+}
 
 
 .keep .btn {
     cursor: pointer;
     border-radius: 10px;
     border: 1px solid black;
-    background-color: goldenrod;
+    font-size: 1rem;
+    color: black;
+    background-color: #eae519e0;
 
 }
 
+.keep .btn:hover{
+    opacity: 0.7;
+}
+
 .keep .add-todo {
-    background-color: lightgreen;
-    padding: 3px;
+    background-color: #eae519e0;
+    padding: 2px;
+    font-size: 1.1rem;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 
@@ -142,4 +172,42 @@
     height: 100%;
     border-radius: 10px;
     border: 1px solid black;
+}
+
+.keep .color-picker .color-item {
+    padding: 15px;
+    border-radius: 50%;
+    margin: 3px;
+    opacity: 0.7;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.keep .color-picker .color-item.color1 {
+    background-color: #EAE519;
+   
+}
+
+.keep .color-picker .color-item.color2 {
+    background-color: #4A4737;
+}
+
+.keep .color-picker .color-item.color3 {
+    background-color: #AFAC99;
+}
+
+.keep .color-picker .color-item.color4 {
+    background-color: #00FFE2;
+}
+
+.keep .color-picker .color-item.color5 {
+    background-color: #00CAAB;
+}
+
+.keep .color-picker .color-item.white {
+    background-color: white;
+}
+
+.keep .color-picker .color-item.black {
+    background-color:black;
 }
