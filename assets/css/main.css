@@ -214,6 +214,13 @@ body {
     opacity: 0.7;
 }
 
+
+.btn.long-text-toggle {
+    font-size: 0.8rem;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
 /* General helpers */
 
 .hidden {
