@@ -1,7 +1,6 @@
-
 import keepService from '../../services/keepService.js'
 import TodoItemList from './TodoItemList.jsx'
-import utilService from '../../utilService.js'
+import utilService from '../../services/utilService.js'
 
 export default class NoteTodos extends React.Component {
 
@@ -83,10 +82,19 @@ export default class NoteTodos extends React.Component {
 
     onRemoveTodo = (todoId) => {
         const todos = this.state.info.todos
-        const todoIdxToRemove = todos.findIndex(todo => todoId === todo.id)
-        this.setState(prevState => (
-            prevState.info.todos.splice(todoIdxToRemove, 1),
-            { todos: { ...prevState.info.todos } }))
+        // const todoIdxToRemove = todos.findIndex(todo => todoId === todo.id)
+        this.setState(prevState => {
+        //    var newTodos =  prevState.info.todos.slice().splice(todoIdxToRemove, 1);
+            return {
+                info: {
+                    ...prevState.info,
+                    todos: prevState.info.todos.filter(todo=> todoId!== todo.id)
+                }
+            }
+        }, () => {
+            console.log((this.state));
+
+        })
     }
 
     onMarkTodo = (todoId) => {

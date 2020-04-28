@@ -201,11 +201,13 @@ function _findEmailIndex(emailId) {
     return emailIdx;
 };
 
-function sendemail(from, to, subject, body) {
+function sendemail(to, subject, body) {
+    // simulating real world issues
+    if (Math.random() > 0.95) return Promise.reject();
     let newemail = {
         id: utilService.makeId(4),
         location: 'sent',
-        from,
+        from : G_USER,
         to,
         subject,
         body,
@@ -214,6 +216,7 @@ function sendemail(from, to, subject, body) {
     };
     gEmails.unshift(newemail);
     storageService.store(STORAGE_KEY, gEmails);
+    return Promise.resolve(newemail);
     // getemail(newemail)
 };
 

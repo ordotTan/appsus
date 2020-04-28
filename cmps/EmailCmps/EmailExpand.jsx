@@ -1,43 +1,6 @@
 export default class EmailCompose extends React.Component {
 
 
-
-    constructor() {
-        super();
-        this.fromInput = React.createRef();
-        this.toInput = React.createRef();
-        this.subjectInput = React.createRef();
-        this.bodyInput = React.createRef();
-    };
-
-    componentDidMount() {
-        this.setNoteValues();
-    }
-
-    onSubmit = () => {
-
-        const to = this.toInput.current.value
-        const subject = this.subjectInput.current.value
-        const body = this.bodyInput.current.value
-
-        this.props.submitMail(to, subject, body)
-        this.props.toggleCompositor();
-    };
-
-    onCloseComposer = () => {
-        this.props.toggleCompositor();
-    };
-
-    setNoteValues() {
-
-        const { note } = this.props
-
-        if (note) {
-            console.log('compositor got', note)
-            this.bodyInput.current.value = note.info.txt;
-        };
-    }
-
     render() {
 
         return (

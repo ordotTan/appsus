@@ -1,8 +1,8 @@
-import EmailHeader from '../cmps/EmailCmps/EmailHeader.jsx'
+import EmailExpand from '../cmps/EmailCmps/EmailExpand.jsx'
 import EmailSidebar from '../cmps/EmailCmps/EmailSidebar.jsx'
 import EmailsList from '../cmps/EmailCmps/EmailsList.jsx'
 import EmailCompose from '../cmps/EmailCmps/EmailCompose.jsx'
-import eventBusService from "./services/eventBusService.js";
+import eventBusService from "../services/eventBusService.js";
 import emailService from '../services/emailService.js'
 
 export default class EmailApp extends React.Component {
@@ -11,6 +11,10 @@ export default class EmailApp extends React.Component {
         emails: null,
         unreadCount: null,
         isComposing: false,
+        readEmail: {
+            isEmailOpen: false,
+            emailId: null
+        },
         filter: {
             txt: null,
             status: null
@@ -18,8 +22,9 @@ export default class EmailApp extends React.Component {
         sort: {
             sortBy: 'date',
             order: true
-        }
-    }
+        },
+        note: null
+    };
 
     componentDidMount() {
         eventBusService.emit('set-nav-state', 'email');
@@ -31,6 +36,16 @@ export default class EmailApp extends React.Component {
         });
         this.setUnreadCount();
         this.loadEmails();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        let note = urlParams.get('note');
+        if (note) {
+            let noteObj = JSON.parse(note);
+            this.setState({ note: noteObj }, () => {
+                this.toggleCompositor()
+            })
+        }
+        window.history.replaceState({}, document.title, "/index.html#/email");
     };
 
     componentWillUnmount() {
@@ -39,7 +54,7 @@ export default class EmailApp extends React.Component {
     };
 
     loadEmails() {
-        const {filter, sort} = this.state
+        const { filter, sort } = this.state
         emailService.query(filter, sort)
             .then(emails => this.setState({ emails }));
     };
@@ -88,6 +103,9 @@ export default class EmailApp extends React.Component {
         this.setState(prevState => ({
             isComposing: !prevState.isComposing
         }));
+        if (this.state.note  && this.state.isComposing) {
+            this.setState({note : null})
+        };
     };
 
     submitMail = (from, to, subject, body) => {
@@ -114,19 +132,26 @@ export default class EmailApp extends React.Component {
     };
 
 
-    openMail = (mailId) => {
+    openMail = (emailId) => {
+
+        const {readEmail} = this.state
+
         console.log('open mail happend', mailId);
+        if (readEmail.isOpen) {
+            
+        }
     };
 
     render() {
 
-        const { emails, isComposing, unreadCount } = this.state;
+        const { emails, isComposing, unreadCount, note, readEmail } = this.state;
 
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
                 {emails && <EmailsList emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.openMail} />}
-                {isComposing && <EmailCompose submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
+                {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
+                {readEmail.isOpen && <EmailExpand />}
             </main>
 
         )
