@@ -27,6 +27,7 @@ export default class NoteTodos extends React.Component {
             info: { label, txt: '', todos, id },
             style: { backgroudColor, color }
         })
+        console.log('mounted::',this.state)
     }
 
     handleInput = ({ target }) => {
@@ -44,7 +45,7 @@ export default class NoteTodos extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info, this.state.style, 'NoteTodos')
+        keepService.add(this.state.info, this.state.style, 'NoteTodos')
             .then(note => {
                 this.setState({
                     info: { label: 'My Todos', txt: '', todos: [] }
@@ -58,10 +59,8 @@ export default class NoteTodos extends React.Component {
 
     addTodoItem = (todoId) => {
         if (typeof todoId === 'string') { //updating existing todo
-            // console.log(typeof todoId)
             const todos = this.state.info.todos
             const todoIdxToUpdate = todos.findIndex(todo => todoId === todo.id)
-            //console.log(todoIdxToUpdate)
             todos[todoIdxToUpdate].txt = this.todoInput.current.value,
                 this.setState(prevState => (
                     { todos: { ...prevState.info.todos } }))
@@ -74,9 +73,16 @@ export default class NoteTodos extends React.Component {
                 txt: this.todoInput.current.value,
                 doneAt: null
             }
-            this.setState(prevState => (
-                prevState.info.todos.push(todo),
-                { todos: { ...prevState.info.todos, todo } }))
+            this.setState(prevState => {
+                return {
+                    info: {
+                        ...prevState.info,
+                        todos: [ ...prevState.info.todos, todo ]
+                    }
+                }
+            }, () => {
+             //  console.log('After:',this.state)
+            })
         }
     }
 

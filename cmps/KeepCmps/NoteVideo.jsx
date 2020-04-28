@@ -41,7 +41,7 @@ export default class NoteVideo extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info, this.state.style, 'NoteVideo')
+        keepService.add(this.state.info, this.state.style, 'NoteVideo')
             .then(note => {
                 this.setState({
                     info: { title: 'Video title', url: '' }

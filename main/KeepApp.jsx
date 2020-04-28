@@ -33,11 +33,29 @@ export default class KeepApp extends React.Component {
     }
 
     onDeleteNote = (noteId) => {
-        keepService.removeNote(noteId)
-            .then(() => {
-                this.loadNotes()
-                this.setState({ selectedNote: null, editMode: false })
-            })
+
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete note'
+        }).then((result) => {
+            if (result.value) {
+                keepService.remove(noteId)
+                    .then(() => {
+                        this.loadNotes()
+                        eventBusService.emit('user-msg', { header: 'Note got deleted', body: 'Shame... That\'s was a good note!' })
+                        this.setState({ selectedNote: null, editMode: false })
+                    })
+                // Swal.fire( // if we want to use swal modal msg
+                //     'Cleared!',
+                //     'Book removed',
+                //     'success'
+                // )
+            }
+        })
     }
 
     onEditNote = (note) => {
@@ -50,6 +68,9 @@ export default class KeepApp extends React.Component {
 
     onSaveNote = () => {
         this.loadNotes()
+        const header = this.state.editMode ? 'Note got updated' : 'New Note Added'
+        const body = this.state.editMode ? 'Note looks much nicer now!' : 'Congrats on adding this wonderful note!'
+        eventBusService.emit('user-msg', { header, body: body })
         this.setState({ selectedNote: null, editMode: false })
     }
 
@@ -83,7 +104,7 @@ export default class KeepApp extends React.Component {
         const { notes } = this.state
         return (
             <div className="keep">
-                 <section className="screen" onClick={this.onToggleEditModal}></section>
+                <section className="screen" onClick={this.onToggleEditModal}></section>
                 <NoteFilter onSetFilter={this.onSetFilter} />
                 <h1>What do you want to <span>keep</span> today?</h1>
                 <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>

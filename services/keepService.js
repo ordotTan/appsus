@@ -18,8 +18,8 @@ var gNotes = null
 export default {
     query,
     getById,
-    addNote,
-    removeNote,
+    add,
+    remove,
     updatePinStatus,
     updateBackgroundColor,
     updateFontColor,
@@ -69,20 +69,21 @@ function getById(noteId) {
     return Promise.resolve(gBooks.find(note => note.id === noteId))
 }
 
-function addNote(info, style, type) {
+function add(info, style, type) {
     let note
     if (info.id) {
         note = gNotes.find(note => note.id === info.id)
-        switch (type) {
-            case 'NoteTxt':
-                note.info.txt = info.txt;
-            case 'NoteTodos':
-                note.info.label = info.label;
-            case 'NoteImg':
-                note.info.title = info.title;
-            case 'NoteVideo':
-                note.info.title = info.title;
-        }
+        note.info=info
+        // switch (type) {
+        //     case 'NoteTxt':
+        //         note.info.txt = info;
+        //     case 'NoteTodos':
+        //         note.info = info;
+        //     case 'NoteImg':
+        //         note.info.title = info.title;
+        //     case 'NoteVideo':
+        //         note.info.title = info.title;
+        // }
     }
     else {
         const id = utilService.makeId(4)
@@ -93,7 +94,7 @@ function addNote(info, style, type) {
     return Promise.resolve(note)
 }
 
-function removeNote(noteId) {
+function remove(noteId) {
     const noteIdxToRemove = gNotes.findIndex(note => note.id == noteId)
     gNotes.splice(noteIdxToRemove, 1)
     _save()

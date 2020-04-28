@@ -34,7 +34,8 @@ export default function NotePreview(props) {
                 </div>}
             <div className="note-actions flex space-around">
                 <button className="btn" onClick={() => { props.onDeleteNote(note.id) }}>Delete </button>
-                <a className="btn note-to-mail" href={`/index.html?note=${JSON.stringify(note.info)}#/email`}>Email</a>
+                {/* todo URL encode JSON  */}
+                <a className="btn note-to-mail" href={`/index.html?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
             </div>
         </article>
     )

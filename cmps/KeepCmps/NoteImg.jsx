@@ -41,7 +41,7 @@ export default class NoteImg extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        keepService.addNote(this.state.info, this.state.style, 'NoteImg')
+        keepService.add(this.state.info, this.state.style, 'NoteImg')
             .then(note => {
                 this.setState({
                     info: { title: 'Image title', url: '' }
