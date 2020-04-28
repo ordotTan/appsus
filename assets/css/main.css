@@ -184,6 +184,36 @@ body {
     background-color: rgb(207, 207, 207);
 } */
 
+
+/* User message */
+
+.user-msg {
+    background-color: orange;
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    font-size: 1em;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: auto;
+    color: black;
+    border: 1px solid black;
+}
+
+.close-user-msg {
+    cursor: pointer;
+    border-radius: 50%;
+    border: none;
+    background-color: green;
+    color: white;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.close-user-msg:hover {
+    opacity: 0.7;
+}
+
 /* General helpers */
 
 .hidden {

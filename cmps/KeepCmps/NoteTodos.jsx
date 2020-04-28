@@ -46,7 +46,6 @@ export default class NoteTodos extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        console.log(this.state.info)
         keepService.add(this.state.info, this.state.style, 'NoteTodos')
             .then(note => {
                 this.setState({
