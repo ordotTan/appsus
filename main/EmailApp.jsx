@@ -2,7 +2,7 @@ import EmailHeader from '../cmps/EmailCmps/EmailHeader.jsx'
 import EmailSidebar from '../cmps/EmailCmps/EmailSidebar.jsx'
 import EmailsList from '../cmps/EmailCmps/EmailsList.jsx'
 import EmailCompose from '../cmps/EmailCmps/EmailCompose.jsx'
-import eventBusService from "./services/eventBusService.js";
+import eventBusService from "../services/eventBusService.js";
 import emailService from '../services/emailService.js'
 
 export default class EmailApp extends React.Component {

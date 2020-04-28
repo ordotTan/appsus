@@ -11,6 +11,9 @@ import Home from './main/Home.jsx'
 export class App extends React.Component {
 
     render() {
+        const emailObjStringified  = {"id":"GziO","location":"inbox","from":"Tom Morello","to":"Daniel Goldfine","subject":"Check out my new song","body":"Morbi leo urna molestie at. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Id nibh tortor id aliquet lectus proin. Quam pellentesque nec nam aliquam sem et. Sit amet cursus sit amet. Purus non enim praesent elementum facilisis leo vel fringilla. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius.","isRead":false,"sentAt":1587911856459}
+        const emailObjencoded = encodeURIComponent(emailObjStringified)
+        // console.log(emailObjencoded)
         return (
             <Router history ={history}> 
             <main>
@@ -19,6 +22,8 @@ export class App extends React.Component {
                 <a href='/index.html?noteInfo={%22txt%22:%22Need%20to%20sleep%20more!%22}&noteType=NoteTxt#/email'>Open email with Note</a>
                 <br></br>
                 <a href='/index.html?email={"id":"MzLE","location":"inbox","from":"Bobby Fillangie","to":"Daniel Goldfine","subject":"Message from the future","body":"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.","isRead":false,"sentAt":2919671164771}#/keep'>Open keep with email</a>
+
+                {/* <a href={`/index.html?email=${emailObjStringified}#/keep`}>Open keep with email</a> */}
                 <AppHeader/>
                 <Switch>
                     <Route component={BookApp} path="/book" />

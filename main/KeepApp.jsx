@@ -4,7 +4,8 @@ import NoteFilter from '../cmps/KeepCmps/NoteFilter.jsx'
 import NoteAdd from '../cmps/KeepCmps/NoteAdd.jsx'
 import NoteEdit from '../cmps/KeepCmps/NoteEdit.jsx'
 import keepService from '../services/keepService.js'
-import eventBusService from '../services/eventBusService.js'
+import eventBusService from "../services/eventBusService"
+
 
 
 export default class KeepApp extends React.Component {
