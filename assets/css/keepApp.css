@@ -4,11 +4,12 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.671);
     cursor: pointer;
     visibility: hidden;
     opacity: 0;
     transition: opacity .6s;
+    z-index: 1;
 }
 
 .keep.edit-mode .screen {
@@ -148,6 +149,7 @@
 }
 
 .keep .edit-note {
+    z-index: 2;
     border: 3px solid black;
     /* width: 600px; */
     background-color:#eedfa7;
@@ -155,8 +157,12 @@
     position: fixed;
     display: block;
     margin: 5% auto;
-    top:40%;
-    left:30%;
+    top:30%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    left: 0;
+    right: 0;
     padding: 15px;
 
 }

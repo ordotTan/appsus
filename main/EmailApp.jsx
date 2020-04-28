@@ -38,8 +38,10 @@ export default class EmailApp extends React.Component {
         this.loadEmails();
 
         const urlParams = new URLSearchParams(window.location.search);
-        let note = urlParams.get('note');
-        if (note) {
+        let noteType = urlParams.get('noteType');
+        let noteInfo = urlParams.get('noteInfo');
+        if (noteType) {
+            console.log('url got', noteType, JSON.parse(noteInfo))
             let noteObj = JSON.parse(note);
             this.setState({ note: noteObj }, () => {
                 this.toggleCompositor()
@@ -122,9 +124,10 @@ export default class EmailApp extends React.Component {
             });
     };
 
-    toggleEmailStatus = (emailId) => {
-        this.toggleExpandEmail();
-        event.stopPropagation();
+    toggleEmailStatus = (ev, emailId) => {
+        // this.toggleExpandEmail();
+        console.log('toggel got', ev)
+        ev.stopPropagation();
         emailService.toggleEmailStatus(emailId)
             .then(res => {
                 this.setUnreadCount();
