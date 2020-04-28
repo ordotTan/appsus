@@ -115,8 +115,9 @@ export default class EmailApp extends React.Component {
         this.loadEmails();
     };
 
-    deleteMail = (emailId) => {
-        event.stopPropagation();
+    deleteMail = (ev, emailId) => {
+        ev.stopPropagation();
+        this.toggleExpandEmail();
         emailService.deleteMail(emailId)
             .then(res => {
                 this.setUnreadCount();
@@ -125,9 +126,8 @@ export default class EmailApp extends React.Component {
     };
 
     toggleEmailStatus = (ev, emailId) => {
-        // this.toggleExpandEmail();
-        console.log('toggel got', ev)
-        ev.stopPropagation();
+        ev.stopPropagation()
+        this.toggleExpandEmail();
         emailService.toggleEmailStatus(emailId)
             .then(res => {
                 this.setUnreadCount();
@@ -150,13 +150,7 @@ export default class EmailApp extends React.Component {
         emailService.getById(emailId)
             .then(email => {
 
-                if (expandEmail.isOpen) {
-
-                    if(emailId) {
-                        this.setState(prevState =>({ expandEmail: {...prevState.expandEmail, email : email} }))
-                        this.openEmail(emailId);
-                        return;
-                    };
+                if (expandEmail.isOpen || !emailId) {
                     this.setState(prevState => ({ expandEmail: { ...prevState.expandEmail, isOpen: false, email: null } }));
                     return;
                 };
@@ -176,7 +170,6 @@ export default class EmailApp extends React.Component {
                 {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
                 {expandEmail.isOpen && <EmailExpand email={expandEmail.email} toggleExpandEmail={this.toggleExpandEmail} toggleEmailStatus={this.toggleEmailStatus} deleteMail={this.deleteMail} />}
             </main>
-
         );
     };
 };

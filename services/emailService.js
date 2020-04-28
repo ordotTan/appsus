@@ -13,17 +13,17 @@ var gInitialEmails = [
         subject: 'Check out my new song',
         body: 'Morbi leo urna molestie at. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Id nibh tortor id aliquet lectus proin. Quam pellentesque nec nam aliquam sem et. Sit amet cursus sit amet. Purus non enim praesent elementum facilisis leo vel fringilla. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius.',
         isRead: false,
-        sentAt: 1587911856459
+        date: 1587911856459
     },
     {
         id: utilService.makeId(4),
         location: 'inbox',
         from: 'Brandon Novak',
         to: G_USER,
-        subject: 'My new book is out',
+        subject: 'Hey Dude! I\'m back on my feet and ready to shred!',
         body: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
         isRead: true,
-        sentAt: 1576911144174
+        date: 1576911144174
     },
     {
         id: utilService.makeId(4),
@@ -33,7 +33,7 @@ var gInitialEmails = [
         subject: 'Lease to sign',
         body: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         isRead: true,
-        sentAt: 1499921144171
+        date: 1499921144171
     },
     {
         id: utilService.makeId(4),
@@ -43,7 +43,7 @@ var gInitialEmails = [
         subject: 'Message from the future',
         body: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.',
         isRead: false,
-        sentAt: 2919671164771
+        date: 2919671164771
     },
     {
         id: utilService.makeId(4),
@@ -53,7 +53,7 @@ var gInitialEmails = [
         subject: 'I found it!',
         body: 'Id nibh tortor id aliquet lectus proin. Morbi leo urna molestie at. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Id nibh tortor id aliquet lectus proin. Quam pellentesque nec nam aliquam sem et. Sit amet cursus sit amet. Purus non enim praesent elementum facilisis leo vel fringilla. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius.',
         isRead: true,
-        sentAt: 1486619856459
+        date: 1486619856459
     },
     {
         id: utilService.makeId(4),
@@ -63,7 +63,7 @@ var gInitialEmails = [
         subject: 'This app is magical',
         body: 'feugiat vivamus at augue eget arcu dictum varius. Id nibh tortor id aliquet lectus proin. Morbi leo urna molestie at. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Id nibh tortor id aliquet lectus proin. Quam pellentesque nec nam aliquam sem et. Sit amet cursus sit amet. Purus non enim praesent elementum facilisis leo vel fringilla. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius.',
         isRead: false,
-        sentAt: 1582119856459
+        date: 1582119856459
     },
     {
         id: utilService.makeId(4),
@@ -73,7 +73,7 @@ var gInitialEmails = [
         subject: 'A new batch has arrived!',
         body: 'Morbi leo urna molestie at. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Id nibh tortor id aliquet lectus proin. Quam pellentesque nec nam aliquam sem et. Sit amet cursus sit amet. Purus non enim praesent elementum facilisis leo vel fringilla. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius.',
         isRead: false,
-        sentAt: 1572119856459
+        date: 1572119856459
     },
     {
         id: utilService.makeId(4),
@@ -83,7 +83,7 @@ var gInitialEmails = [
         subject: 'Monday is the deals day!',
         body: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).',
         isRead: false,
-        sentAt: 1581112856359
+        date: 1581112856359
     },
     {
         id: utilService.makeId(4),
@@ -93,7 +93,7 @@ var gInitialEmails = [
         subject: 'Welcome to GitHub, @DanielGoldfine!',
         body: 'You’re the newest member in this community of over 36 million people who use GitHub to host and review code, manage projects, and build software.',
         isRead: true,
-        sentAt: 1589112856359
+        date: 1589112856359
     },
     {
         id: utilService.makeId(4),
@@ -103,7 +103,7 @@ var gInitialEmails = [
         subject: 'Nevo and 41 others made changes in your shared folders',
         body: 'Here’s what happened in your shared folders last week.',
         isRead: false,
-        sentAt: 1588022122810
+        date: 1588022122810
     },
     {
         id: utilService.makeId(4),
@@ -113,7 +113,7 @@ var gInitialEmails = [
         subject: 'Purchase receipt: Gueta 22.03.2020',
         body: 'Order confirmation #8675',
         isRead: true,
-        sentAt: 1584872112810
+        date: 1584872112810
     },
     {
         id: utilService.makeId(4),
@@ -123,11 +123,11 @@ var gInitialEmails = [
         subject: 'Receipt for Your Payment to Spotify Finance Limited',
         body: 'You sent a payment of ₪19.90 ILS to Spotify Finance Limited. It may take a few moments for this transaction to appear in your account.',
         isRead: false,
-        sentAt: 1583874112210
+        date: 1583874112210
     },
 ];
 
-let gEmails = _InitEmails()
+let gEmails = _InitEmails();
 
 export default {
     query,
@@ -175,8 +175,8 @@ function query(filter, sort) {
 function _sortEmails(emails, sort) {
     if (sort.sortBy === 'date') {
         emails.sort((email1, email2) => {
-            if (email1.sentAt > email2.sentAt) return 1;
-            else if (email1.sentAt < email2.sentAt) return -1;
+            if (email1.date > email2.date) return 1;
+            else if (email1.date < email2.date) return -1;
             else return 0;
         });
         if (sort.order) emails.reverse();
@@ -213,7 +213,7 @@ function sendEmail(to, subject, body) {
         subject,
         body,
         isRead: false,
-        sentAt: Date.now()
+        date: Date.now()
     };
     gEmails.unshift(newemail);
     storageService.store(STORAGE_KEY, gEmails);

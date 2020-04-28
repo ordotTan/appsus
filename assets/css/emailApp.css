@@ -112,6 +112,38 @@
     height: 600px;
     border: 1px solid rgb(173, 173, 173);
 }
+.email .mail-expanded {
+    z-index: 2;
+    background-color: white;
+    box-shadow: 6px 5px 7px #00000087;
+    position: fixed;
+    top: 200px;
+    right: 0;
+    left: 0;
+    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    height: 630px;
+    border: 1px solid rgb(173, 173, 173);
+}
+
+.email .mail-expanded textarea {
+    margin-bottom: -40px;
+}
+
+.email .mail-expanded p {
+    margin-inline-start: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .8rem;
+}
+
+.email .mail-expanded p span {
+    word-spacing: 6px;
+    margin-inline-start: 5px;
+}
+
+
 
 .email .mail-window-container form {
     display: flex;
