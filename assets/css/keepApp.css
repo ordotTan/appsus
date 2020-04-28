@@ -11,6 +11,11 @@
     transition: opacity .6s;
 }
 
+.keep.edit-mode .screen {
+    visibility: visible;
+    opacity: 1;
+}
+
 .keep h4,h2 {
     margin: 0;
 }
@@ -95,6 +100,11 @@
     text-align: center;
 }
 
+.keep .edit-note{
+    text-align: left;
+}
+
+
 .keep .add-note-form input{
    font-size: 1rem;
    width: 200px;
@@ -138,9 +148,17 @@
 }
 
 .keep .edit-note {
-    border: 1px solid black;
-    width: 700px;
-    background-color: burlywood;
+    border: 3px solid black;
+    /* width: 600px; */
+    background-color:#eedfa7;
+    border-radius: 10px;
+    position: fixed;
+    display: block;
+    margin: 5% auto;
+    top:40%;
+    left:30%;
+    padding: 15px;
+
 }
 
 .keep .close-edit-note {
@@ -165,7 +183,7 @@
 }
 
 .keep .todo-list li {
-    margin: 10px;
+    margin: 4px;
     width:350px
 }
 

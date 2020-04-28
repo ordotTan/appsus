@@ -10,7 +10,7 @@ export default function ColorPicker(props) {
         { color: 'black', class: 'color-item black' }
     ]
     return (
-        <div className="color-picker flex align-center">
+        <div className="color-picker flex align-center flex-start">
             {colorsInfo.map(colorItem => 
                 <div key ={colorItem.color} onClick={()=>props.handleColorSelection(props.noteId,`${colorItem.color}`)} 
                 className={colorItem.class}></div>

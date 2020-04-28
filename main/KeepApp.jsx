@@ -33,8 +33,9 @@ export default class KeepApp extends React.Component {
         this.setState({ filterBy }, () => this.loadNotes())
     }
 
-    onDeleteNote = (noteId) => {
-
+    onDeleteNote = (ev,noteId) => {
+        //console.log(ev)
+         ev.stopPropagation()
         Swal.fire({
             title: 'Are you sure?',
             icon: 'warning',
@@ -98,13 +99,14 @@ export default class KeepApp extends React.Component {
     }
 
     onToggleEditModal = () => {
-        console.log('toggled')
+        this.setState({ editMode: false, selectedNote: '' })
     }
 
     render() {
         const { notes } = this.state
+        const mainClass = this.state.editMode? "keep edit-mode":"keep"
         return (
-            <div className="keep">
+            <div className={mainClass}>
                 <section className="screen" onClick={this.onToggleEditModal}></section>
                 <NoteFilter onSetFilter={this.onSetFilter} />
                 <h1>What do you want to <span>keep</span> today?</h1>
