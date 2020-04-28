@@ -33,7 +33,7 @@ export default class KeepApp extends React.Component {
     }
 
     onDeleteNote = (noteId) => {
-        keepService.removeNote(noteId)
+        keepService.remove(noteId)
             .then(() => {
                 this.loadNotes()
                 this.setState({ selectedNote: null, editMode: false })

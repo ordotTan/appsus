@@ -54,7 +54,7 @@ export default class NoteText extends React.Component {
 
     onAddNote = (ev) => {
         if (ev) ev.preventDefault()
-        keepService.addNote(this.state.info, this.state.style, 'NoteTxt')
+        keepService.add(this.state.info, this.state.style, 'NoteTxt')
             .then(note => {
                 this.setState({
                     info: { txt: 'My Note' }
