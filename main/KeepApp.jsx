@@ -75,10 +75,15 @@ export default class KeepApp extends React.Component {
             })
     }
 
+    onToggleEditModal = () => {
+        console.log('toggled')
+    }
+
     render() {
         const { notes } = this.state
         return (
             <div className="keep">
+                 <section className="screen" onClick={this.onToggleEditModal}></section>
                 <NoteFilter onSetFilter={this.onSetFilter} />
                 <h1>What do you want to <span>keep</span> today?</h1>
                 <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>

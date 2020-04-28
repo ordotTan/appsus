@@ -1,5 +1,22 @@
-.keep h4 {
+.keep .screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .6s;
+}
+
+.keep h4,h2 {
     margin: 0;
+}
+
+.keep a {
+    text-decoration: none;
 }
 
 .keep .container {
@@ -36,6 +53,18 @@
     /* opacity: 0.7; */
     box-shadow: 0px 0px 5px 10px rgba(70,71,45,1);
 
+}
+
+.keep .note-actions {
+    margin-top:10px
+}
+.keep .note-to-mail {
+    padding: 3px;
+    margin-left:10px
+}
+
+.keep .note-preview .note-header {
+    margin: 5px;
 }
 
 /* Header */
@@ -97,7 +126,7 @@
 .keep .add-todo {
     background-color: #eae519e0;
     padding: 2px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     margin-left: 10px;
     margin-right: 10px;
 }
@@ -124,30 +153,25 @@
 
 
 .keep .remove-todo {
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 1px;
-    background-color: red;
-
+    padding: 3px;
+    font-size: 1.05rem;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .keep .update-todo {
-    /* padding: 1px; */
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 1px;
-    background-color: green;
-
+    padding: 3px;
+    font-size: 1.05rem;
 }
 
 .keep .todo-list li {
     margin: 10px;
+    width:350px
 }
 
 .keep .todo-list .todo-item {
     cursor: pointer;
+    font-size:1.2rem;
 }
 
 
@@ -163,7 +187,7 @@
 .keep .note-movie {
     position: relative;
     overflow: hidden;
-    padding-top: 50%;
+    padding-top: 100%;
 }
 
 .keep .note-movie iframe {
@@ -180,11 +204,16 @@
     padding: 15px;
     border-radius: 50%;
     margin: 3px;
-    opacity: 0.7;
+    /* opacity: 0.7; */
     border: 1px solid black;
     cursor: pointer;
 }
 
+
+.keep .color-picker .color-item.color0 {
+    background-color: lightgoldenrodyellow;
+   
+}
 .keep .color-picker .color-item.color1 {
     background-color: #EAE519;
    

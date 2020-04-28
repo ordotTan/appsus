@@ -20,7 +20,7 @@ export default class NoteText extends React.Component {
         if (email) {
             let emailObj = JSON.parse(email)
             let subject = emailObj.subject
-            txt = subject
+            subject = 'From email: '+subject
             this.setState({ info: { txt: subject }},()=> {
                 this.onAddNote()
             })

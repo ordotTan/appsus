@@ -1,5 +1,6 @@
 export default function ColorPicker(props) {
     const colorsInfo = [
+        { color: 'lightgoldenrodyellow', class: 'color-item color0' },
         { color: '#EAE519', class: 'color-item color1' },
         { color: '#4A4737', class: 'color-item color2' },
         { color: '#AFAC99', class: 'color-item color3' },

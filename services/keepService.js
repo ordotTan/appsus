@@ -5,11 +5,11 @@ var gNotes = null
 const NOTES_KEY = 'notes'
 
 var gDefaultNotes = [
-    { id: 1, type: 'NoteTxt', isPinned: true, info: { txt: 'aaaa' }, style: { backgroundColor: "#FFFFFF", color: 'blue' } },
-    { id: 2, type: 'NoteTodos', isPinned: false, info: { label: 'my todos', todos: [{ id: 'fdsfsd', txt: 'do this', doneAt: null }] }, style: { backgroundColor: "#FFFFFF", color: 'black' } },
-    { id: 3, type: 'NoteTxt', isPinned: false, info: { txt: 'cccc' }, style: { backgroundColor: "#845EC2", color: 'red' } },
-    { id: 4, type: 'NoteImg', isPinned: false, info: { url: 'https://www.liberaldictionary.com/wp-content/uploads/2019/02/icon-0326.jpg', title: "hello" }, style: { backgroundColor: "#FFFFFF",color: 'green'  } },
-    { id: 5, type: 'NoteVideo', isPinned: false, info: { url: 'https://www.youtube.com/watch?v=9QiE-M1LrZk', title: "My Video" }, style: { backgroundColor: "#FFFFFF",color: 'purple'  } },
+    { id: 1, type: 'NoteTxt', isPinned: true, info: { txt: 'I ❤️ React' }, style: { backgroundColor: "lightgoldenrodyellow", color: 'black' } },
+    { id: 2, type: 'NoteTodos', isPinned: false, info: { label: 'Shopping List', todos: [{ id: 'fdsfsd', txt: 'Milk', doneAt: null },{ id: 'asasd', txt: 'Bread', doneAt: null }] }, style: { backgroundColor: "#AFAC99", color: 'black' } },
+    { id: 3, type: 'NoteTxt', isPinned: false, info: { txt: 'Need to sleep more!' }, style: { backgroundColor: "lightgoldenrodyellow", color: 'black' } },
+    { id: 4, type: 'NoteImg', isPinned: false, info: { url: 'https://www.liberaldictionary.com/wp-content/uploads/2019/02/icon-0326.jpg', title: "Spaceship" }, style: { backgroundColor: "#AFAC99",color: 'black'  } },
+    { id: 5, type: 'NoteVideo', isPinned: false, info: { url: 'https://www.youtube.com/watch?v=9QiE-M1LrZk', title: "Cool Video" }, style: { backgroundColor: "#AFAC99",color: 'black'  } },
 
 ]
 

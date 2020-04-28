@@ -20,7 +20,7 @@ export default class NoteTodos extends React.Component {
         // console.log(this.props.note)
         this.formNameInput.current.focus()
         const label = this.props.note ? this.props.note.info.label : ''
-        const todos = this.props.note ? this.props.note.info.todos : [{ txt: 'milk',id:'fdwfwsf' }]
+        const todos = this.props.note ? this.props.note.info.todos : []
         const id = this.props.note ? this.props.note.id : ''
         const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
         const color = this.props.note ? this.props.note.style.color : ''
