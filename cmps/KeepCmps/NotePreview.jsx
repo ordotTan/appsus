@@ -26,7 +26,6 @@ export default class NotePreview extends React.Component {
             <article style={noteStyle} className='note-preview flex column space-between align-center' onClick={() => { this.props.onEditNote(note) }}>
                 <img onClick={(ev) => this.props.onTogglePin(ev, note.id)} className="note-pin" src={`../../assets/imgs/${pin_src}`}></img>
                 {note.type === 'NoteTxt' &&  <LongText txtLimit={20} text={note.info.txt} isLongTxtShown={this.state.isLongTxtShown} onToggleDesc={this.onToggleDesc}></LongText>} 
-                {/* <LongText text={note.info.txt} ></LongText>} */}
                 {note.type === 'NoteTodos' &&
                     <div>
                         <h2>{note.info.label}</h2>
