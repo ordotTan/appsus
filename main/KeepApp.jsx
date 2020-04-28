@@ -76,8 +76,10 @@ export default class KeepApp extends React.Component {
     }
 
     render() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let email = urlParams.get('email');
+        console.log(JSON.parse(email))
         const { notes } = this.state
-
         return (
             <div className="keep">
                 <NoteFilter onSetFilter={this.onSetFilter} />

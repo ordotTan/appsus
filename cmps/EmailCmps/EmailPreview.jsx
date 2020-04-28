@@ -1,5 +1,6 @@
 export default function EmailPreview(props) {
 
+
     const body = (props.email.body.length < 90) ? props.email.body : props.email.body.slice(0, 90) + '...';
     const dateArr = new Date(props.email.sentAt).toString().split(' ');
     const date = dateArr.splice(1, 3).join(' ');

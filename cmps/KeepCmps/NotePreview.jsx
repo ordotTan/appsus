@@ -2,8 +2,11 @@ import NotePreivewTodos from './NotePreviewTodos.jsx'
 
 export default function NotePreview(props) {
 
+
+
     const { note } = props
-    // console.log(note)
+    //console.log(note)
+    //console.log(JSON.stringify(note))
     const pin_src = note.isPinned ? 'pin_pinned.png' : 'pin_unpin.png'
     const noteStyle = {
         color: note.style.color,

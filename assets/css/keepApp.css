@@ -12,6 +12,8 @@
 /* todo */
 .keep .notes-list {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     /* padding-top: 10px;
     column-count: 4;
     text-align: center;
