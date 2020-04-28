@@ -11,7 +11,7 @@ export default class EmailApp extends React.Component {
         emails: null,
         unreadCount: null,
         isComposing: false,
-        readEmail: {
+        expandEmail: {
             isEmailOpen: false,
             emailId: null
         },
@@ -113,9 +113,9 @@ export default class EmailApp extends React.Component {
         this.loadEmails();
     };
 
-    deleteMail = (mailId) => {
+    deleteMail = (emailId) => {
         event.stopPropagation();
-        emailService.deleteMail(mailId)
+        emailService.deleteMail(emailId)
             .then(res => {
                 this.setUnreadCount();
                 this.loadEmails();
@@ -132,26 +132,26 @@ export default class EmailApp extends React.Component {
     };
 
 
-    openMail = (emailId) => {
+    toggleExpandEmail = (emailId) => {
 
-        const {readEmail} = this.state
+        const {expandEmail} = this.state;
 
-        console.log('open mail happend', mailId);
-        if (readEmail.isOpen) {
-            
+        console.log('open mail happend', emailId);
+        if (expandEmail.isOpen) {
+            this.setState(prevState)
         }
     };
 
     render() {
 
-        const { emails, isComposing, unreadCount, note, readEmail } = this.state;
+        const { emails, isComposing, unreadCount, note, expandEmail } = this.state;
 
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
-                {emails && <EmailsList emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.openMail} />}
+                {emails && <EmailsList emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.toggleExpandEmail} />}
                 {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
-                {readEmail.isOpen && <EmailExpand />}
+                {expandEmail.isOpen && <EmailExpand />}
             </main>
 
         )
