@@ -1,4 +1,4 @@
-import eventBusService from "../../services/eventBusService"
+import eventBusService from "../../services/eventBusService.js"
 
 export default class EmailStatusFilter extends React.Component {
 
