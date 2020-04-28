@@ -1,5 +1,5 @@
 
-import keepService from '../../services/keepService.js' 
+import keepService from '../../services/keepService.js'
 
 export default class NoteText extends React.Component {
 
@@ -10,19 +10,34 @@ export default class NoteText extends React.Component {
 
     state = {
         info: { txt: '', id: '' },
-        style: {backgroundColor:'',color:''}
+        style: { backgroundColor: '', color: '' }
     }
 
     componentDidMount() {
-        this.formNameInput.current.focus()
-        const txt = this.props.note ? this.props.note.info.txt : ''
-        const id = this.props.note ? this.props.note.id : ''
-        const backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
-        const color = this.props.note ? this.props.note.style.color : ''
-        this.setState({
-            info: { txt, id },
-            style:{backgroudColor,color}
-        })
+        let txt
+        const urlParams = new URLSearchParams(window.location.search);
+        let email = urlParams.get('email');
+        if (email) {
+            let emailObj = JSON.parse(email)
+            let subject = emailObj.subject
+            console.log(subject)
+            window.history.replaceState({}, document.title, "/index.html#/keep");
+            txt = subject
+            this.setState({ info: { txt: subject }},()=> {
+                this.onAddNote()
+            })
+        }
+        else {
+            this.formNameInput.current.focus()
+            txt = this.props.note ? this.props.note.info.txt : ''
+            let id = this.props.note ? this.props.note.id : ''
+            let backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
+            let color = this.props.note ? this.props.note.style.color : ''
+            this.setState({
+                info: { txt, id },
+                style: { backgroudColor, color }
+            })
+        }
     }
 
     handleInput = ({ target }) => {
@@ -39,8 +54,8 @@ export default class NoteText extends React.Component {
     }
 
     onAddNote = (ev) => {
-        ev.preventDefault()
-        keepService.addNote(this.state.info,this.state.style, 'NoteTxt')
+        if (ev) ev.preventDefault()
+        keepService.addNote(this.state.info, this.state.style, 'NoteTxt')
             .then(note => {
                 this.setState({
                     info: { txt: 'My Note' }
@@ -53,6 +68,7 @@ export default class NoteText extends React.Component {
     }
 
     render() {
+
         const { txt } = this.state.info
         return (<div>
             <form className="form" onSubmit={this.onAddNote}>
