@@ -39,9 +39,7 @@ export default class EmailApp extends React.Component {
     };
 
     loadEmails() {
-        
         const {filter, sort} = this.state
-
         emailService.query(filter, sort)
             .then(emails => this.setState({ emails }));
     };
@@ -100,7 +98,10 @@ export default class EmailApp extends React.Component {
     deleteMail = (mailId) => {
         event.stopPropagation();
         emailService.deleteMail(mailId)
-            .then(res => this.loadEmails());
+            .then(res => {
+                this.setUnreadCount();
+                this.loadEmails();
+            });
     };
 
     toggleEmailStatus = (emailId) => {

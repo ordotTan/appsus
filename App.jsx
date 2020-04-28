@@ -22,9 +22,9 @@ export class App extends React.Component {
                     <Route component={Home} path="/" />
                 </Switch>
             </main>
-            <footer>
+            {/* <footer>
                 copyrights 2020 &copy;
-            </footer>
+            </footer> */}
         </Router>
         )
     }

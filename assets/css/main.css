@@ -1,7 +1,6 @@
 @import url("keepApp.css");
 @import url("bookApp.css");
 @import url("emailApp.css");
-
 @font-face {
     font-family: anton;
     src: url(../assets/fonts/Anton-Regular.ttf);
@@ -21,6 +20,36 @@ body {
     margin: 0;
 }
 
+.home-container {
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.home-container img {
+    width: 600px;
+    transition: .2s;
+}
+
+.home-main-nav:hover {
+    box-shadow: inset 0px 2px #56e674, inset 0px -2px #56e674;
+}
+
+.mail-main-nav:hover {
+    box-shadow: inset 0px 2px #e65656, inset 0px -2px #e65656;
+}
+
+.keep-main-nav:hover {
+    box-shadow: inset 0px 2px #E6E156, inset 0px -2px #E6E156;
+}
+
+.books-main-nav:hover {
+    box-shadow: inset 0px 2px #56CDE6, inset 0px -2px #56CDE6;
+}
+
 .nav-bar-container {
     padding: 10px;
     height: 100px;
@@ -36,6 +65,7 @@ body {
 }
 
 .nav-bar-container .logo {
+    cursor: pointer;
     width: 300px;
     margin-inline-end: 25px;
     /* border-right: 1px solid black; */
@@ -61,15 +91,19 @@ body {
 .nav-bar-container .home-page-title .main-span2 {
     color: #E65656;
 }
+
 .nav-bar-container .home-page-title .main-span3 {
     color: #E6E156;
 }
+
 .nav-bar-container .home-page-title .main-span4 {
     color: #56CDE6;
 }
+
 .nav-bar-container .home-page-title .main-span5 {
     color: #56E674;
 }
+
 .nav-bar-container .home-page-title .main-span6 {
     color: #E65656;
 }
@@ -86,7 +120,7 @@ body {
     font-weight: normal;
     padding-inline-start: 40px;
     margin-inline-end: 40px;
-    width: 600px;
+    width: 40vw;
     min-width: 300px;
     height: 45px;
     border: none;
@@ -104,7 +138,6 @@ body {
 
 .nav-bar-container .navlinks-toggle {
     height: 40px;
-    
 }
 
 .nav-bar-container .nav-links-toggle-wrapper {
@@ -129,28 +162,27 @@ body {
 }
 
 .nav-bar-container .nav-links {
-position: absolute;
-padding: 5px;
-width: 320px;
-right: 5px;
-top: 90px;
-border: 1px solid grey;
-border-radius: 7px;
-box-shadow: 1px 2px 3px #00000066;
-background-color: white;
+    position: absolute;
+    padding: 5px;
+    width: 320px;
+    right: 5px;
+    top: 90px;
+    border: 1px solid grey;
+    border-radius: 7px;
+    box-shadow: 1px 2px 3px #00000066;
+    background-color: white;
 }
 
 .nav-bar-container .nav-links img {
     cursor: pointer;
     width: 150px;
     transition: .2s;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
-.nav-bar-container .nav-links img:hover {
+/* .nav-bar-container .nav-links img:hover {
     background-color: rgb(207, 207, 207);
-}
-
+} */
 
 /* General helpers */
 

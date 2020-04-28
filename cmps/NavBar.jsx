@@ -3,6 +3,7 @@ import HomePageTitle from './HomePageTitle.jsx'
 import SearchBar from './SearchBar.jsx'
 import eventBusService from '../services/eventBusService.js';
 import EmailStatusFilter from './EmailCmps/EmailStatusFilter.jsx'
+const { NavLink } = ReactRouterDOM;
 
 
 export default class NavBar extends React.Component {
@@ -42,7 +43,9 @@ export default class NavBar extends React.Component {
 
             <nav className="nav-bar-container">
                 <div className="nav-bar-dynamic">
-                    <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
+                    <NavLink to='/'>
+                        <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
+                    </NavLink>
                     {(currApp != 'home') && <SearchBar currApp={this.state.currApp} />}
                     {(currApp === 'email') && <EmailStatusFilter />}
                     {(currApp === 'home') && <HomePageTitle />}

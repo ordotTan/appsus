@@ -70,7 +70,7 @@ var gInitialEmails = [
         location: 'inbox',
         from: 'Dr. Heisenberg',
         to: G_USER,
-        subject: 'A new batch has arrived',
+        subject: 'A new batch has arrived!',
         body: 'Morbi leo urna molestie at. Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. Id nibh tortor id aliquet lectus proin. Quam pellentesque nec nam aliquam sem et. Sit amet cursus sit amet. Purus non enim praesent elementum facilisis leo vel fringilla. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius.',
         isRead: false,
         sentAt: 1572119856459
