@@ -5,8 +5,6 @@ export default function NotePreview(props) {
 
 
     const { note } = props
-    //console.log(note)
-    //console.log(JSON.stringify(note))
     const pin_src = note.isPinned ? 'pin_pinned.png' : 'pin_unpin.png'
     const noteStyle = {
         color: note.style.color,
@@ -34,6 +32,7 @@ export default function NotePreview(props) {
                     </div>
                 </div>}
             <button onClick={() => { props.onDeleteNote(note.id) }}>Delete </button>
+            <a href={`/index.html?note=${JSON.stringify(note.info)}#/email`}>Compose Email</a>
             <img onClick={(ev) => props.onTogglePin(ev, note.id)} className="note-pin" src={`../../assets/imgs/${pin_src}`}></img>
         </article>
     )

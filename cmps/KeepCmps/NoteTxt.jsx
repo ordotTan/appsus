@@ -20,8 +20,6 @@ export default class NoteText extends React.Component {
         if (email) {
             let emailObj = JSON.parse(email)
             let subject = emailObj.subject
-            console.log(subject)
-            window.history.replaceState({}, document.title, "/index.html#/keep");
             txt = subject
             this.setState({ info: { txt: subject }},()=> {
                 this.onAddNote()
@@ -38,6 +36,7 @@ export default class NoteText extends React.Component {
                 style: { backgroudColor, color }
             })
         }
+        window.history.replaceState({}, document.title, "/index.html#/keep");
     }
 
     handleInput = ({ target }) => {
