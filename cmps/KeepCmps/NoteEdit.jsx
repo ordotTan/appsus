@@ -7,10 +7,9 @@ import NoteVideo from './NoteVideo.jsx'
 export default class NoteEdit extends React.Component {
 
     render() {
-        //const inputType = this.propos.inputType
         return (
-            <div className="edit-note">
-                <span className="close-edit-note" onClick={this.props.onCloseEditMode}>Close</span>
+            <div className="edit-note add-note-form">
+                {/* <span className="close-edit-note" onClick={this.props.onCloseEditMode}>Close</span> */}
                 {(this.props.note.type === 'NoteTxt') &&
                     <NoteText note={this.props.note} onSaveNote={this.props.onSaveNote} />}
                 {(this.props.note.type === 'NoteTodos') &&
