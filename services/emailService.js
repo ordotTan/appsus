@@ -132,10 +132,11 @@ let gEmails = _InitEmails()
 export default {
     query,
     getById,
-    sendemail,
+    sendEmail,
     deleteMail,
     toggleEmailStatus,
-    getUnreadCount
+    getUnreadCount,
+    openEmail
 };
 
 function _InitEmails() {
@@ -196,18 +197,18 @@ function getById(emailId) {
     return Promise.resolve(foundemail);
 };
 
-function _findEmailIndex(emailId) {
+function _getEmailIndex(emailId) {
     const emailIdx = gEmails.findIndex(email => email.id === emailId);
     return emailIdx;
 };
 
-function sendemail(to, subject, body) {
+function sendEmail(to, subject, body) {
     // simulating real world issues
     if (Math.random() > 0.95) return Promise.reject();
     let newemail = {
         id: utilService.makeId(4),
         location: 'sent',
-        from : G_USER,
+        from: G_USER,
         to,
         subject,
         body,
@@ -217,19 +218,24 @@ function sendemail(to, subject, body) {
     gEmails.unshift(newemail);
     storageService.store(STORAGE_KEY, gEmails);
     return Promise.resolve(newemail);
-    // getemail(newemail)
+};
+
+function openEmail(emailId) {
+    const emailIdx = _getEmailIndex(emailId);
+    gEmails[emailIdx].isRead = true;
+    storageService.store(STORAGE_KEY, gEmails);
+    return Promise.resolve();
 };
 
 function deleteMail(mailId) {
-    const mailIndex = _findEmailIndex(mailId);
+    const mailIndex = _getEmailIndex(mailId);
     gEmails.splice(mailIndex, 1);
     storageService.store(STORAGE_KEY, gEmails);
     return Promise.resolve();
 };
 
 function toggleEmailStatus(emailId) {
-
-    const emailIdx = _findEmailIndex(emailId);
+    const emailIdx = _getEmailIndex(emailId);
     const prevStatus = gEmails[emailIdx].isRead;
     gEmails[emailIdx].isRead = !prevStatus;
     storageService.store(STORAGE_KEY, gEmails);

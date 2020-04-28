@@ -13,7 +13,7 @@ export default class EmailApp extends React.Component {
         isComposing: false,
         expandEmail: {
             isEmailOpen: false,
-            emailId: null
+            email: null
         },
         filter: {
             txt: null,
@@ -103,13 +103,13 @@ export default class EmailApp extends React.Component {
         this.setState(prevState => ({
             isComposing: !prevState.isComposing
         }));
-        if (this.state.note  && this.state.isComposing) {
-            this.setState({note : null})
+        if (this.state.note && this.state.isComposing) {
+            this.setState({ note: null })
         };
     };
 
     submitMail = (from, to, subject, body) => {
-        emailService.sendemail(from, to, subject, body);
+        emailService.sendEmail(from, to, subject, body);
         this.loadEmails();
     };
 
@@ -123,6 +123,7 @@ export default class EmailApp extends React.Component {
     };
 
     toggleEmailStatus = (emailId) => {
+        this.toggleExpandEmail();
         event.stopPropagation();
         emailService.toggleEmailStatus(emailId)
             .then(res => {
@@ -131,15 +132,34 @@ export default class EmailApp extends React.Component {
             });
     };
 
+    openEmail(emailId) {
+        emailService.openEmail(emailId)
+        .then(res =>{
+            this.setUnreadCount();
+            this.loadEmails();
+        });
+    };
 
     toggleExpandEmail = (emailId) => {
 
-        const {expandEmail} = this.state;
+        const { expandEmail } = this.state;
 
-        console.log('open mail happend', emailId);
-        if (expandEmail.isOpen) {
-            this.setState(prevState)
-        }
+        emailService.getById(emailId)
+            .then(email => {
+
+                if (expandEmail.isOpen) {
+
+                    if(emailId) {
+                        this.setState(prevState =>({ expandEmail: {...prevState.expandEmail, email : email} }))
+                        this.openEmail(emailId);
+                        return;
+                    };
+                    this.setState(prevState => ({ expandEmail: { ...prevState.expandEmail, isOpen: false, email: null } }));
+                    return;
+                };
+                this.setState(prevState => ({ expandEmail: { ...prevState.expandEmail, email, isOpen: true } }));
+                this.openEmail(emailId);
+            });
     };
 
     render() {
@@ -151,9 +171,9 @@ export default class EmailApp extends React.Component {
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
                 {emails && <EmailsList emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.toggleExpandEmail} />}
                 {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
-                {expandEmail.isOpen && <EmailExpand />}
+                {expandEmail.isOpen && <EmailExpand email={expandEmail.email} toggleExpandEmail={this.toggleExpandEmail} toggleEmailStatus={this.toggleEmailStatus} deleteMail={this.deleteMail} />}
             </main>
 
-        )
-    }
-}
+        );
+    };
+};

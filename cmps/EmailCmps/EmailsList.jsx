@@ -22,7 +22,7 @@ export default function EmailsList(props) {
                         <th onClick={()=>{
                             props.setSort('date')
                         }} className="sort">Date &nbsp;{up}{dn}</th>
-                        <th className="th-unread" colSpan="2">{`${props.unreadCount} Unread`}</th>
+                        <th className="th-unread">{`${props.unreadCount} Unread`}</th>
                     </tr>
                     {props.emails.map(email => <EmailPreview openMail={props.openMail} email={email} key={utilService.makeId(4)} toggleEmailStatus={props.toggleEmailStatus} deleteMail={props.deleteMail} />)}
                 </tbody>

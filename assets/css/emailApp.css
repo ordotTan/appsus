@@ -1,5 +1,5 @@
 .display-none {
-   display: none; 
+    display: none;
 }
 
 .email {
@@ -9,16 +9,16 @@
 }
 
 .email .side-bar-container .compose-mail-btn {
- border: none;
- width: 110px;
- height: 35px;
- border-radius: 999px;
- margin-inline-start: 25px;
- background-color: white;
- font-weight: bold;
- cursor: pointer;
- box-shadow: 1px 1px 3px #00000099;
- transition: .1s;
+    border: none;
+    width: 110px;
+    height: 35px;
+    border-radius: 999px;
+    margin-inline-start: 25px;
+    background-color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px #00000099;
+    transition: .1s;
 }
 
 .email .side-bar-container .compose-mail-btn:hover {
@@ -49,6 +49,10 @@
     min-width: 365px;
 }
 
+.email .emails-list-container table td {
+    min-height: 50px;
+}
+
 .email .emails-list-container .th-unread {
     padding-left: 10px;
 }
@@ -68,30 +72,39 @@
 .email .emails-list-container .td-body {
     width: 900px;
 }
+
 .email .emails-list-container .td-date {
     width: 160px;
+    min-width: 80px;
 }
 
-.email .emails-list-container .td-btn {
-color: rgb(46, 46, 46);
-}
-.email .emails-list-container .delete-btn svg:hover {
-color: red;
-}
-.email .emails-list-container .status-btn svg:hover {
-color: green;
+.email .emails-list-container .td-btns {
+    display: flex;
+    align-items: center;
 }
 
-.email .emails-list-container .td-btn svg {
-    height: 20px;
-    margin-inline-start: 10px;
-    margin-inline-end: 15px;
+.email .emails-list-container .td-btns svg {
+    height: 25px;
+    margin: 0 10px;
+    color: rgb(46, 46, 46);
 }
 
-.email .mail-composing-container {
+.email .emails-list-container .send-to-note-icon:hover {
+    color: #e6e156;
+}
+
+.email .emails-list-container .read-unread-icon:hover {
+    color: #56e674;
+}
+
+.email .emails-list-container .delete-icon:hover {
+    color: #e65656;
+}
+
+.email .mail-window-container {
     background-color: white;
     position: fixed;
-    bottom:40px;
+    bottom: 40px;
     right: 20px;
     display: flex;
     flex-direction: column;
@@ -100,12 +113,12 @@ color: green;
     border: 1px solid rgb(173, 173, 173);
 }
 
-.email .mail-composing-container form {
+.email .mail-window-container form {
     display: flex;
     flex-direction: column;
 }
 
-.email .mail-composing-container .mail-composer-header {
+.email .mail-window-container .mail-window-header {
     background-color: rgb(53, 53, 53);
     padding-inline-start: 20px;
     font-family: Arial, Helvetica, sans-serif;
@@ -115,26 +128,54 @@ color: green;
     justify-content: space-between;
 }
 
-.email .mail-composing-container .mail-composer-header .close-composer {
+.email .mail-window-container .mail-window-header .close-mail-window {
     cursor: pointer;
     padding-inline-end: 20px;
 }
 
-.email .mail-composing-container form input {
+.email .mail-window-container form input {
     height: 30px;
     padding-inline-start: 20px;
 }
 
-.email .mail-composing-container form textarea {
+.email .mail-window-container form textarea {
+    border: none;
+    border-bottom: 1px solid rgb(144, 144, 144);
     resize: none;
     padding: 20px;
 }
 
-.email .mail-composing-container .body-input {
+.email .mail-window-container .body-input {
     height: 450px;
 }
 
-.email .mail-composing-container .submit {
+.email .mail-window-container .mail-expand-options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.email .mail-window-container .mail-expand-options svg {
+    margin-top: 8px;
+    margin-inline-end: 30px;
+    height: 40px;
+    color: rgb(46, 46, 46);
+    cursor: pointer;
+}
+
+.email .mail-window-container .email-expand-check-unread path:hover {
+    color: #56e674;
+}
+
+.email .mail-window-container .mail-expand-delete-btn path:hover {
+    color: #e65656;
+}
+
+.email .mail-window-container .send-to-note-icon path:hover {
+    color: #E6E156;
+}
+
+.email .mail-window-container .submit {
     cursor: pointer;
     border: none;
     background-color: rgb(53, 53, 53);

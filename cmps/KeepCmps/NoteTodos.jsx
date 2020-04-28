@@ -27,7 +27,6 @@ export default class NoteTodos extends React.Component {
             info: { label, txt: '', todos, id },
             style: { backgroudColor, color }
         })
-        console.log('mounted::',this.state)
     }
 
     handleInput = ({ target }) => {
