@@ -1,8 +1,7 @@
 import NoteText from './NoteTxt.jsx'
 import NoteTodos from './NoteTodos.jsx'
 import NoteStyle from './NoteStyle.jsx'
-import NoteImg from './NoteImg.jsx'
-import NoteVideo from './NoteVideo.jsx'
+import NoteMedia from './NoteMedia.jsx'
 
 export default class NoteEdit extends React.Component {
 
@@ -15,10 +14,10 @@ export default class NoteEdit extends React.Component {
                 {(this.props.note.type === 'NoteTodos') &&
                     <NoteTodos note={this.props.note} onSaveNote={this.props.onSaveNote} />}
                 {(this.props.note.type === 'NoteImg') &&
-                     <NoteImg note={this.props.note} onSaveNote={this.props.onSaveNote} />}
+                     <NoteMedia  noteType='NoteImg'  note={this.props.note} onSaveNote={this.props.onSaveNote} />}
                 {(this.props.note.type === 'NoteVideo') &&
-                     <NoteVideo note={this.props.note} onSaveNote={this.props.onSaveNote} />}
-                    <NoteStyle note={this.props.note} onSetBackgroundColor={this.props.onSetBackgroundColor} onSetFontColor={this.props.onSetFontColor}></NoteStyle>
+                     <NoteMedia noteType='NoteVideo' note={this.props.note} onSaveNote={this.props.onSaveNote} />}
+                    <NoteStyle  note={this.props.note} onSetBackgroundColor={this.props.onSetBackgroundColor} onSetFontColor={this.props.onSetFontColor}></NoteStyle>
             </div>
         )
     }

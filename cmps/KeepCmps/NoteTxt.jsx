@@ -19,9 +19,8 @@ export default class NoteText extends React.Component {
         let email = urlParams.get('email');
         if (email) {
             let emailObj = JSON.parse(email)
-            let subject = emailObj.subject
-            subject = 'From email: '+subject
-            this.setState({ info: { txt: subject }},()=> {
+            let emailText = `From ${emailObj.from} To ${emailObj.from} Subject:${emailObj.subject}  \n ${emailObj.body}`
+            this.setState({ info: { txt: emailText }},()=> {
                 this.onAddNote()
             })
         }

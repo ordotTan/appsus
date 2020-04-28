@@ -102,6 +102,7 @@ export default class KeepApp extends React.Component {
         this.setState({ editMode: false, selectedNote: '' })
     }
 
+
     render() {
         const { notes } = this.state
         const mainClass = this.state.editMode? "keep edit-mode":"keep"
@@ -112,9 +113,9 @@ export default class KeepApp extends React.Component {
                 <h1>What do you want to <span>keep</span> today?</h1>
                 <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>
                 <h2>Pinned Items</h2>
-                {notes && <NoteListPinned onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}></NoteListPinned>}
+                {notes && <NoteListPinned onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}/>}
                 <h2>Other Items</h2>
-                {notes && <NoteList onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}></NoteList>}
+                {notes && <NoteList onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}/>}
                 {this.state.editMode && <NoteEdit note={this.state.selectedNote} onSaveNote={this.onSaveNote} onCloseEditMode={this.onCloseEditMode} onSetBackgroundColor={this.onSetBackgroundColor} onSetFontColor={this.onSetFontColor} />}
 
             </div>
