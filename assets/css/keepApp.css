@@ -4,7 +4,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.671);
+    background-color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
     visibility: hidden;
     opacity: 0;
@@ -149,14 +149,12 @@
 }
 
 .keep .edit-note {
-    z-index: 2;
-    border: 3px solid black;
-    /* width: 600px; */
-    background-color:#eedfa7;
-    border-radius: 10px;
     position: fixed;
     display: block;
-    margin: 5% auto;
+    z-index: 2;
+    border: 3px solid black;
+    background-color:#eedfa7;
+    border-radius: 10px;
     top:30%;
     margin-left: auto;
     margin-right: auto;
@@ -164,6 +162,7 @@
     left: 0;
     right: 0;
     padding: 15px;
+    box-shadow: 2px 3px 15px 13px rgba(0,0,0,0.75);
 
 }
 
@@ -265,4 +264,15 @@
 
 .keep .color-picker .color-item.black {
     background-color:black;
+}
+
+.keep .icon {
+    width: 30px;
+    cursor: pointer;
+    opacity: 0.6;
+    margin-right: 10px;
+}
+
+.keep .icon.active {
+    opacity: 1;
 }

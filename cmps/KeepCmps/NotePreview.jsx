@@ -2,8 +2,7 @@ import NotePreivewTodos from './NotePreviewTodos.jsx'
 
 export default function NotePreview(props) {
 
-
-
+    const noPropagation = (clickEvent) => clickEvent.stopPropagation()
     const { note } = props
     const pin_src = note.isPinned ? 'pin_pinned.png' : 'pin_unpin.png'
     const noteStyle = {
@@ -33,9 +32,9 @@ export default function NotePreview(props) {
                     </div>
                 </div>}
             <div className="note-actions flex space-around">
-                <button className="btn" onClick={(ev) => {props.onDeleteNote(ev,note.id) }}>Delete </button>
+                <button className="btn" onClick={(ev) => { props.onDeleteNote(ev, note.id) }}>Delete </button>
                 {/* todo URL encode JSON  */}
-                <a className="btn note-to-mail" href={`/index.html?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
+                <a className="btn note-to-mail" onClick={noPropagation} href={`/index.html?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
             </div>
         </article>
     )

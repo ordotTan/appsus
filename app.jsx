@@ -15,11 +15,6 @@ export class App extends React.Component {
         return (
             <Router history={history}>
                 <main>
-                    {/* JSON.stringify(value); */}
-                    <br></br>
-                    <a href='/index.html?note={"id":3,"type":"NoteTxt","isPinned":true,"info":{"txt":"Bla Bla Bla"}}#/email'>Open email with Note</a>
-                    <br></br>
-                    <a href='/index.html?email={"id":"MzLE","location":"inbox","from":"Bobby Fillangie","to":"Daniel Goldfine","subject":"Message from the future","body":"There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isnt anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.","isRead":false,"sentAt":2919671164771}#/keep'>Open keep with email</a>
                     <NavBar />
                     <UserMsg />
                     <Switch>

@@ -1,9 +1,7 @@
 
 import NoteText from './NoteTxt.jsx'
 import NoteTodos from './NoteTodos.jsx'
-import NoteImg from './NoteImg.jsx'
-import NoteVideo from './NoteVideo.jsx'
-
+import NoteMedia from './NoteMedia.jsx'
 
 export default class NoteAdd extends React.Component {
     state = {
@@ -33,8 +31,8 @@ export default class NoteAdd extends React.Component {
                 <div className="add-note-form">
                     {(inputType === 'NoteTxt') && <NoteText onSaveNote={this.props.onSaveNote} />}
                     {(inputType === 'NoteTodos') && <NoteTodos onSaveNote={this.props.onSaveNote} />}
-                    {(inputType === 'NoteImg') && <NoteImg onSaveNote={this.props.onSaveNote} />}
-                    {(inputType === 'NoteVideo') && <NoteVideo onSaveNote={this.props.onSaveNote} />}
+                    {(inputType === 'NoteImg') && <NoteMedia noteType='NoteImg' onSaveNote={this.props.onSaveNote} />}
+                    {(inputType === 'NoteVideo') && <NoteMedia  noteType='NoteVideo' onSaveNote={this.props.onSaveNote} />}
                 </div>
             </div>
         )
