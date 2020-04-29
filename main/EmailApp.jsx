@@ -50,6 +50,7 @@ export default class EmailApp extends React.Component {
             });
             window.history.replaceState({}, document.title, "/index.html#/email");
         };
+        // window.history.replaceState({}, document.title, window.location.origin + window.location.hash);
     };
 
     componentWillUnmount() {
