@@ -17,7 +17,7 @@ export default class NoteText extends React.Component {
             let emailText = `From ${emailObj.from} To ${emailObj.from} Subject:${emailObj.subject}  \n ${emailObj.body}`
             this.setState({ info: { txt: emailText } }, () => {
                 this.onAddNote()
-                window.location.href = `index.html#/keep`
+               // window.location.href = `index.html#/keep`
             })
         }
         else {
