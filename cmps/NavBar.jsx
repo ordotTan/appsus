@@ -61,6 +61,7 @@ export default class NavBar extends React.Component {
                 <section className="nav-break-narrow">
                     {(currApp != 'home') && <SearchBar currApp={this.state.currApp} />}
                     {(currApp === 'email') && <EmailStatusFilter />}
+                    {(currApp === 'books') && <BooksPriceFilter />}
                 </section>
             </React.Fragment>
         )

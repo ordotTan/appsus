@@ -23,22 +23,24 @@ export default class BookApp extends React.Component {
     }
 
     loadBooks = () => {
-        let books = booksService.query(this.state.filterBy)
-        this.setState({ books })
+        booksService.query(this.state.filterBy)
+            .then(books => {
+                this.setState({ books })
+            });
     }
 
     setFilter = (filter) => {
         console.log('books gallery got', filter)
-
-        if (filter.minPrice) {
+        // debugger
+        if (filter.minPrice != undefined) {
             minPrice = filter.minPrice;
             maxPrice = filter.maxPrice
-            this.setState(prevState => ({ filter: { ...prevState.filter, minPrice, maxPrice } }, ()=>{
+            this.setState(prevState => ({ filter: { ...prevState.filter, minPrice, maxPrice } }, () => {
                 this.loadBooks();
             }));
         } else {
             let title = filter
-            this.setState(prevState => ({ title: { ...prevState.filter, title } }, ()=>{
+            this.setState(prevState => ({ filter: { ...prevState.filter, title } }, () => {
                 this.loadBooks();
             }));
         };

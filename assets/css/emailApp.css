@@ -219,7 +219,7 @@
 .email-status-filter {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
-    margin-inline-end: 35px;
+    margin:0 35px;
 }
 
 .email-status-filter input {

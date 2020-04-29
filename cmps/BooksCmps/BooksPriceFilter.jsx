@@ -10,7 +10,7 @@ export default class Filter extends React.Component {
     }
 
 handleChange = ({target}) => {
-    
+
     const field = target.name;
     const value = target.value;
 
@@ -25,18 +25,19 @@ handleChange = ({target}) => {
     render() {
         const { title, minPrice, maxPrice } = this.state;
         return (
-            <React.Fragment>
+                <section className="books-price-filter">
                 <form onSubmit={this.onFilter}>
                     <div>
-                    <label>By Min Price:</label>
+                    <label>Min Price:</label>
                     <input type="number" name="minPrice" value={minPrice} onChange={this.handleChange} />
                     </div>
                     <div>
-                    <label>By Max Price:</label>
+                    <label>Max Price:</label>
                     <input type="number" name="maxPrice" value={maxPrice} onChange={this.handleChange} />
                     </div>
                 </form>
-            </React.Fragment>
+                </section>
+
         )
     }
 }

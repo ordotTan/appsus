@@ -455,7 +455,7 @@ export default {
 };
 
 function query(filterBy) {
-
+    debugger
     var storedBooks = storageService.load(STORAGE_KEY)
 
     if (!storedBooks) {
@@ -465,18 +465,18 @@ function query(filterBy) {
 
     gBooks = storedBooks;
 
-    if (!filterBy) return gBooks;
+    if (!filterBy) return Promise.resolve(gBooks);
     else {
         var { title, maxPrice, minPrice } = filterBy;
         minPrice = minPrice ? minPrice : 0
         maxPrice = maxPrice ? maxPrice : Infinity;
 
         if (title) {
-            return gBooks.filter(book => book.title.includes(title)
-                && (book.listPrice.amount < maxPrice) && (book.listPrice.amount > minPrice))
+            return Promise.resolve(gBooks.filter(book => book.title.includes(title)
+                && (book.listPrice.amount < maxPrice) && (book.listPrice.amount > minPrice)))
 
-        } else return gBooks.filter(book => (book.listPrice.amount < maxPrice)
-            && (book.listPrice.amount > minPrice))
+        } else return Promise.resolve(gBooks.filter(book => (book.listPrice.amount < maxPrice)
+            && (book.listPrice.amount > minPrice)))
     };
 };
 
@@ -544,11 +544,11 @@ function addReview(bookId, review, fullName, rate, date) {
     const fixedDate = date.split('-').reverse().join('-')
     if (!books[bookIdx].reviews) books[bookIdx].reviews = [];
     books[bookIdx].reviews.push({
-        reviewId : utilService.makeId(3),
+        reviewId: utilService.makeId(3),
         review,
         fullName,
         rate,
-        date : fixedDate
+        date: fixedDate
     });
     storageService.store(STORAGE_KEY, books);
     gBooks = storageService.load(STORAGE_KEY);

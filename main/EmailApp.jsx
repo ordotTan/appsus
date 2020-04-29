@@ -37,10 +37,7 @@ export default class EmailApp extends React.Component {
         this.setUnreadCount();
         this.loadEmails();
 
-        console.log(window.location.search)
         const urlParams = new URLSearchParams(window.location.search);
-        console.log('Email params:',urlParams)
-        console.log(urlParams.get('noteType'))
         let noteType = urlParams.get('noteType');
         let noteInfo = urlParams.get('noteInfo');
         if (noteType) {
@@ -124,13 +121,12 @@ export default class EmailApp extends React.Component {
                 this.loadEmails();
             }).catch(err => {
                 eventBusService.emit('user-msg', { header: err, body: 'This happens in 5 out of a 100 time' });
-                window.history.replaceState({}, document.title, "/index.html#/email");
             });
     };
 
     sendToNotes = (ev, email) => {
         ev.stopPropagation()
-        window.location.href = `index.html?email=${JSON.stringify(email)}#/note`
+        window.location.href = `index.html?email=${JSON.stringify(email)}#/keep`
     }
 
     deleteMail = (ev, emailId) => {
@@ -164,7 +160,6 @@ export default class EmailApp extends React.Component {
                 this.setUnreadCount();
                 this.loadEmails();
             });
-        window.history.replaceState({}, document.title, "/index.html#/email");
     };
 
     openEmail(emailId) {
