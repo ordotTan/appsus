@@ -2,7 +2,7 @@ import BooksGallery from './BooksMain/BooksGallery.jsx'
 import HomePage from './BooksMain/HomePage.jsx'
 import About from './BooksMain/About.jsx'
 import BookDetails from './BooksMain/BookDetails.jsx'
-import eventBusService from '../../services/eventBusService.js'
+import eventBusService from '../services/eventBusService.js'
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, NavLink } = ReactRouterDOM

@@ -7,14 +7,14 @@ export default class NotePreview extends React.Component {
         isLongTxtShown: false
     }
 
-    noPropagation = (clickEvent) => {
+    onEmail = (clickEvent,note) => {
         clickEvent.stopPropagation()
+        window.location.href = `index.html?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`
     } 
 
     onToggleDesc = (ev) => {
         ev.stopPropagation()
         this.setState(({ isLongTxtShown }) => ({ isLongTxtShown: !isLongTxtShown }))
-
     }
 
     render() {
@@ -49,10 +49,7 @@ export default class NotePreview extends React.Component {
                 <div className="note-actions flex space-around">
                     <button className="btn" onClick={(ev) => { this.props.onDeleteNote(ev, note.id) }}>Delete </button>
                     {/* todo URL encode JSON  */}
-                    <a className="btn note-to-mail" onClick={this.noPropagation} href={`/?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
-                    {/* <button onClick={()=>window.location.href = `index.html#/email?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}`}>email2</button> */}
-                    <button onClick={()=>window.location.href = "index.html#/email?noteType=Text"}>email2</button>
-                    <button onClick={()=>window.location.href = "index.html?noteType=Text/#/email"}>email3</button>
+                    <button className="btn note-to-mail"  onClick={(ev)=>this.onEmail(ev,note)}>Email</button>
 
                 </div>
             </article>

@@ -17,6 +17,7 @@ export default class NoteText extends React.Component {
             let emailText = `From ${emailObj.from} To ${emailObj.from} Subject:${emailObj.subject}  \n ${emailObj.body}`
             this.setState({ info: { txt: emailText } }, () => {
                 this.onAddNote()
+                window.location.href = `index.html#/keep`
             })
         }
         else {
@@ -29,14 +30,7 @@ export default class NoteText extends React.Component {
                 style: { backgroudColor, color }
             })
         }
-        console.log('or')
-        console.log(this.props.history)
-        // this.props.history.replaceState('keepapp', '/keep/')
-        // history.replaceState && history.replaceState(
-        //     null, '', location.pathname + location.search.replace(/[\?&]message=[^&]+/, '').replace(/^&/, '?') + location.hash
-        // );
-        // console.log(window.location)
-        // window.history.replaceState({}, document.title, window.location.origin +'/'+window.location.hash);
+
     }
 
     handleInput = ({ target }) => {

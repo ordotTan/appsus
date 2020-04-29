@@ -4,7 +4,7 @@ import NoteFilter from '../cmps/KeepCmps/NoteFilter.jsx'
 import NoteAdd from '../cmps/KeepCmps/NoteAdd.jsx'
 import NoteEdit from '../cmps/KeepCmps/NoteEdit.jsx'
 import keepService from '../services/keepService.js'
-import eventBusService from "../services/eventBusService"
+import eventBusService from "../services/eventBusService.js"
 
 
 
@@ -18,9 +18,6 @@ export default class KeepApp extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
-        // this.props.history.push('/keep')
-       // window.history.replaceState({}, document.title, "/index.html#/keep");
         eventBusService.emit('set-nav-state', 'keep')
         this.loadNotes()
     }
