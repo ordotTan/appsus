@@ -36,7 +36,7 @@ export default class SearchBar extends React.Component {
     };
 
     handleChange = ({ target }) => {
-
+// debugger
         const page = this.props.currApp;
 
         if (page === 'email') {
@@ -45,6 +45,10 @@ export default class SearchBar extends React.Component {
         };
         if (page === 'keep') {
             eventBusService.emit('filter-keep-by-text', target.value)
+            return
+        };
+        if (page === 'books') {
+            eventBusService.emit('filter-books', target.value)
             return
         };
     };

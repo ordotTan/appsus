@@ -5,16 +5,16 @@ export default function NavLinks(props) {
     return (
         <section className="nav-links">
             <NavLink exact to='/'>
-                <img className="home-main-nav" onClick={()=>{props.changePage('home')}} src="assets/imgs/logo-home.png" alt="appsus"/>
+                <img className="home-main-nav" src="assets/imgs/logo-home.png" alt="appsus"/>
             </NavLink>
             <NavLink exact to='/email'>
-            <img className="mail-main-nav" onClick={()=>{props.changePage('email')}} src="assets/imgs/logo-email.png" alt="email"/>
+            <img className="mail-main-nav" src="assets/imgs/logo-email.png" alt="email"/>
             </NavLink>
             <NavLink exact to='/keep'>
-            <img className="keep-main-nav" onClick={()=>{props.changePage('keep')}} src="assets/imgs/logo-keep.png" alt="keep"/>
+            <img className="keep-main-nav" src="assets/imgs/logo-keep.png" alt="keep"/>
             </NavLink>
             <NavLink exact to='/book'>
-            <img className="books-main-nav" onClick={()=>{props.changePage('books')}} src="assets/imgs/logo-books.png" alt="book"/>
+            <img className="books-main-nav" src="assets/imgs/logo-books.png" alt="book"/>
             </NavLink>
         </section>
     )

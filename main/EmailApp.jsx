@@ -48,9 +48,7 @@ export default class EmailApp extends React.Component {
             this.setState({ note: noteObj }, () => {
                 this.toggleCompositor()
             });
-         //   window.history.replaceState({}, document.title, "/index.html#/email");
         };
-        // window.history.replaceState({}, document.title, window.location.origin + window.location.hash);
     };
 
     componentWillUnmount() {
@@ -115,15 +113,22 @@ export default class EmailApp extends React.Component {
 
     submitMail = (from, to, subject, body) => {
         emailService.sendEmail(from, to, subject, body)
-        .then(sentMail => {
-            const sentSubject = sentMail.subject
-            const sentTo = sentMail.to
-            eventBusService.emit('user-msg', { header: sentSubject, body: 'sent to: ' + sentTo });
-            this.loadEmails();
-        }).catch(err => {
-            eventBusService.emit('user-msg', { header: err, body: 'This happens in 5 out of a 100 time' });
-        });
+            .then(sentMail => {
+                const sentSubject = sentMail.subject
+                const sentTo = sentMail.to
+                eventBusService.emit('user-msg', { header: sentSubject, body: 'sent to: ' + sentTo });
+                window.history.replaceState({}, document.title, "/index.html#/email");
+                this.loadEmails();
+            }).catch(err => {
+                eventBusService.emit('user-msg', { header: err, body: 'This happens in 5 out of a 100 time' });
+                window.history.replaceState({}, document.title, "/index.html#/email");
+            });
     };
+
+    sendToNotes = (ev, email) => {
+        ev.stopPropagation()
+        window.location.href = `index.html?email=${JSON.stringify(email)}#/note`
+    }
 
     deleteMail = (ev, emailId) => {
         ev.stopPropagation();
@@ -156,14 +161,15 @@ export default class EmailApp extends React.Component {
                 this.setUnreadCount();
                 this.loadEmails();
             });
+        window.history.replaceState({}, document.title, "/index.html#/email");
     };
 
     openEmail(emailId) {
         emailService.openEmail(emailId)
-        .then(res =>{
-            this.setUnreadCount();
-            this.loadEmails();
-        });
+            .then(res => {
+                this.setUnreadCount();
+                this.loadEmails();
+            });
     };
 
     toggleExpandEmail = (emailId) => {
@@ -189,7 +195,7 @@ export default class EmailApp extends React.Component {
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
-                {emails && <EmailsList emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.toggleExpandEmail} />}
+                {emails && <EmailsList sendToNotes={this.sendToNotes} emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.toggleExpandEmail} />}
                 {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
                 {expandEmail.isOpen && <EmailExpand email={expandEmail.email} toggleExpandEmail={this.toggleExpandEmail} toggleEmailStatus={this.toggleEmailStatus} deleteMail={this.deleteMail} />}
             </main>

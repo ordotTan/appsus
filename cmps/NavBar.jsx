@@ -3,6 +3,7 @@ import HomePageTitle from './HomePageTitle.jsx'
 import SearchBar from './SearchBar.jsx'
 import eventBusService from '../services/eventBusService.js';
 import EmailStatusFilter from './EmailCmps/EmailStatusFilter.jsx'
+import BooksPriceFilter from './BooksCmps/BooksPriceFilter.jsx'
 const { NavLink } = ReactRouterDOM;
 import { Fragment } from "react";
 
@@ -50,6 +51,7 @@ export default class NavBar extends React.Component {
                     <section className="nav-break-wide">
                         {(currApp != 'home') && <SearchBar currApp={this.state.currApp} />}
                         {(currApp === 'email') && <EmailStatusFilter />}
+                        {(currApp === 'books') && <BooksPriceFilter />}
                     </section>
                     <div ref={this.navToggleBtn} onClick={this.toggleNavLinks} className="nav-links-toggle-wrapper">
                         <img className="navlinks-toggle" src="assets/imgs/nav-icn-grey.png" alt="" />

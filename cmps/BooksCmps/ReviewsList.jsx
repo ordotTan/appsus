@@ -1,5 +1,5 @@
 import { Fragment } from "react"
-import utilService from "../../services/utilService"
+import utilService from "../../services/utilService.js"
 
 export default function ReviewsList(props) {
 

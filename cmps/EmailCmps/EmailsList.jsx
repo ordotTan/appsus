@@ -1,5 +1,4 @@
 import EmailPreview from './EmailPreview.jsx'
-import emailService from '../../services/emailService.js'
 import utilService from '../../services/utilService.js'
 
 export default function EmailsList(props) {
@@ -24,7 +23,7 @@ export default function EmailsList(props) {
                         }} className="sort">Date &nbsp;{up}{dn}</th>
                         <th className="th-unread">{`${props.unreadCount} Unread`}</th>
                     </tr>
-                    {props.emails.map(email => <EmailPreview openMail={props.openMail} email={email} key={utilService.makeId(4)} toggleEmailStatus={props.toggleEmailStatus} deleteMail={props.deleteMail} />)}
+                    {props.emails.map(email => <EmailPreview sendToNotes={props.sendToNotes} openMail={props.openMail} email={email} key={utilService.makeId(4)} toggleEmailStatus={props.toggleEmailStatus} deleteMail={props.deleteMail} />)}
                 </tbody>
             </table>
         </section>

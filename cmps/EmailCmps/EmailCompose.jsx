@@ -45,14 +45,15 @@ export default class EmailCompose extends React.Component {
             console.log('compositor got', note)
             if (note.noteType === 'NoteTxt') {
                 this.bodyInput.current.value = note.noteInfo.txt;
-            }
-            if (note.noteType === 'NoteTodos') {
+            } else if (note.noteType === 'NoteTodos') {
                 let listStr = ''
                 note.noteInfo.todos.forEach(todo => {
                     listStr += '- ' + todo.txt + '\n';
                 });
                 this.subjectInput.current.value = note.noteInfo.label;
                 this.bodyInput.current.value = listStr;
+            } else {
+                eventBusService.emit('uesr-msg', { header: 'Invalid note type!', body: 'Only text note and todos tones are supported' })
             };
         };
     };

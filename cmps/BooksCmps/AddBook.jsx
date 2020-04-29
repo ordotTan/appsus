@@ -1,7 +1,6 @@
 import booksService from '../../services/booksService.js'
 import FoundBooksList from './FoundBooksList.jsx'
-import BookAddedMsg from './BookAddedMsg.jsx'
-import { eventBus } from '../../services/eventBusService.js'
+import  eventBusService  from '../../services/eventBusService.js'
 
 export default class AddBook extends React.Component {
 
@@ -14,7 +13,7 @@ export default class AddBook extends React.Component {
         booksService.addGoogleBook(book);
         this.setState({ foundBooks: [], bookName: '' });
         this.props.refreshBooks();
-        eventBus.emit('show-added-book-msg', book);
+        eventBusService.emit('show-added-book-msg', book);
     }
 
     handleChange = ({ target }) => {
