@@ -111,7 +111,7 @@ export default class KeepApp extends React.Component {
                 <section className="screen" onClick={this.onToggleEditModal}></section>
                 <NoteFilter onSetFilter={this.onSetFilter} />
                 <h1>What do you want to <span>keep</span> today?</h1>
-                <NoteAdd history={history} onSaveNote={this.onSaveNote}></NoteAdd>
+                <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>
                 <h2>Pinned Items</h2>
                 {notes && <NoteListPinned onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}/>}
                 <h2>Other Items</h2>

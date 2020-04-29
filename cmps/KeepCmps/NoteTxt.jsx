@@ -17,6 +17,7 @@ export default class NoteText extends React.Component {
             let emailText = `From ${emailObj.from} To ${emailObj.from} Subject:${emailObj.subject}  \n ${emailObj.body}`
             this.setState({ info: { txt: emailText } }, () => {
                 this.onAddNote()
+                //todo - found a good way to clear the parms URLs
                // window.location.href = `index.html#/keep`
             })
         }
