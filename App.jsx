@@ -13,9 +13,9 @@ export class App extends React.Component {
 
     render() {
         return (
-            <Router history={history}>
-                <main>
-                    <NavBar />
+            <Router >
+                <main >
+                    <NavBar history={history} />
                     <UserMsg />
                     <Switch>
                         <Route component={BooksApp} path="/book" />

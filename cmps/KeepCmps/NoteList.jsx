@@ -4,7 +4,7 @@ export default function NoteList(props) {
     return (
         <div className="notes-list container">
             {props.notes.map(note => {
-                return !note.isPinned && <NotePreview 
+                return !note.isPinned && <NotePreview   history={history}
                     onDeleteNote={props.onDeleteNote}
                     onEditNote={props.onEditNote}
                     onTogglePin={props.onTogglePin}

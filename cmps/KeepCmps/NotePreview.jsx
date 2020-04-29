@@ -47,7 +47,7 @@ export default class NotePreview extends React.Component {
                 <div className="note-actions flex space-around">
                     <button className="btn" onClick={(ev) => { this.props.onDeleteNote(ev, note.id) }}>Delete </button>
                     {/* todo URL encode JSON  */}
-                    <a className="btn note-to-mail" onClick={this.noPropagation} href={`/?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
+                    <a className="btn note-to-mail" onClick={this.noPropagation} href={`appsus/?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
                 </div>
             </article>
 
