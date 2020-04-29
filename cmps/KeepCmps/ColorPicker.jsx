@@ -4,8 +4,8 @@ export default class ColorPicker extends React.Component {
         selectedColor:''
     }
 
-    toggle = () => {
-        console.log('toggled')
+    onSelectColor = (color) => {
+        this.setState({selectedColor:color})
     }
 
     render() {
@@ -22,8 +22,8 @@ export default class ColorPicker extends React.Component {
         return (
             <div className="color-picker flex align-center flex-start">
                 {colorsInfo.map(colorItem => 
-                    <div key ={colorItem.color} onClick={()=>{this.props.handleColorSelection(this.props.noteId,`${colorItem.color}`);this.toggle()}} 
-                    className={colorItem.class}></div>
+                    <div key ={colorItem.color} onClick={()=>{this.props.handleColorSelection(this.props.noteId,`${colorItem.color}`);this.onSelectColor(colorItem.color)}} 
+                    className={colorItem.class + (this.state.selectedColor === colorItem.color ? ' active':'')}></div>
                 )}
             </div>
         )
