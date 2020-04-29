@@ -46,7 +46,7 @@
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     margin: 35px 20px;
-    min-width: 365px;
+    /* width: 90vw; */
 }
 
 .email .emails-list-container table td {
@@ -62,25 +62,25 @@
 }
 
 .email .emails-list-container .td-from-to {
-    width: 200px;
+    width: 12vw;
 }
 
 .email .emails-list-container .td-subject {
-    width: 520px;
+    width: 31vw;
 }
 
 .email .emails-list-container .td-body {
-    width: 900px;
+    width: 40vw;
 }
 
 .email .emails-list-container .td-date {
-    width: 160px;
-    min-width: 80px;
+    width: 7vw;
 }
 
 .email .emails-list-container .td-btns {
     display: flex;
     align-items: center;
+    width: 10vw;
 }
 
 .email .emails-list-container .td-btns svg {

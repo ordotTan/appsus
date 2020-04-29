@@ -18,7 +18,7 @@ export default function EmailsList(props) {
                         <th onClick={()=>{
                             props.setSort('subject')
                         }} className="sort">Subject &nbsp;{up}{dn}</th>
-                        <th>Message</th>
+                        <th className="th-message">Message</th>
                         <th onClick={()=>{
                             props.setSort('date')
                         }} className="sort">Date &nbsp;{up}{dn}</th>
