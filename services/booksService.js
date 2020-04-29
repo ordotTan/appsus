@@ -543,7 +543,7 @@ function addGoogleBook(book) {
         }
     };
     books.unshift(newBook);
-    storageService.store(STORAGE_KEY, gBooks);
+    storageService.store(STORAGE_KEY, books);
 }
 
 function addReview(bookId, review, fullName, rate, date) {
