@@ -80,7 +80,6 @@
 .email .emails-list-container .td-btns {
     display: flex;
     align-items: center;
-    width: 10vw;
 }
 
 .email .emails-list-container .td-btns svg {

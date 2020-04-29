@@ -1,0 +1,379 @@
+@import url('helpers.css');
+
+.header .active {
+    color: #e6e156;
+    text-decoration: underline;
+}
+
+.main-container {
+    text-align: center;
+}
+
+.header {
+    color: rgb(246, 240, 227);
+    width: 100vw;
+    background-color: white;
+    color: #56cde6;
+    font-family: anton;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 5px #000000d9;
+}
+
+.link {
+    color: #56cde6;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+.home-page-container h1 {
+    text-shadow: 1px 1px 3px black;
+    color: #2f3f32;
+    text-decoration: underline;
+}
+
+.home-page-container img {
+    margin-top: 25px;
+    width: 700px;
+}
+
+.about-container h1 {
+    color: #2f3f32;
+    text-decoration: underline;
+}
+
+.about-container img {
+    width: 500px;
+}
+
+.about-container p {
+    width: 600px;
+    margin-top: 60px;
+    margin-bottom: 70px;
+    color: black
+}
+
+.about-container .clock {
+    color: #2f3f32;
+    font-size: 15px;
+}
+
+.about-container .time {
+    color: #2f3f32;
+    font-size: 30px;
+}
+
+.book-list {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: 1fr;
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+    width: 100%;
+}
+
+.add-book-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-search {
+    margin-bottom: 20px;
+}
+
+.found-books {
+    position: absolute;
+    top: 85px;
+    width: 700px;
+    background-color: white;
+    border: 1px solid rgb(189, 189, 189);
+    list-style: none;
+    text-align: left;
+    padding: 10px 0px 10px 10px;
+}
+
+.found-books li:hover {
+    background-color: rgb(47, 63, 50);
+    color: white;
+    cursor: pointer;
+}
+
+.add-book-container input {
+    height: 21px;
+    width: 400px;
+}
+
+.book-preview {
+    background-color: rgb(246, 240, 227);
+    box-shadow: 3px 3px 6px 0px #0000001f;
+    border: 2px solid rgb(177, 177, 177);
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 170px;
+    height: 330px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 10px;
+    grid-column: auto / span 1;
+    grid-row: auto / span 1;
+    transition: .3s;
+}
+
+.book-preview:hover {
+    background-color: rgb(211, 206, 197);
+    box-shadow: none;
+}
+
+.book-preview p {
+    margin: 10px 0;
+}
+
+.book-preview img {
+    height: 180px;
+    margin-top: 20px;
+    box-shadow: 3px 1px 6px #000000cc;
+}
+
+.red-book-price {
+    color: red;
+}
+
+.green-book-price {
+    color: green;
+}
+
+.book-details-container button {
+    margin-bottom: 15px;
+}
+
+.book-details-container {
+    display: flex;
+    background-color: rgb(246, 240, 227);
+    box-shadow: 3px 3px 6px 0px #0000001f;
+    border: 2px solid rgb(177, 177, 177);
+    border-radius: 10px;
+    padding: 15px;
+    width: 800px;
+}
+
+.books-details-nav {
+    color: rgb(47, 63, 50);
+    padding: 0 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.books-details-nav h3 {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.book-details {
+    min-height: 680px;
+    width: 470px;
+}
+
+.book-details h1 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.book-details h3 {
+    margin: 15px 0;
+}
+
+.book-details-img {
+    width: 330px;
+    box-shadow: 2px 2px 7px #00000091;
+}
+
+.book-details .sale-img {
+    position: absolute;
+    width: 130px;
+    right: 50%;
+    top: 170px;
+}
+
+.books-details-page button {
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 5px;
+    width: 150px;
+    border: 1px solid rgb(246, 240, 227);
+    color: rgb(246, 240, 227);
+    background-color: rgb(47, 63, 50);
+}
+
+.book-desc p {
+    margin: 0 auto;
+    color: blue;
+}
+
+.book-desc span {
+    color: blue;
+    cursor: pointer;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 500px;
+    min-height: 680px;
+    align-items: center;
+    margin-top: 35px;
+}
+
+.reviews-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews-container label {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 15px 0 5px 0;
+    text-decoration: underline;
+}
+
+.reviews-container .review-input {
+    max-width: 340px;
+    max-height: 160px;
+    min-width: 200px;
+    min-height: 65px;
+}
+
+.reviews-container .submit-btn {
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: .87rem;
+    padding: 5px;
+    width: 70px;
+    border: 1px solid rgb(246, 240, 227);
+    color: rgb(246, 240, 227);
+    background-color: rgb(47, 63, 50);
+}
+
+.reviews-list {
+    margin-top: 25px;
+    margin-left: 5px;
+}
+
+.reviews-list .review-item {
+    margin-top: 15px;
+}
+
+.reviews-list h5, p {
+    margin: 0;
+}
+
+.reviews-list h5 {
+    margin-inline-end: 7px;
+    font-size: .75rem;
+}
+
+.reviews-list p {
+    margin-bottom: 15px;
+}
+
+.reviews-list .review-info span {
+    color: rgb(55, 87, 105);
+}
+
+.reviews-list .review-info {
+    text-align: left;
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.reviews-list .the-review {
+    text-align: left;
+}
+
+.book-added-msg-container {
+    background-color: rgb(246, 240, 227);
+    box-shadow: 3px 3px 6px 0px #0000001f;
+    border: 2px solid rgb(177, 177, 177);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 105px;
+    padding: 20px;
+    z-index: 1;
+    width: 500px;
+    height: 500px;
+}
+
+.book-added-msg-container h4, h1 {
+    margin: 0 0;
+    margin-right: -20px;
+}
+
+
+
+.book-added-msg-container img {
+    margin-top: 25px;
+    height: 360px;;
+    margin-right: -20px;
+        box-shadow: 3px 2px 4px #000000b5;
+}
+
+.book-added-msg-container p {
+    margin-right: -20px;
+    margin-top: 40px;
+    color: blue;
+    cursor: pointer;
+}
+
+.book-added-msg-container button {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    font-weight: bolder;
+    font-size: 30px;
+    position: relative;
+    float: right;
+    margin-top: -40px;
+    padding: 0;
+}
+
+.darken-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-space-between {
+    justify-content: space-between;
+}

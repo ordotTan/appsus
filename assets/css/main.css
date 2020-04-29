@@ -1,5 +1,5 @@
 @import url("keepApp.css");
-@import url("bookApp.css");
+@import url("BooksApp.css");
 @import url("emailApp.css");
 @font-face {
     font-family: anton;
@@ -409,13 +409,7 @@ footer {
     .email .emails-list-container .td-body {
         display: none;
     }
-    .email .td-btns {
-        flex-direction: column;
-    }
-    .email .email-preview .td-btns svg {
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
+
 }
 
 @media (max-width: 565px) {
@@ -427,5 +421,15 @@ footer {
     }
     .nav-break-narrow .search-bar-container .search-bar {
         width: 80vw;
+    }
+    .email .td-btns {
+        flex-direction: column;
+    }
+    .email .email-preview .td-btns svg {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .email table {
+        /* display: none; */
     }
 }
