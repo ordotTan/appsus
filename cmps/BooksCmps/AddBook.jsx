@@ -40,7 +40,7 @@ export default class AddBook extends React.Component {
         return (
             <section className="add-book-container">
                 <div className="book-search">
-                    <input type="text" placeholder="Search Book" value={this.state.bookName} onChange={this.handleChange} />
+                    <input type="text" placeholder="Search google for books to add" value={this.state.bookName} onChange={this.handleChange} />
                 </div>
                 {(foundBooks.length > 0) && <FoundBooksList foundBooks={foundBooks} onAddBook={this.onAddBook}/>}
             </section>

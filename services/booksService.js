@@ -454,30 +454,40 @@ export default {
     addReview
 };
 
-function query(filterBy) {
-    debugger
+function query(filterByTxt, filterByPrice) {
     var storedBooks = storageService.load(STORAGE_KEY)
 
     if (!storedBooks) {
         storageService.store(STORAGE_KEY, gBooks)
-        return gBooks;
+        return Promise.resolve(gBooks);
     }
 
     gBooks = storedBooks;
 
-    if (!filterBy) return Promise.resolve(gBooks);
-    else {
-        var { title, maxPrice, minPrice } = filterBy;
-        minPrice = minPrice ? minPrice : 0
-        maxPrice = maxPrice ? maxPrice : Infinity;
+    if (!filterByTxt && !filterByPrice) return Promise.resolve(gBooks);
 
-        if (title) {
-            return Promise.resolve(gBooks.filter(book => book.title.includes(title)
-                && (book.listPrice.amount < maxPrice) && (book.listPrice.amount > minPrice)))
+    let booksByPrice;
+    let fullyFiltered;
+    let minPrice;
+    let maxPrice;
 
-        } else return Promise.resolve(gBooks.filter(book => (book.listPrice.amount < maxPrice)
-            && (book.listPrice.amount > minPrice)))
+    if (filterByPrice) {
+        minPrice = (filterByPrice.minPrice) ? filterByPrice.minPrice : 0;
+        maxPrice = (filterByPrice.maxPrice) ? filterByPrice.maxPrice : Infinity;
+    } else {
+        minPrice = 0;
+        maxPrice = Infinity;
     };
+
+
+    booksByPrice = gBooks.filter(book => (book.listPrice.amount < maxPrice)
+        && (book.listPrice.amount > minPrice));
+
+    if (filterByTxt) {
+        fullyFiltered = booksByPrice.filter(book => book.title.toLowerCase().includes(filterByTxt.toLowerCase()))
+        return Promise.resolve(fullyFiltered);
+    }
+    return Promise.resolve(booksByPrice)
 };
 
 function getById(bookId) {
