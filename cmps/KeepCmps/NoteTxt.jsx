@@ -29,7 +29,8 @@ export default class NoteText extends React.Component {
                 style: { backgroudColor, color }
             })
         }
-       // console.log(this.props.history)
+        console.log('or')
+        console.log(this.props.history)
         // this.props.history.replaceState('keepapp', '/keep/')
         // history.replaceState && history.replaceState(
         //     null, '', location.pathname + location.search.replace(/[\?&]message=[^&]+/, '').replace(/^&/, '?') + location.hash

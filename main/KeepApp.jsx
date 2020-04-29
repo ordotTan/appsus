@@ -18,8 +18,9 @@ export default class KeepApp extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props)
-        this.props.history.push('/keep')
+        console.log(this.props)
+        // this.props.history.push('/keep')
+       // window.history.replaceState({}, document.title, "/index.html#/keep");
         eventBusService.emit('set-nav-state', 'keep')
         this.loadNotes()
     }
