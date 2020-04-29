@@ -29,7 +29,7 @@ export default class UserMsg extends React.Component {
                     <h3>{msg.header}</h3>
                     <p>{msg.body}</p>
                 </section>
-                <div class='dark-screen'></div>
+                {/* <div className='dark-screen'></div> */}
             </React.Fragment>
     }
 }

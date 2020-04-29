@@ -3,11 +3,6 @@ import keepService from '../../services/keepService.js'
 
 export default class NoteText extends React.Component {
 
-    constructor() {
-        super();
-        this.formNameInput = React.createRef();
-    }
-
     state = {
         info: { txt: '', id: '' },
         style: { backgroundColor: '', color: '' }
@@ -25,7 +20,6 @@ export default class NoteText extends React.Component {
             })
         }
         else {
-            this.formNameInput.current.focus()
             txt = this.props.note ? this.props.note.info.txt : ''
             let id = this.props.note ? this.props.note.id : ''
             let backgroudColor = this.props.note ? this.props.note.style.backgroundColor : ''
@@ -35,7 +29,8 @@ export default class NoteText extends React.Component {
                 style: { backgroudColor, color }
             })
         }
-        window.history.replaceState({}, document.title, "/index.html#/keep");
+        console.log(window.location)
+        window.history.replaceState({}, document.title, window.location.origin + window.location.hash);
     }
 
     handleInput = ({ target }) => {
@@ -69,9 +64,9 @@ export default class NoteText extends React.Component {
 
         const { txt } = this.state.info
         return (<div>
-            <form className="form" onSubmit={this.onAddNote}>
-                <input type="text" placeholder="Your Text" name="txt" value={txt} onChange={this.handleInput} ref={this.formNameInput}></input>
-                <button className="btn">Save Note</button>
+            <form className="form flex justify-center align-center" onSubmit={this.onAddNote}>
+                <input type="text" placeholder="Your Text" name="txt" value={txt} onChange={this.handleInput}></input>
+                <button className="btn save-note">Save Note</button>
             </form>
         </div>
         )

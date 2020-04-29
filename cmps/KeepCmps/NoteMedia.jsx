@@ -3,11 +3,6 @@ import keepService from '../../services/keepService.js'
 
 export default class NoteMedia extends React.Component {
 
-    constructor() {
-        super();
-        this.formNameInput = React.createRef();
-    }
-
     state = {
         info: { title: '', url: '', id: '' },
         style: { backgroundColor: '', color: '' }
@@ -15,7 +10,6 @@ export default class NoteMedia extends React.Component {
 
 
     componentDidMount() {
-        this.formNameInput.current.focus()
         const title = this.props.note ? this.props.note.info.title : ''
         const url = this.props.note ? this.props.note.info.url : ''
         const id = this.props.note ? this.props.note.id : ''
@@ -60,10 +54,10 @@ export default class NoteMedia extends React.Component {
         const placeholderTitle = (this.props.noteType === 'NoteImg') ? 'Image Title' : 'Video title'
         const placeholderUrl = (this.props.noteType === 'NoteImg') ? 'Image URL' : 'Video URL (Youtube)'
         return (<div>
-            <form className="form" onSubmit={this.onAddNote}>
-                <input type="text" placeholder={placeholderTitle} name="title" value={title} onChange={this.handleInput} ref={this.formNameInput}></input>
+            <form className="flex justify-center align-center" onSubmit={this.onAddNote}>
+                <input type="text" placeholder={placeholderTitle} name="title" value={title} onChange={this.handleInput}></input>
                 <input type="text" placeholder={placeholderUrl} name="url" value={url} onChange={this.handleInput}></input>
-                <button className="btn">Save Note</button>
+                <button className="btn save-note">Save Note</button>
             </form>
         </div>
         )

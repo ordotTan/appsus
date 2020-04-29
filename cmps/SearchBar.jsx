@@ -53,7 +53,7 @@ export default class SearchBar extends React.Component {
         const { placeHolderVal } = this.state
         return (
             <div className="search-bar-container">
-                <img src="/assets/imgs/icn-search.png" alt="" />
+                <img src="assets/imgs/icn-search.png" alt="" />
                 <input onChange={this.handleChange} className="search-bar" type="text" placeholder={`Search ${placeHolderVal}`} />
             </div>
         )

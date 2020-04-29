@@ -1,10 +1,16 @@
+.keep {
+    font-family: 'Comic Neue', cursive;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 .keep .screen {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     cursor: pointer;
     visibility: hidden;
     opacity: 0;
@@ -17,7 +23,7 @@
     opacity: 1;
 }
 
-.keep h4,h2 {
+.keep h4, h2 {
     margin: 0;
 }
 
@@ -29,10 +35,10 @@
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: unset;
-    
 }
 
 /* todo */
+
 .keep .notes-list {
     display: flex;
     flex-wrap: wrap;
@@ -46,9 +52,9 @@
 
 .keep .note-preview {
     background-color: lightgoldenrodyellow;
-    margin:10px;
-    padding:10px;
-    border:1px solid black;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
     cursor: pointer;
     border-radius: 15px;
     transition: 0.3s;
@@ -57,16 +63,16 @@
 
 .keep .note-preview:hover {
     /* opacity: 0.7; */
-    box-shadow: 0px 0px 5px 10px rgba(70,71,45,1);
-
+    box-shadow: 0px 0px 5px 10px rgba(70, 71, 45, 1);
 }
 
 .keep .note-actions {
-    margin-top:10px
+    margin-top: 10px
 }
+
 .keep .note-to-mail {
     padding: 3px;
-    margin-left:10px
+    margin-left: 10px
 }
 
 .keep .note-preview .note-header {
@@ -76,49 +82,44 @@
 /* Header */
 
 .keep h1 span {
-    color:#e6e155;
+    color: #e6e155;
 }
 
 /* Add note */
-
 
 .keep .add-note img {
     width: 50px;
     cursor: pointer;
     margin: 20px;
-     opacity: 0.2;
+    opacity: 0.2;
 }
 
-.keep .add-note img.active{
+.keep .add-note img.active {
     cursor: pointer;
     opacity: 1;
 }
+
 .keep .add-note img:hover {
     opacity: 0.7;
 }
 
-.keep .add-note-form{
-    text-align: center;
+
+.keep .add-note-form input {
+    font-size: 1rem;
+    width: 220px;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 4px;
 }
 
-.keep .edit-note{
-    text-align: left;
-}
-
-
-.keep .add-note-form input{
-   font-size: 1rem;
-   width: 200px;
-   margin: 10px;
-   border-radius: 5px;
-   padding: 4px;
+.keep .add-note-form .todo-input {
+    width: 130px;
 }
 
 .keep form label {
     font-weight: 800;
     font-size: 1.3rem;
 }
-
 
 .keep .btn {
     cursor: pointer;
@@ -127,21 +128,27 @@
     font-size: 1rem;
     color: black;
     background-color: #eae519e0;
-
 }
 
-.keep .btn:hover{
+.keep .btn:hover {
     opacity: 0.7;
 }
 
+.keep .btn.save-note {
+    font-weight: 1000;
+    background-color:#fcfb6afa;
+    box-shadow: inset 0px 0px 4px 1px rgba(0,0,0,0.79);
+}
+
+
+
 .keep .add-todo {
     background-color: #eae519e0;
-    padding: 2px;
+    padding: 1.7px;
     font-size: 1.05rem;
     margin-left: 10px;
     margin-right: 10px;
 }
-
 
 .keep .todo-done {
     color: brown;
@@ -153,17 +160,16 @@
     display: block;
     z-index: 2;
     border: 3px solid black;
-    background-color:#eedfa7;
+    background-color: #eedfa7;
     border-radius: 10px;
-    top:30%;
+    top: 30%;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
+    width: 450px;
     left: 0;
     right: 0;
     padding: 15px;
-    box-shadow: 2px 3px 15px 13px rgba(0,0,0,0.75);
-
+    box-shadow: 2px 3px 15px 13px rgba(0, 0, 0, 0.75);
 }
 
 .keep .close-edit-note {
@@ -173,7 +179,6 @@
     padding: 1px;
     background-color: gray;
 }
-
 
 .keep .remove-todo {
     padding: 3px;
@@ -189,23 +194,26 @@
 
 .keep .todo-list li {
     margin: 4px;
-    width:350px
+    width: 350px
 }
 
 .keep .todo-list .todo-item {
     cursor: pointer;
-    font-size:1.2rem;
+    font-size: 1.2rem;
 }
 
-
 .keep .note-pin {
-    width:30px
+    width: 30px;
+    transition: 0.3s;
+}
+
+.keep .note-pin:hover {
+    width: 35px
 }
 
 .keep .note-img img {
-    width:100px
+    width: 100px
 }
-
 
 .keep .note-movie {
     position: relative;
@@ -227,19 +235,24 @@
     padding: 15px;
     border-radius: 50%;
     margin: 3px;
-    /* opacity: 0.7; */
-    border: 1px solid black;
     cursor: pointer;
+    transition: 0.3s;
 }
 
+.keep .color-picker .color-item.active {
+    border: 2px solid brown;
+}
+
+.keep .color-picker .color-item:hover {
+    box-shadow: 0px 0px 12px 10px rgba(0, 0, 0, 0.25);
+}
 
 .keep .color-picker .color-item.color0 {
     background-color: lightgoldenrodyellow;
-   
 }
+
 .keep .color-picker .color-item.color1 {
     background-color: #EAE519;
-   
 }
 
 .keep .color-picker .color-item.color2 {
@@ -263,7 +276,7 @@
 }
 
 .keep .color-picker .color-item.black {
-    background-color:black;
+    background-color: black;
 }
 
 .keep .icon {
@@ -275,4 +288,37 @@
 
 .keep .icon.active {
     opacity: 1;
+}
+
+@media (max-width: 740px) {
+    .keep form {
+        flex-direction: column;
+    }
+
+    .keep .todos-form form {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .keep .add-note-form .todo-input  {
+        margin: 3px;
+        width: 100px;
+    }
+
+    .keep .add-todo {
+        margin: 4px;
+    }
+
+    .keep .todo-list li {
+        width: 270px
+    }
+
+    .keep .edit-note {
+        text-align: left;
+        top: 10%;
+        width: 350px;
+
+    }
+
 }

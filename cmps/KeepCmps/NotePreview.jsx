@@ -24,7 +24,7 @@ export default class NotePreview extends React.Component {
         };
         return (
             <article style={noteStyle} className='note-preview flex column space-between align-center' onClick={() => { this.props.onEditNote(note) }}>
-                <img onClick={(ev) => this.props.onTogglePin(ev, note.id)} className="note-pin" src={`../../assets/imgs/${pin_src}`}></img>
+                <img onClick={(ev) => this.props.onTogglePin(ev, note.id)} className="note-pin" src={`assets/imgs/${pin_src}`}></img>
                 {note.type === 'NoteTxt' &&  <LongText txtLimit={20} text={note.info.txt} isLongTxtShown={this.state.isLongTxtShown} onToggleDesc={this.onToggleDesc}></LongText>} 
                 {note.type === 'NoteTodos' &&
                     <div>
@@ -47,7 +47,7 @@ export default class NotePreview extends React.Component {
                 <div className="note-actions flex space-around">
                     <button className="btn" onClick={(ev) => { this.props.onDeleteNote(ev, note.id) }}>Delete </button>
                     {/* todo URL encode JSON  */}
-                    <a className="btn note-to-mail" onClick={this.noPropagation} href={`/index.html?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
+                    <a className="btn note-to-mail" onClick={this.noPropagation} href={`/?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`}>Email</a>
                 </div>
             </article>
 

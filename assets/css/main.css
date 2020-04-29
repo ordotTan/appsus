@@ -23,7 +23,9 @@ body {
 .dark-screen {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.70);
-    position: fixed;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
     top: 0px;
     left: 0px;
     height: 100vh;
@@ -247,6 +249,13 @@ body {
     padding-right: 4px;
 }
 
+footer {
+    margin-top: 50px;
+    border-top:2px solid rgb(187, 187, 187);
+    text-align: center;
+    padding: 10px;
+}
+
 /* General helpers */
 
 .hidden {
@@ -375,9 +384,11 @@ body {
     }
 }
 
+
 @media (max-width: 740px) {
     .nav-bar-container .logo {
         margin-right: -60px;
+        width: 250px;
     }
     .home-container img {
         width: 70vw;
