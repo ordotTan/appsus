@@ -4,7 +4,7 @@ export default function NavLinks(props) {
 
     return (
         <section className="nav-links">
-            <NavLink to='/'>
+            <NavLink exact to='/'>
                 <img className="home-main-nav" onClick={()=>{props.changePage('home')}} src="assets/imgs/logo-home.png" alt="appsus"/>
             </NavLink>
             <NavLink to='/email'>

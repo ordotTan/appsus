@@ -43,7 +43,7 @@ export default class NavBar extends React.Component {
         return (
             <React.Fragment>
                 <nav className="nav-bar-container">
-                    <NavLink to='/'>
+                    <NavLink exact to='/'>
                         <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
                     </NavLink>
                         {(currApp === 'home') && <HomePageTitle />}
