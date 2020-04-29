@@ -49,7 +49,7 @@ export default class EmailApp extends React.Component {
                 this.toggleCompositor()
             });
         };
-        window.history.replaceState({}, document.title, window.location.origin + window.location.hash);
+        // window.history.replaceState({}, document.title, window.location.origin + window.location.hash);
     };
 
     componentWillUnmount() {
