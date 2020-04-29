@@ -1,3 +1,5 @@
+/* General & Layout */
+
 .keep {
     font-family: 'Comic Neue', cursive;
     margin-left: 20px;
@@ -23,21 +25,27 @@
     opacity: 1;
 }
 
-.keep h4, h2 {
-    margin: 0;
-}
-
-.keep a {
-    text-decoration: none;
-}
-
 .keep .container {
     max-width: 1200px;
     margin: 0 auto;
     box-sizing: unset;
 }
 
-/* todo */
+/* BASICS */
+
+.keep h4, h2 {
+    margin: 0;
+}
+
+.keep h1 span {
+    color: #e6e155;
+}
+
+.keep a {
+    text-decoration: none;
+}
+
+/* Notes Gallery */
 
 .keep .notes-list {
     display: flex;
@@ -58,11 +66,9 @@
     cursor: pointer;
     border-radius: 15px;
     transition: 0.3s;
-    /* //width: 100%; */
 }
 
 .keep .note-preview:hover {
-    /* opacity: 0.7; */
     box-shadow: 0px 0px 5px 10px rgba(70, 71, 45, 1);
 }
 
@@ -78,11 +84,6 @@
     margin: 5px;
 }
 
-/* Header */
-
-.keep h1 span {
-    color: #e6e155;
-}
 
 /* Add note */
 
@@ -102,7 +103,6 @@
     opacity: 0.7;
 }
 
-
 .keep .add-note-form input {
     font-size: 1rem;
     width: 220px;
@@ -120,6 +120,8 @@
     font-size: 1.3rem;
 }
 
+/* Buttons */
+
 .keep .btn {
     cursor: pointer;
     border-radius: 10px;
@@ -135,24 +137,10 @@
 
 .keep .btn.save-note {
     font-weight: 1000;
-    background-color:#fcfb6afa;
-    box-shadow: inset 0px 0px 4px 1px rgba(0,0,0,0.79);
+    background-color: #fcfb6afa;
 }
 
-
-
-.keep .add-todo {
-    background-color: #eae519e0;
-    padding: 1.7px;
-    font-size: 1.05rem;
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.keep .todo-done {
-    color: brown;
-    text-decoration: line-through;
-}
+/* Edit note modal */
 
 .keep .edit-note {
     position: fixed;
@@ -171,12 +159,19 @@
     box-shadow: 2px 3px 15px 13px rgba(0, 0, 0, 0.75);
 }
 
-.keep .close-edit-note {
-    cursor: pointer;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 1px;
-    background-color: gray;
+/* To-Dos list */
+
+.keep .add-todo {
+    background-color: #eae519e0;
+    padding: 1.7px;
+    font-size: 1.05rem;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.keep .todo-done {
+    color: brown;
+    text-decoration: line-through;
 }
 
 .keep .remove-todo {
@@ -200,6 +195,8 @@
     cursor: pointer;
     font-size: 1.2rem;
 }
+
+/* Note Preview */
 
 .keep .note-pin {
     width: 30px;
@@ -229,6 +226,8 @@
     border-radius: 10px;
     border: 1px solid black;
 }
+
+/* Color Picker Component*/
 
 .keep .color-picker .color-item {
     padding: 15px;
@@ -289,35 +288,30 @@
     opacity: 1;
 }
 
+/* Media query */
+
 @media (max-width: 740px) {
     .keep form {
         flex-direction: column;
     }
-
     .keep .todos-form form {
         flex-direction: row;
         align-items: center;
         justify-content: center;
     }
-
-    .keep .add-note-form .todo-input  {
+    .keep .add-note-form .todo-input {
         margin: 3px;
         width: 100px;
     }
-
     .keep .add-todo {
         margin: 4px;
     }
-
     .keep .todo-list li {
         width: 270px
     }
-
     .keep .edit-note {
         text-align: left;
         top: 10%;
         width: 350px;
-
     }
-
 }
