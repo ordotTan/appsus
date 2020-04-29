@@ -52,8 +52,8 @@
 
 .keep .note-preview {
     background-color: lightgoldenrodyellow;
-    margin: 10px;
-    padding: 10px;
+    margin: 5px;
+    padding: 5px;
     border: 1px solid black;
     cursor: pointer;
     border-radius: 15px;
@@ -211,7 +211,7 @@
 }
 
 .keep .note-img img {
-    width: 100px
+    width: 200px
 }
 
 .keep .note-movie {
