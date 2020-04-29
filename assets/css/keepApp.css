@@ -1,4 +1,5 @@
 .keep {
+    font-family: 'Comic Neue', cursive;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -202,7 +203,12 @@
 }
 
 .keep .note-pin {
-    width: 30px
+    width: 30px;
+    transition: 0.3s;
+}
+
+.keep .note-pin:hover {
+    width: 35px
 }
 
 .keep .note-img img {

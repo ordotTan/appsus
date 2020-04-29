@@ -247,6 +247,13 @@ body {
     padding-right: 4px;
 }
 
+footer {
+    margin-top: 50px;
+    border-top:2px solid rgb(187, 187, 187);
+    text-align: center;
+    padding: 10px;
+}
+
 /* General helpers */
 
 .hidden {
@@ -375,6 +382,7 @@ body {
         flex-direction: column;
     }
 }
+
 
 @media (max-width: 740px) {
     .nav-bar-container .logo {
