@@ -4,6 +4,7 @@ import SearchBar from './SearchBar.jsx'
 import eventBusService from '../services/eventBusService.js';
 import EmailStatusFilter from './EmailCmps/EmailStatusFilter.jsx'
 const { NavLink } = ReactRouterDOM;
+import { Fragment } from "react";
 
 
 export default class NavBar extends React.Component {
@@ -40,21 +41,26 @@ export default class NavBar extends React.Component {
         const { isNavLinksOpen, currApp, } = this.state
 
         return (
-
-            <nav className="nav-bar-container">
-                <div className="nav-bar-dynamic">
+            <React.Fragment>
+                <nav className="nav-bar-container">
                     <NavLink to='/'>
                         <img className="logo" src={`assets/imgs/logo-${currApp}.png`} />
                     </NavLink>
+                        {(currApp === 'home') && <HomePageTitle />}
+                    <section className="nav-break-wide">
+                        {(currApp != 'home') && <SearchBar currApp={this.state.currApp} />}
+                        {(currApp === 'email') && <EmailStatusFilter />}
+                    </section>
+                    <div ref={this.navToggleBtn} onClick={this.toggleNavLinks} className="nav-links-toggle-wrapper">
+                        <img className="navlinks-toggle" src="assets/imgs/nav-icn-grey.png" alt="" />
+                    </div>
+                    {isNavLinksOpen && <NavLinks changePage={this.changePage} />}
+                </nav>
+                <section className="nav-break-narrow">
                     {(currApp != 'home') && <SearchBar currApp={this.state.currApp} />}
                     {(currApp === 'email') && <EmailStatusFilter />}
-                    {(currApp === 'home') && <HomePageTitle />}
-                </div>
-                <div ref={this.navToggleBtn} onClick={this.toggleNavLinks} className="nav-links-toggle-wrapper">
-                    <img className="navlinks-toggle" src="assets/imgs/nav-icn-grey.png" alt="" />
-                </div>
-                {isNavLinksOpen && <NavLinks changePage={this.changePage} />}
-            </nav>
+                </section>
+            </React.Fragment>
         )
     }
 }

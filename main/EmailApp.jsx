@@ -41,12 +41,14 @@ export default class EmailApp extends React.Component {
         let noteType = urlParams.get('noteType');
         let noteInfo = urlParams.get('noteInfo');
         if (noteType) {
-            console.log('url got', noteType, JSON.parse(noteInfo))
-            let noteObj = JSON.parse(note);
+            let noteObj = {
+                noteType,
+                noteInfo: JSON.parse(noteInfo)
+            };
             this.setState({ note: noteObj }, () => {
                 this.toggleCompositor()
-            })
-        }
+            });
+        };
         window.history.replaceState({}, document.title, "/index.html#/email");
     };
 
@@ -111,18 +113,38 @@ export default class EmailApp extends React.Component {
     };
 
     submitMail = (from, to, subject, body) => {
-        emailService.sendEmail(from, to, subject, body);
-        this.loadEmails();
+        emailService.sendEmail(from, to, subject, body)
+        .then(sentMail => {
+            const sentSubject = sentMail.subject
+            const sentTo = sentMail.to
+            eventBusService.emit('user-msg', { header: sentSubject, body: 'sent to: ' + sentTo });
+            this.loadEmails();
+        }).catch(err => {
+            eventBusService.emit('user-msg', { header: err, body: 'This happens in 5 out of a 100 time' });
+        });
     };
 
     deleteMail = (ev, emailId) => {
         ev.stopPropagation();
-        this.toggleExpandEmail();
-        emailService.deleteMail(emailId)
-            .then(res => {
-                this.setUnreadCount();
-                this.loadEmails();
-            });
+
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#56e674',
+            cancelButtonColor: '#e65656',
+            confirmButtonText: 'Yes, delete email'
+        }).then((result) => {
+            if (result.value) {
+                this.toggleExpandEmail();
+                emailService.deleteMail(emailId)
+                    .then(res => {
+                        this.setUnreadCount();
+                        this.loadEmails();
+                        eventBusService.emit('user-msg', { header: 'Email Deleted', body: 'This email was deleted' });
+                    });
+            };
+        });
     };
 
     toggleEmailStatus = (ev, emailId) => {

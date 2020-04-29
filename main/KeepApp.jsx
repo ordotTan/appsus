@@ -40,8 +40,8 @@ export default class KeepApp extends React.Component {
             title: 'Are you sure?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
+            confirmButtonColor: '#56e674',
+            cancelButtonColor: '#e65656',
             confirmButtonText: 'Yes, delete note'
         }).then((result) => {
             if (result.value) {

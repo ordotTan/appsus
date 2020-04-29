@@ -1,6 +1,6 @@
+import eventBusService from "../../services/eventBusService.js";
+
 export default class EmailCompose extends React.Component {
-
-
 
     constructor() {
         super();
@@ -20,10 +20,19 @@ export default class EmailCompose extends React.Component {
         const to = this.toInput.current.value
         const subject = this.subjectInput.current.value
         const body = this.bodyInput.current.value
+        
+        if (to === '') {
+            this.alertUser()
+            return;
+        };
 
         this.props.submitMail(to, subject, body)
         this.props.toggleCompositor();
     };
+
+    alertUser() {
+        eventBusService.emit('user-msg', { header: 'No recipient!', body: 'Please specify at least one recipient' });
+    }
 
     onCloseComposer = () => {
         this.props.toggleCompositor();
@@ -32,12 +41,21 @@ export default class EmailCompose extends React.Component {
     setNoteValues() {
 
         const { note } = this.props
-
         if (note) {
             console.log('compositor got', note)
-            this.bodyInput.current.value = note.info.txt;
+            if (note.noteType === 'NoteTxt') {
+                this.bodyInput.current.value = note.noteInfo.txt;
+            }
+            if (note.noteType === 'NoteTodos') {
+                let listStr = ''
+                note.noteInfo.todos.forEach(todo => {
+                    listStr += '- ' + todo.txt + '\n';
+                });
+                this.subjectInput.current.value = note.noteInfo.label;
+                this.bodyInput.current.value = listStr;
+            };
         };
-    }
+    };
 
     render() {
 
@@ -51,6 +69,7 @@ export default class EmailCompose extends React.Component {
                     <input ref={this.fromInput} type="text" value="From: Daniel Goldfine" readOnly />
                     <input ref={this.toInput} type="text" placeholder="To" />
                     <input ref={this.subjectInput} type="text" placeholder="Subject" />
+                    {/* <textarea className="body-input" ref={this.bodyInput} type="text" placeholder="Your Message">{this.state.linebreak}</textarea> */}
                     <textarea className="body-input" ref={this.bodyInput} type="text" placeholder="Your Message"></textarea>
                     <input className="submit" type="submit" value="Send" />
                 </form>
