@@ -23,9 +23,9 @@ export default class NoteAdd extends React.Component {
             <div className="add-note">
                 <div className="add-note flex justify-center align-center">
                     <img className={(inputType ==='NoteTxt')?"active":''} src="assets/imgs/note_text.png" name="NoteTxt" onClick={this.handleInput}></img>
-                    <img className={(inputType ==='NoteTodos')?"active":''} src="../../assets/imgs/note_list.png" name="NoteTodos" onClick={this.handleInput}></img>
-                    <img className={(inputType ==='NoteImg')?"active":''} src="../../assets/imgs/note_img.png" name="NoteImg" onClick={this.handleInput}></img>
-                    <img className={(inputType ==='NoteVideo')?"active":''} src="../../assets/imgs/note_video.png" name="NoteVideo" onClick={this.handleInput}></img>
+                    <img className={(inputType ==='NoteTodos')?"active":''} src="assets/imgs/note_list.png" name="NoteTodos" onClick={this.handleInput}></img>
+                    <img className={(inputType ==='NoteImg')?"active":''} src="assets/imgs/note_img.png" name="NoteImg" onClick={this.handleInput}></img>
+                    <img className={(inputType ==='NoteVideo')?"active":''} src="assets/imgs/note_video.png" name="NoteVideo" onClick={this.handleInput}></img>
                 </div>
 
                 <div className="add-note-form">
