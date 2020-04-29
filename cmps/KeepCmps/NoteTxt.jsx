@@ -29,7 +29,7 @@ export default class NoteText extends React.Component {
                 style: { backgroudColor, color }
             })
         }
-        window.history.replaceState({}, document.title, "/#/keep");
+        // window.history.replaceState({}, document.title, "/#/keep");
     }
 
     handleInput = ({ target }) => {
