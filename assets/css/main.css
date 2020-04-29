@@ -23,7 +23,7 @@ body {
 .dark-screen {
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.70);
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     height: 100vh;
@@ -344,18 +344,11 @@ body {
     .nav-break-narrow .email-status-filter input {
         width: 75px;
     }
-    .email .td-btns {
-        flex-direction: column;
-    }
-    .email .email-preview .td-btns svg {
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
     .email .mail-expanded {
-        max-width: 500px;
+        max-width: 800px;
     }
-    .email  .mail-window-container {
-        max-width: 500px;
+    .email .mail-window-container {
+        max-width: 800px;
     }
 }
 
@@ -374,6 +367,12 @@ body {
         display: flex;
         flex-direction: column;
     }
+    .email .mail-expanded {
+        max-width: 700px;
+    }
+    .email .mail-window-container {
+        max-width: 700px;
+    }
 }
 
 @media (max-width: 740px) {
@@ -382,5 +381,40 @@ body {
     }
     .home-container img {
         width: 70vw;
+    }
+    .email .mail-expanded {
+        max-width: 90vw;
+    }
+    .email .mail-window-container {
+        max-width: 90vw;
+        position: fixed;
+        margin: 0 auto;
+        left: 0px;
+        right: 0px;
+    }
+    .email .emails-list-container .th-message {
+        display: none;
+    }
+    .email .emails-list-container .td-body {
+        display: none;
+    }
+    .email .td-btns {
+        flex-direction: column;
+    }
+    .email .email-preview .td-btns svg {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 565px) {
+    .nav-break-narrow {
+        flex-direction: column;
+    }
+    .nav-break-narrow .email-status-filter {
+        margin-inline-start: 0;
+    }
+    .nav-break-narrow .search-bar-container .search-bar {
+        width: 80vw;
     }
 }
