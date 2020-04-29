@@ -19,7 +19,7 @@ export default function EmailsList(props) {
     if (sortBy === 'from' && !order) fromUp = 'sort-active'
     if (sortBy === 'from' && order) fromDn = 'sort-active'
     if (sortBy === 'subject' && !order) subjectUp = 'sort-active'
-    if (sortBy === 'subject' && order) subjectDn = 'sort-active'
+    if (sortBy === 'subject' && order) subjecDn = 'sort-active'
     if (sortBy === 'date' && !order) dateUp = 'sort-active'
     if (sortBy === 'date' && order) dateDn = 'sort-active'
 
