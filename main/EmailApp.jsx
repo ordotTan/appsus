@@ -48,7 +48,7 @@ export default class EmailApp extends React.Component {
             this.setState({ note: noteObj }, () => {
                 this.toggleCompositor()
             });
-            window.history.replaceState({}, document.title, "/index.html#/email");
+         //   window.history.replaceState({}, document.title, "/index.html#/email");
         };
         // window.history.replaceState({}, document.title, window.location.origin + window.location.hash);
     };
