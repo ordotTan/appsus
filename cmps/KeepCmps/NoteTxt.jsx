@@ -29,9 +29,9 @@ export default class NoteText extends React.Component {
                 style: { backgroudColor, color }
             })
         }
-        console.log('or')
-        console.log(window.location)
-        window.history.replaceState({}, document.title, window.location.origin +'/'+window.location.hash);
+        // console.log('or')
+        // console.log(window.location)
+        // window.history.replaceState({}, document.title, window.location.origin +'/'+window.location.hash);
     }
 
     handleInput = ({ target }) => {
