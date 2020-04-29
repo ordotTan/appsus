@@ -117,7 +117,6 @@ export default class EmailApp extends React.Component {
                 const sentSubject = sentMail.subject
                 const sentTo = sentMail.to
                 eventBusService.emit('user-msg', { header: sentSubject, body: 'sent to: ' + sentTo });
-                window.history.replaceState({}, document.title, "/index.html#/email");
                 this.loadEmails();
             }).catch(err => {
                 eventBusService.emit('user-msg', { header: err, body: 'This happens in 5 out of a 100 time' });
