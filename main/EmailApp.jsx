@@ -188,12 +188,12 @@ export default class EmailApp extends React.Component {
 
     render() {
 
-        const { emails, isComposing, unreadCount, note, expandEmail } = this.state;
+        const { emails, isComposing, unreadCount, note, expandEmail, sort } = this.state;
 
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
-                {emails && <EmailsList sendToNotes={this.sendToNotes} emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.toggleExpandEmail} />}
+                {emails && <EmailsList sort={sort} sendToNotes={this.sendToNotes} emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.toggleExpandEmail} />}
                 {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
                 {expandEmail.isOpen && <EmailExpand email={expandEmail.email} toggleExpandEmail={this.toggleExpandEmail} toggleEmailStatus={this.toggleEmailStatus} deleteMail={this.deleteMail} />}
             </main>

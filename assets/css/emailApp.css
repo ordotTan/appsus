@@ -61,6 +61,10 @@
     cursor: pointer;
 }
 
+.email .sort-active {
+    color: #e65656;
+}
+
 .email .emails-list-container .td-from-to {
     width: 12vw;
 }
