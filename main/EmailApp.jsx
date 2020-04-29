@@ -37,7 +37,10 @@ export default class EmailApp extends React.Component {
         this.setUnreadCount();
         this.loadEmails();
 
+        console.log(window.location.search)
         const urlParams = new URLSearchParams(window.location.search);
+        console.log('Email params:',urlParams)
+        console.log(urlParams.get('noteType'))
         let noteType = urlParams.get('noteType');
         let noteInfo = urlParams.get('noteInfo');
         if (noteType) {
