@@ -1,6 +1,6 @@
 import booksService from '../../services/booksService.js'
 import BookList from '../../cmps/BooksCmps/BookList.jsx'
-import AddBook from '../../cmps/BooksCmps/addBook.jsx'
+import AddBook from '../../cmps/BooksCmps/AddBook.jsx'
 import BookAddedMsg from '../../cmps/BooksCmps/BookAddedMsg.jsx'
 import eventBusService from '../../services/eventBusService.js'
 
