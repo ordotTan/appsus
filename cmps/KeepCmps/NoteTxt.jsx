@@ -1,7 +1,7 @@
 
 import keepService from '../../services/keepService.js'
 
-export default class NoteText extends React.Component {
+export default class NoteTxt extends React.Component {
 
     state = {
         info: { txt: '', id: '' },

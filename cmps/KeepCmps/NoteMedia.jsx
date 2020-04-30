@@ -36,7 +36,7 @@ export default class NoteMedia extends React.Component {
 
     onAddNote = (ev) => {
         ev.preventDefault()
-        const title = (this.props.noteType === 'NoteImg') ? 'Image Title' : 'Video title'
+        const title = (this.props.noteType === 'NoteImg') ? '' : ''
         keepService.add(this.state.info, this.state.style, this.props.noteType)
             .then(note => {
                 this.setState({

@@ -44,7 +44,7 @@ export default class NoteTodos extends React.Component {
         keepService.add(this.state.info, this.state.style, 'NoteTodos')
             .then(note => {
                 this.setState({
-                    info: { label: 'My Todos', txt: '', todos: [] }
+                    info: { label: '', txt: '', todos: [] }
                 })
                 this.props.onSaveNote(note)
             })

@@ -1,4 +1,4 @@
-import NoteText from './NoteTxt.jsx'
+import NoteTxt from './NoteTxt.jsx'
 import NoteTodos from './NoteTodos.jsx'
 import NoteStyle from './NoteStyle.jsx'
 import NoteMedia from './NoteMedia.jsx'
@@ -10,7 +10,7 @@ export default class NoteEdit extends React.Component {
             <div className="edit-note add-note-form">
                 {/* <span className="close-edit-note" onClick={this.props.onCloseEditMode}>Close</span> */}
                 {(this.props.note.type === 'NoteTxt') &&
-                    <NoteText note={this.props.note} onSaveNote={this.props.onSaveNote} />}
+                    <NoteTxt note={this.props.note} onSaveNote={this.props.onSaveNote} />}
                 {(this.props.note.type === 'NoteTodos') &&
                     <NoteTodos note={this.props.note} onSaveNote={this.props.onSaveNote} />}
                 {(this.props.note.type === 'NoteImg') &&

@@ -1,11 +1,17 @@
 
-import NoteText from './NoteTxt.jsx'
+import NoteTxt from './NoteTxt.jsx'
 import NoteTodos from './NoteTodos.jsx'
 import NoteMedia from './NoteMedia.jsx'
 
 export default class NoteAdd extends React.Component {
     state = {
-        inputType: '',
+        inputType: 'NoteTxt',
+        cmps: {
+            'NoteTxt': NoteTxt,
+            'NoteTodos': NoteTodos,
+            'NoteImg': NoteMedia,
+            'NoteVideo': NoteMedia,
+        }
     }
 
     componentDidMount() {
@@ -19,6 +25,7 @@ export default class NoteAdd extends React.Component {
     }
     render() {
         const { inputType } = this.state
+        const FormCmp = this.state.cmps[inputType]
         return (
             <div className="add-note">
                 <div className="add-note flex total-center">
@@ -29,10 +36,7 @@ export default class NoteAdd extends React.Component {
                 </div>
 
                 <div className="add-note-form">
-                    {(inputType === 'NoteTxt') && <NoteText onSaveNote={this.props.onSaveNote} />}
-                    {(inputType === 'NoteTodos') && <NoteTodos onSaveNote={this.props.onSaveNote} />}
-                    {(inputType === 'NoteImg') && <NoteMedia noteType='NoteImg' onSaveNote={this.props.onSaveNote} />}
-                    {(inputType === 'NoteVideo') && <NoteMedia  noteType='NoteVideo' onSaveNote={this.props.onSaveNote} />}
+                    <FormCmp noteType={inputType} onSaveNote={this.props.onSaveNote} />
                 </div>
             </div>
         )
