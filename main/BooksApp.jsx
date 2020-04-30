@@ -23,9 +23,9 @@ export default class BooksApp extends React.Component {
                     <header className="header">
                         <h1>MissBooks</h1>
                         <nav>
-                            <NavLink className="link" to='/book'>Home</NavLink>
-                            <NavLink className="link" to='/book/books'>Books</NavLink>
-                            <NavLink className="link" to='/book/about'>About</NavLink>
+                            <NavLink exact className="link" to='/book'>Home</NavLink>
+                            <NavLink exact className="link" to='/book/books'>Books</NavLink>
+                            <NavLink exact className="link" to='/book/about'>About</NavLink>
                         </nav>
                     </header>
                     <Route exact component={BookDetails} path="/book/books/:bookId" />

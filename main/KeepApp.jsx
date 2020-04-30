@@ -1,8 +1,8 @@
 import NoteList from '../cmps/KeepCmps/NoteList.jsx'
-import NoteListPinned from '../cmps/KeepCmps/NoteListPinned.jsx'
 import NoteFilter from '../cmps/KeepCmps/NoteFilter.jsx'
 import NoteAdd from '../cmps/KeepCmps/NoteAdd.jsx'
 import NoteEdit from '../cmps/KeepCmps/NoteEdit.jsx'
+
 import keepService from '../services/keepService.js'
 import eventBusService from "../services/eventBusService.js"
 
@@ -51,11 +51,6 @@ export default class KeepApp extends React.Component {
                         eventBusService.emit('user-msg', { header: 'Note got deleted', body: 'Shame... That\'s was a good note!' })
                         this.setState({ selectedNote: null, editMode: false })
                     })
-                // Swal.fire( // if we want to use swal modal msg
-                //     'Cleared!',
-                //     'Book removed',
-                //     'success'
-                // )
             }
         })
     }
@@ -112,10 +107,10 @@ export default class KeepApp extends React.Component {
                 <NoteFilter onSetFilter={this.onSetFilter} />
                 <h1>What do you want to <span>keep</span> today?</h1>
                 <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>
-                <h2>Pinned Items</h2>
-                {notes && <NoteListPinned onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}/>}
-                <h2>Other Items</h2>
-                {notes && <NoteList onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}/>}
+                <h2>Pinned Notes</h2>
+                {notes && <NoteList pinned={true} onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}/>}
+                <h2>Other Notes</h2>
+                {notes && <NoteList pinned={false} onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin}/>}
                 {this.state.editMode && <NoteEdit note={this.state.selectedNote} onSaveNote={this.onSaveNote} onCloseEditMode={this.onCloseEditMode} onSetBackgroundColor={this.onSetBackgroundColor} onSetFontColor={this.onSetFontColor} />}
 
             </div>

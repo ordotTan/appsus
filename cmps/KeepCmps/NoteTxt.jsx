@@ -52,7 +52,7 @@ export default class NoteText extends React.Component {
         keepService.add(this.state.info, this.state.style, 'NoteTxt')
             .then(note => {
                 this.setState({
-                    info: { txt: 'My Note' }
+                    info: { txt: '' }
                 })
                 this.props.onSaveNote(note)
             })
@@ -65,8 +65,8 @@ export default class NoteText extends React.Component {
 
         const { txt } = this.state.info
         return (<div>
-            <form className="form flex justify-center align-center" onSubmit={this.onAddNote}>
-                <input type="text" placeholder="Your Text" name="txt" value={txt} onChange={this.handleInput}></input>
+            <form className="form flex total-center" onSubmit={this.onAddNote}>
+                <input className="text-input" type="text" placeholder="Your Text" name="txt" value={txt} onChange={this.handleInput}></input>
                 <button className="btn save-note">Save Note</button>
             </form>
         </div>

@@ -26,10 +26,10 @@ export default class UserMsg extends React.Component {
                     <button className="close-user-msg" onClick={() => {
                         this.setState({ msg: null })
                     }}>X</button>
-                    <h3>{msg.header}</h3>
+                    <h3>{msg.header} ddd</h3>
                     <p>{msg.body}</p>
                 </section>
-                <div className='dark-screen'></div>
+                {/* <div className='dark-screen'></div> */}
             </React.Fragment>
     }
 }

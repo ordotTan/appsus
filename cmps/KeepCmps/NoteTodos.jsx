@@ -112,7 +112,7 @@ export default class NoteTodos extends React.Component {
         const { label, txt } = this.state.info
         return (
             <div className="todos-form flex column">
-                <form className="form flex justify-center align-center" onSubmit={this.onAddNote}>
+                <form className="form flex total-center" onSubmit={this.onAddNote}>
                     <input className="todo-input" type="text" placeholder="List Name" name="label" value={label} onChange={this.handleInput}></input>
                     <input className="todo-input" placeholder="Todo Text" ref={this.todoInput} type="text" name="txt" value={txt} onChange={this.handleInput}></input>
                     <span className="btn add-todo" onClick={this.addTodoItem}>Add Todo</span>

@@ -1,11 +1,11 @@
 import eventBusService from "../../services/eventBusService.js"
 
+
+
 export default class NoteFilter extends React.Component {
     state = {
-        filter: {
-            txt: ''
-        }
-    }
+        txt: ''
+      };
 
     componentDidMount() {
         this.removeEventBus = eventBusService.on('filter-keep-by-text', (txt) => {
@@ -18,11 +18,12 @@ export default class NoteFilter extends React.Component {
     }
 
     handleChange = (txt) => {
-        this.setState(prevState => (
-            { filter: { ...prevState.filter, txt } }), () => { // this will run the onSetFilter for every input change
-                this.props.onSetFilter(this.state.filter)
-            })
-    }
+        this.setState({ txt }, () => {
+          // this will run the onSetFilter for every input change
+          this.props.onSetFilter(this.state);
+        });
+      };
+
     render() {
         return null
     }

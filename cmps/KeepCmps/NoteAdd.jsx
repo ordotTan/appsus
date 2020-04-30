@@ -21,7 +21,7 @@ export default class NoteAdd extends React.Component {
         const { inputType } = this.state
         return (
             <div className="add-note">
-                <div className="add-note flex justify-center align-center">
+                <div className="add-note flex total-center">
                     <img className={(inputType ==='NoteTxt')?"active":''} src="assets/imgs/note_text.png" name="NoteTxt" onClick={this.handleInput}></img>
                     <img className={(inputType ==='NoteTodos')?"active":''} src="assets/imgs/note_list.png" name="NoteTodos" onClick={this.handleInput}></img>
                     <img className={(inputType ==='NoteImg')?"active":''} src="assets/imgs/note_img.png" name="NoteImg" onClick={this.handleInput}></img>

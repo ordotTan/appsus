@@ -105,7 +105,7 @@
 
 .keep .add-note-form input {
     font-size: 1rem;
-    width: 220px;
+    width: 175px;
     margin: 10px;
     border-radius: 5px;
     padding: 4px;
@@ -113,6 +113,10 @@
 
 .keep .add-note-form .todo-input {
     width: 130px;
+}
+
+.keep .add-note-form .text-input {
+    width: 300px;
 }
 
 .keep form label {

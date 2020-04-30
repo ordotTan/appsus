@@ -35,7 +35,7 @@ export default class NotePreview extends React.Component {
 
                     </div>}
                 {note.type === 'NoteImg' &&
-                    <div className="note-img flex column justify-center align-center">
+                    <div className="note-img flex column total-center">
                         <h2 className="note-header">{note.info.title}</h2>
                         <img src={note.info.url}></img>
                     </div>}

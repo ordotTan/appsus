@@ -54,7 +54,7 @@ export default class NoteMedia extends React.Component {
         const placeholderTitle = (this.props.noteType === 'NoteImg') ? 'Image Title' : 'Video title'
         const placeholderUrl = (this.props.noteType === 'NoteImg') ? 'Image URL' : 'Video URL (Youtube)'
         return (<div>
-            <form className="flex justify-center align-center" onSubmit={this.onAddNote}>
+            <form className="flex total-center" onSubmit={this.onAddNote}>
                 <input type="text" placeholder={placeholderTitle} name="title" value={title} onChange={this.handleInput}></input>
                 <input type="text" placeholder={placeholderUrl} name="url" value={url} onChange={this.handleInput}></input>
                 <button className="btn save-note">Save Note</button>

@@ -278,6 +278,11 @@ footer {
     flex-direction: column;
 }
 
+.flex.total-center {
+    justify-content: center;
+    align-items: center;
+}
+
 .flex.justify-center {
     justify-content: center;
 }
