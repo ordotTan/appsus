@@ -31,12 +31,7 @@ export default class NavBar extends React.Component {
         this.setState(prevState => ({
             isNavLinksOpen: !prevState.isNavLinksOpen
         }))
-    }
-
-    changePage = (page) => {
-        this.navToggleBtn.current.classList.remove('nav-active');
-        this.setState({ isNavLinksOpen: false })
-    }
+    };
 
     render() {
         const { isNavLinksOpen, currApp, } = this.state
@@ -56,7 +51,7 @@ export default class NavBar extends React.Component {
                     <div ref={this.navToggleBtn} onClick={this.toggleNavLinks} className="nav-links-toggle-wrapper">
                         <img className="navlinks-toggle" src="assets/imgs/nav-icn-grey.png" alt="" />
                     </div>
-                    {isNavLinksOpen && <NavLinks changePage={this.changePage} />}
+                    {isNavLinksOpen && <NavLinks toggleNavLinks={this.toggleNavLinks} />}
                 </nav>
                 <section className="nav-break-narrow">
                     {(currApp != 'home') && <SearchBar currApp={this.state.currApp} />}
