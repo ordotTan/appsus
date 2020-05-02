@@ -43,7 +43,7 @@ export default class NotePreview extends React.Component {
                     <div className="note-img">
                         <h2 className="note-header">{note.info.title}</h2>
                         <div className="note-movie">
-                            <iframe src={`https://www.youtube.com/embed/${note.info.url.substring(note.info.url.indexOf('=') + 1)}`}></iframe>
+                            <iframe width="400" height="215" src={`https://www.youtube.com/embed/${note.info.url.substring(note.info.url.indexOf('=') + 1)}`}></iframe>
                         </div>
                     </div>}
                 <div className="note-actions flex space-around">

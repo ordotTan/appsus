@@ -48,28 +48,30 @@
 /* Notes Gallery */
 
 .keep .notes-list {
+    column-count: 4;
+    column-gap: 30px;
+    text-align: center;
+}
+
+/* .keep .notes-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* padding-top: 10px;
-    column-count: 4;
-    text-align: center;
-    width: 95%;
-    margin-bottom: 15px; */
-}
+}  */
 
 .keep .note-preview {
     background-color: lightgoldenrodyellow;
-    margin: 5px;
-    padding: 5px;
+    padding: 10px;
     border: 1px solid black;
     cursor: pointer;
     border-radius: 15px;
     transition: 0.3s;
+    break-inside: avoid;
+    margin-bottom: 20px;
 }
 
 .keep .note-preview:hover {
-    box-shadow: 0px 0px 5px 10px rgba(70, 71, 45, 1);
+    box-shadow: inset 0px 0px 5px 5px rgba(70, 71, 45, 1);
 }
 
 .keep .note-actions {
@@ -82,8 +84,8 @@
 
 .keep .note-preview .note-header {
     margin: 5px;
+    text-align: center;
 }
-
 
 /* Add note */
 
@@ -212,23 +214,30 @@
 }
 
 .keep .note-img img {
-    width: 200px
+    width: 200px;
+    border-radius: 15px
 }
 
 .keep .note-movie {
-    position: relative;
-    overflow: hidden;
-    padding-top: 100%;
+    /* position: relative; */
+    /* overflow: hidden; */
+    /* padding-top: 100%; */
 }
 
 .keep .note-movie iframe {
-    position: absolute;
+    width: 100%;
+    /* position: relative;
+   
+    border-radius: 15px;
+    transform: translate3d(0,0,0); 
+    z-index:10; */
+    /* position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    border: 1px solid black;
+    border: 1px solid black; */
 }
 
 /* Color Picker Component*/
@@ -294,7 +303,17 @@
 
 /* Media query */
 
+@media (max-width: 950px) {
+    .keep .notes-list {
+        column-count:3 ;
+    }
+}
+
 @media (max-width: 740px) {
+    .keep .notes-list {
+        column-count: 2;
+    }
+
     .keep form {
         flex-direction: column;
     }
@@ -317,5 +336,10 @@
         text-align: left;
         top: 10%;
         width: 350px;
+    }
+}
+@media (max-width: 600px) {
+    .keep .notes-list {
+        column-count:1 ;
     }
 }
