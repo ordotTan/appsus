@@ -8,7 +8,9 @@ export default function NoteList(props) {
                     onDeleteNote={props.onDeleteNote}
                     onEditNote={props.onEditNote}
                     onTogglePin={props.onTogglePin}
-                    key={note.id} note={note} />
+                    key={note.id} note={note} 
+                    history={props.history}
+                    />
             }
 
             )}

@@ -9,7 +9,8 @@ export default class NotePreview extends React.Component {
 
     onEmail = (clickEvent,note) => {
         clickEvent.stopPropagation()
-        window.location.href = `index.html?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`
+            this.props.history.push(`/email/?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}`)
+        // window.location.href = `index.html?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}#/email`
     } 
 
     onToggleDesc = (ev) => {
@@ -18,6 +19,7 @@ export default class NotePreview extends React.Component {
     }
 
     render() {
+       //.history)
         const note = this.props.note
         const pin_src = note.isPinned ? 'pin_pinned.png' : 'pin_unpin.png'
         const noteStyle = {

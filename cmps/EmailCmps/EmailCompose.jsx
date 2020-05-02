@@ -25,7 +25,7 @@ export default class EmailCompose extends React.Component {
             this.alertUser()
             return;
         };
-
+        this.props.history.push('/email'); 
         this.props.submitMail(to, subject, body)
         this.props.toggleCompositor();
     };
@@ -35,6 +35,7 @@ export default class EmailCompose extends React.Component {
     }
 
     onCloseComposer = () => {
+        this.props.history.push('/email'); 
         this.props.toggleCompositor();
     };
 
@@ -42,7 +43,7 @@ export default class EmailCompose extends React.Component {
 
         const { note } = this.props
         if (note) {
-            console.log('compositor got', note)
+            // console.log('compositor got', note)
             if (note.noteType === 'NoteTxt') {
                 this.bodyInput.current.value = note.noteInfo.txt;
             } else if (note.noteType === 'NoteTodos') {

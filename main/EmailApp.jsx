@@ -37,7 +37,7 @@ export default class EmailApp extends React.Component {
         this.setUnreadCount();
         this.loadEmails();
 
-        const urlParams = new URLSearchParams(window.location.search);
+        const urlParams = new URLSearchParams(this.props.location.search);
         let noteType = urlParams.get('noteType');
         let noteInfo = urlParams.get('noteInfo');
         if (noteType) {
@@ -185,15 +185,15 @@ export default class EmailApp extends React.Component {
             });
     };
 
-    render() {
-
+    render() { 
+        const { history } = this.props;
         const { emails, isComposing, unreadCount, note, expandEmail, sort } = this.state;
 
         return (
             <main className="email">
                 <EmailSidebar toggleCompositor={this.toggleCompositor} />
                 {emails && <EmailsList sort={sort} sendToNotes={this.sendToNotes} emails={emails} unreadCount={unreadCount} setSort={this.setSort} deleteMail={this.deleteMail} toggleEmailStatus={this.toggleEmailStatus} openMail={this.toggleExpandEmail} />}
-                {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} />}
+                {isComposing && <EmailCompose note={note} submitMail={this.submitMail} toggleCompositor={this.toggleCompositor} history={history}/>}
                 {expandEmail.isOpen && <EmailExpand email={expandEmail.email} toggleExpandEmail={this.toggleExpandEmail} toggleEmailStatus={this.toggleEmailStatus} deleteMail={this.deleteMail} />}
             </main>
         );
