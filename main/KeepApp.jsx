@@ -18,6 +18,7 @@ export default class KeepApp extends React.Component {
     }
 
     componentDidMount() {
+       // console.log ('url params:',this.props.location.search)
         eventBusService.emit('set-nav-state', 'keep')
         this.loadNotes()
     }
@@ -108,7 +109,7 @@ export default class KeepApp extends React.Component {
                 <section className="screen" onClick={this.onToggleEditModal}></section>
                 <NoteFilter onSetFilter={this.onSetFilter} />
                 <h1>What do you want to <span>keep</span> today?</h1>
-                <NoteAdd onSaveNote={this.onSaveNote}></NoteAdd>
+                <NoteAdd onSaveNote={this.onSaveNote} history={history} urlParams={this.props.location.search} ></NoteAdd>
                 <h2>Pinned Notes</h2>
                 {notes && <NoteList pinned={true} onDeleteNote={this.onDeleteNote} onEditNote={this.onEditNote} notes={notes} onTogglePin={this.onTogglePin} history={history}/>}
                 <h2>Other Notes</h2>

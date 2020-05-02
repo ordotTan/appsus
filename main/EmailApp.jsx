@@ -125,7 +125,7 @@ export default class EmailApp extends React.Component {
 
     sendToNotes = (ev, email) => {
         ev.stopPropagation()
-        window.location.href = `index.html?email=${JSON.stringify(email)}#/keep`
+        this.props.history.push(`/keep?email=${JSON.stringify(email)}`)
     }
 
     deleteMail = (ev, emailId) => {

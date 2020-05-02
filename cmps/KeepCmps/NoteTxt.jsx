@@ -10,16 +10,17 @@ export default class NoteTxt extends React.Component {
 
     componentDidMount() {
         let txt
-        const urlParams = new URLSearchParams(window.location.search);
-        let email = urlParams.get('email');
-        if (email) {
-            let emailObj = JSON.parse(email)
-            let emailText = `From ${emailObj.from} To ${emailObj.from} Subject:${emailObj.subject}  \n ${emailObj.body}`
-            this.setState({ info: { txt: emailText } }, () => {
-                this.onAddNote()
-                //todo - found a good way to clear the parms URLs
-               // window.location.href = `index.html#/keep`
-            })
+        if (this.props.urlParams) {
+            const urlParams = new URLSearchParams(this.props.urlParams);
+            let email = urlParams.get('email');
+            if (email) {
+                let emailObj = JSON.parse(email)
+                let emailText = `From ${emailObj.from} To ${emailObj.from} Subject:${emailObj.subject}  \n ${emailObj.body}`
+                this.setState({ info: { txt: emailText } }, () => {
+                    this.onAddNote()
+                })
+            }
+            this.props.history.push('/keep');
         }
         else {
             txt = this.props.note ? this.props.note.info.txt : ''

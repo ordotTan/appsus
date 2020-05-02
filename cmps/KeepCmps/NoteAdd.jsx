@@ -36,7 +36,7 @@ export default class NoteAdd extends React.Component {
                 </div>
 
                 <div className="add-note-form">
-                    <FormCmp noteType={inputType} onSaveNote={this.props.onSaveNote} />
+                    <FormCmp noteType={inputType} onSaveNote={this.props.onSaveNote} history={this.props.history}  urlParams={this.props.urlParams} />
                 </div>
             </div>
         )
