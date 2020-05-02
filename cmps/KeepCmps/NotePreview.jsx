@@ -7,10 +7,10 @@ export default class NotePreview extends React.Component {
         isLongTxtShown: false
     }
 
-    onEmail = (clickEvent,note) => {
+    onEmail = (clickEvent, note) => {
         clickEvent.stopPropagation()
         this.props.history.push(`/email/?noteInfo=${JSON.stringify(note.info)}&noteType=${note.type}`)
-    } 
+    }
 
     onToggleDesc = (ev) => {
         ev.stopPropagation()
@@ -27,7 +27,7 @@ export default class NotePreview extends React.Component {
         return (
             <article style={noteStyle} className='note-preview flex column space-between align-center' onClick={() => { this.props.onEditNote(note) }}>
                 <img onClick={(ev) => this.props.onTogglePin(ev, note.id)} className="note-pin" src={`assets/imgs/${pin_src}`}></img>
-                {note.type === 'NoteTxt' &&  <LongText txtLimit={20} text={note.info.txt} isLongTxtShown={this.state.isLongTxtShown} onToggleDesc={this.onToggleDesc}></LongText>} 
+                {note.type === 'NoteTxt' && <LongText txtLimit={20} text={note.info.txt} isLongTxtShown={this.state.isLongTxtShown} onToggleDesc={this.onToggleDesc}></LongText>}
                 {note.type === 'NoteTodos' &&
                     <div>
                         <h2>{note.info.label}</h2>
@@ -43,13 +43,13 @@ export default class NotePreview extends React.Component {
                     <div className="note-img">
                         <h2 className="note-header">{note.info.title}</h2>
                         <div className="note-movie">
-                            <iframe width="400" height="215" src={`https://www.youtube.com/embed/${note.info.url.substring(note.info.url.indexOf('=') + 1)}`}></iframe>
+                            <iframe width="100%" height="215" src={`https://www.youtube.com/embed/${note.info.url.substring(note.info.url.indexOf('=') + 1)}`}></iframe>
                         </div>
                     </div>}
                 <div className="note-actions flex space-around">
                     <button className="btn" onClick={(ev) => { this.props.onDeleteNote(ev, note.id) }}>Delete </button>
                     {/* Todo - URL encode JSON to properly pass url params  */}
-                    <button className="btn note-to-mail"  onClick={(ev)=>this.onEmail(ev,note)}>Email</button>
+                    <button className="btn note-to-mail" onClick={(ev) => this.onEmail(ev, note)}>Email</button>
 
                 </div>
             </article>

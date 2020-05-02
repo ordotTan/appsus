@@ -46,18 +46,20 @@
 }
 
 /* Notes Gallery */
-
-.keep .notes-list {
+/*There is a chrome-related bug with column-count propery and using iframes, so flex is used instead..*/
+/* https://stackoverflow.com/questions/30166414/iframes-escaping-css-columns-in-chrome */
+/* .keep .notes-list {
+    column-fill: auto;
     column-count: 4;
     column-gap: 30px;
     text-align: center;
-}
+} */
 
-/* .keep .notes-list {
+.keep .notes-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-}  */
+} 
 
 .keep .note-preview {
     background-color: lightgoldenrodyellow;
@@ -68,6 +70,7 @@
     transition: 0.3s;
     break-inside: avoid;
     margin-bottom: 20px;
+    margin-left: 10px;
 }
 
 .keep .note-preview:hover {
@@ -214,30 +217,12 @@
 }
 
 .keep .note-img img {
-    width: 200px;
+    width: 300px;
     border-radius: 15px
 }
 
-.keep .note-movie {
-    /* position: relative; */
-    /* overflow: hidden; */
-    /* padding-top: 100%; */
-}
-
 .keep .note-movie iframe {
-    width: 100%;
-    /* position: relative;
-   
-    border-radius: 15px;
-    transform: translate3d(0,0,0); 
-    z-index:10; */
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    border: 1px solid black; */
+   border-radius: 15px;
 }
 
 /* Color Picker Component*/
@@ -303,16 +288,16 @@
 
 /* Media query */
 
-@media (max-width: 950px) {
+/* @media (max-width: 950px) {
     .keep .notes-list {
-        column-count:3 ;
+        column-count: 3;
     }
 }
-
+*/
 @media (max-width: 740px) {
-    .keep .notes-list {
+    /* .keep .notes-list {
         column-count: 2;
-    }
+    }  */
 
     .keep form {
         flex-direction: column;
@@ -338,8 +323,9 @@
         width: 350px;
     }
 }
-@media (max-width: 600px) {
+
+/* @media (max-width: 600px) {
     .keep .notes-list {
-        column-count:1 ;
+        column-count: 1;
     }
-}
+} */
